@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="766.0" prefWidth="1171.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.semisterfinal.controller.AddSupplierControlller">
+   <children>
+      <Pane accessibleRole="LIST_VIEW" layoutX="14.0" layoutY="24.0" prefHeight="695.0" prefWidth="1141.0" style="-fx-background-color: #e6e6ff; -fx-background-radius: 20;">
+         <children>
+            <TableView fx:id="supplierAddTable" layoutX="25.0" layoutY="108.0" prefHeight="287.0" prefWidth="1076.0" style="-fx-background-color: #00004DFF;">
+              <columns>
+                <TableColumn fx:id="tmSupId" prefWidth="113.0" text="Supplier id" />
+                <TableColumn fx:id="tmSupName" prefWidth="315.0" text="Supplier Name" />
+                  <TableColumn fx:id="supItemName" minWidth="6.0" prefWidth="381.0" text="Item Name" />
+                  <TableColumn fx:id="tmqty" prefWidth="97.0" text="Qty" />
+                  <TableColumn fx:id="tmSupMobile" prefWidth="169.0" text="Mobile" />
+              </columns>
+            </TableView>
+            <Rectangle arcHeight="30.0" arcWidth="30.0" height="71.0" layoutX="864.0" layoutY="14.0" stroke="#000590" strokeType="INSIDE" width="237.0">
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0" startX="0.3270142180094787" startY="0.895734597156398">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.0660940557718277" green="0.27645793557167053" blue="0.46052631735801697" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.032224658876657486" green="0.032224658876657486" blue="0.30263158679008484" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Rectangle>
+            <Text fill="WHITE" layoutX="946.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Suppliers">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="30.0" fitWidth="40.0" layoutX="908.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/employee%20(1).png" />
+               </image>
+            </ImageView>
+            <Label layoutX="25.0" layoutY="22.0" prefHeight="31.0" prefWidth="129.0" text="Suppliyer">
+               <font>
+                  <Font name="Arial Bold" size="21.0" />
+               </font>
+            </Label>
+            <Label layoutX="25.0" layoutY="429.0" text="Supplier id :">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="25.0" layoutY="488.0" text="Suppler Name :">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="25.0" layoutY="552.0" text="Item Name :">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Line endX="100.0" layoutX="212.0" layoutY="450.0" startX="-100.0" />
+            <Line endX="100.0" layoutX="212.0" layoutY="573.0" startX="-100.0" />
+            <Line endX="101.0" layoutX="237.0" layoutY="510.0" startX="-100.0" />
+            <TextField fx:id="txtSupName" layoutX="135.0" layoutY="484.0" prefHeight="25.0" prefWidth="201.0" style="-fx-background-color: #e6e6ff;" />
+            <TextField fx:id="txtSupId" layoutX="111.0" layoutY="424.0" prefHeight="25.0" prefWidth="201.0" style="-fx-background-color: #e6e6ff;" />
+            <TextField fx:id="txtsupItemName" layoutX="112.0" layoutY="547.0" prefHeight="25.0" prefWidth="201.0" style="-fx-background-color: #e6e6ff;" />
+            <JFXButton buttonType="RAISED" layoutX="24.0" layoutY="619.0" onAction="#addSupplierOnAction" prefHeight="31.0" prefWidth="117.0" style="-fx-background-color: #2ecc71;" text="Add Supplier" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="17.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../thogakade-mvc/src/main/resources/icon/new.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" layoutX="168.0" layoutY="619.0" onAction="#updateSupplierOnAction" prefHeight="31.0" prefWidth="87.0" style="-fx-background-color: yellow;" text="Update">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" layoutX="284.0" layoutY="619.0" onAction="#deleteSupplierOnAction" prefHeight="31.0" prefWidth="85.0" style="-fx-background-color: orange;" text="Delete">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </JFXButton>
+            <Label fx:id="lbltotalSup" layoutX="871.0" layoutY="22.0" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Label layoutX="393.0" layoutY="450.0" text="Qty :">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="393.0" layoutY="511.0" text="Mobile :">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtSupQty" layoutX="430.0" layoutY="445.0" prefHeight="25.0" prefWidth="68.0" style="-fx-background-color: #e6e6ff;" />
+      <Line endX="-27.0" layoutX="528.0" layoutY="472.0" startX="-100.0" />
+      <Line endX="33.0" layoutX="555.0" layoutY="534.0" startX="-100.0" />
+      <TextField fx:id="txtSupMobile" layoutX="455.0" layoutY="507.0" prefHeight="25.0" prefWidth="134.0" style="-fx-background-color: #e6e6ff;" />
+   </children>
+</AnchorPane>

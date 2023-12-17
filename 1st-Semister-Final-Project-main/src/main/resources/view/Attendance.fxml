@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root" prefHeight="766.0" prefWidth="1195.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.semisterfinal.controller.AttendanceController">
+   <children>
+      <Pane accessibleRole="LIST_VIEW" layoutX="32.0" layoutY="14.0" prefHeight="713.0" prefWidth="1149.0" style="-fx-background-color: #e6e6ff; -fx-background-radius: 20;">
+         <children>
+            <ImageView fitHeight="374.0" fitWidth="364.0" layoutX="771.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/confiromAtendance.png" />
+               </image>
+            </ImageView>
+            <JFXButton buttonType="RAISED" layoutX="808.0" layoutY="562.0" onAction="#BackOnAction" prefHeight="25.0" prefWidth="64.0" style="-fx-background-color: orange;" text="&lt; Back" />
+            <Pane layoutX="753.0" layoutY="462.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #e6e6ff;" />
+            <Label fx:id="newCustomer" layoutX="37.0" layoutY="14.0" text="Attendance">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <TableView fx:id="atendanceTm" layoutX="37.0" layoutY="429.0" prefHeight="233.0" prefWidth="744.0">
+              <columns>
+                <TableColumn fx:id="colId" prefWidth="148.0" text="Employee Id" />
+                <TableColumn fx:id="colName" prefWidth="319.0" text="Employee Name" />
+                  <TableColumn fx:id="colDate" prefWidth="138.0" text="Date" />
+                  <TableColumn fx:id="colPa" prefWidth="134.0" text="P &amp; A" />
+                  <TableColumn fx:id="colAction" prefWidth="134.0" text="Remove" />
+                  <TableColumn fx:id="colAction2" prefWidth="134.0" text="Remove" />
+              </columns>
+            </TableView>
+            <JFXButton buttonType="RAISED" layoutX="511.0" layoutY="287.0" onAction="#markAtendanseOnAction" prefHeight="32.0" prefWidth="82.0" style="-fx-background-color: orange;" text="Mark" />
+            <DatePicker fx:id="AttDate" layoutX="39.0" layoutY="109.0" />
+            <Label layoutX="39.0" layoutY="86.0" text="Date :">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="37.0" layoutY="261.0" text="Employee Name :">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="38.0" layoutY="171.0" text="Employee Id :">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="comEmpId" layoutX="38.0" layoutY="192.0" onAction="#cmbEmpIdOnAction" prefWidth="150.0" style="-fx-background-color: #e6e6ff; -fx-background-radius: 20;" />
+            <TextField fx:id="lblName" layoutX="38.0" layoutY="289.0" style="-fx-background-color: #e6e6ff;" />
+            <Line endX="60.0" layoutX="138.0" layoutY="314.0" startX="-100.0" />
+            <Line endX="60.0" layoutX="139.0" layoutY="221.0" startX="-100.0" />
+            <ChoiceBox fx:id="presentAbsent" layoutX="309.0" layoutY="109.0" prefWidth="150.0" />
+            <Label layoutX="309.0" layoutY="86.0" text="Present / Absent :">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+         </children></Pane>
+   </children>
+</AnchorPane>

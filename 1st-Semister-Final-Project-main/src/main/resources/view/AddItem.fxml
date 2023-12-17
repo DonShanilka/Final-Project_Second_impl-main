@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="557.0" prefWidth="761.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.semisterfinal.controller.AddItemController">
+   <children>
+      <Pane fx:id="root" prefHeight="766.0" prefWidth="1171.0" style="-fx-background-color: white;">
+         <children>
+            <Pane layoutX="14.0" layoutY="26.0" prefHeight="694.0" prefWidth="1137.0" style="-fx-background-color: #e6e6ff; -fx-background-radius: 20;">
+               <children>
+      
+                  <JFXButton buttonType="RAISED" layoutX="708.0" layoutY="202.0" onAction="#deleteOnAction" prefHeight="36.0" prefWidth="86.0" style="-fx-background-color: orange;" text="Delete" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </JFXButton>
+                  <TableView fx:id="ItemTm" layoutX="14.0" layoutY="284.0" prefHeight="322.0" prefWidth="807.0" style="-fx-background-color: #00004DFF;">
+                    <columns>
+                      <TableColumn fx:id="tmItemCode" prefWidth="70.0" text="Item Code" />
+                      <TableColumn fx:id="tmItemDetails" prefWidth="325.0" text="Item Details" />
+                        <TableColumn fx:id="tmItemPrice" prefWidth="122.0" text="Item Price" />
+                        <TableColumn fx:id="tmSupplierId" prefWidth="87.0" text="Supplier Id" />
+                        <TableColumn fx:id="tmWarranty" prefWidth="118.0" text="Warranty Priod" />
+                        <TableColumn fx:id="tmQty" prefWidth="84.0" text="Qty" />
+                    </columns>
+                  </TableView>
+                  <JFXButton buttonType="RAISED" layoutX="600.0" layoutY="202.0" onAction="#UpdateOnAction" prefHeight="36.0" prefWidth="86.0" style="-fx-background-color: yellow;" text="Update" />
+               </children></Pane>
+            <TextField fx:id="txtItemCode" layoutX="26.0" layoutY="99.0" prefHeight="25.0" prefWidth="201.0" promptText="item Code" style="-fx-background-color: #e6e6ff;" />
+            <Line endX="100.0" layoutX="126.0" layoutY="124.0" startX="-100.0" />
+            <Line endX="100.0" layoutX="126.0" layoutY="166.0" startX="-100.0" />
+            <TextField fx:id="serachItem" layoutX="26.0" layoutY="45.0" onAction="#itemSerachOnAction" prefHeight="25.0" prefWidth="295.0" />
+            <TextField fx:id="txtItemPrice" layoutX="272.0" layoutY="99.0" prefHeight="25.0" prefWidth="201.0" promptText="item Price" style="-fx-background-color: #e6e6ff;" />
+            <Line endX="100.0" layoutX="373.0" layoutY="124.0" startX="-100.0" />
+            <Line endX="100.0" layoutX="373.0" layoutY="166.0" startX="-100.0" />
+            <TextField fx:id="txtWarrantyPeriod" layoutX="272.0" layoutY="140.0" prefHeight="25.0" prefWidth="201.0" promptText="Warranty Period" style="-fx-background-color: #e6e6ff;" />
+            <TextArea fx:id="txtitemDetails" layoutX="26.0" layoutY="182.0" prefHeight="82.0" prefWidth="450.0" promptText="item Details" style="-fx-background-radius: 0; -fx-background-color: #00004DFF;">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </TextArea>
+            <Rectangle arcHeight="30.0" arcWidth="30.0" height="82.0" layoutX="817.0" layoutY="44.0" stroke="#000590" strokeType="INSIDE" width="237.0">
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0" startX="0.3270142180094787" startY="0.895734597156398">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.0660940557718277" green="0.27645793557167053" blue="0.46052631735801697" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.032224658876657486" green="0.032224658876657486" blue="0.30263158679008484" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Rectangle>
+            <Text fill="WHITE" layoutX="887.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Item">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Text>
+            <JFXButton buttonType="RAISED" layoutX="500.0" layoutY="228.0" onAction="#AddItemOnAction" prefHeight="36.0" prefWidth="86.0" style="-fx-background-color: #2ecc71;" text="+ Add" />
+            <ComboBox fx:id="comsupid" layoutX="88.0" layoutY="139.0" onAction="#cmbSupplierOnAction" prefHeight="25.0" prefWidth="138.0" style="-fx-background-color: #e6e6ff;" />
+            <Text fill="#0000006a" layoutX="26.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Supplier id" />
+            <Line endX="100.0" layoutX="602.0" layoutY="165.0" startX="-100.0" />
+            <TextField fx:id="txtQty" layoutX="501.0" layoutY="139.0" prefHeight="25.0" prefWidth="201.0" promptText="Item Qty" style="-fx-background-color: #e6e6ff;" />
+            <Label fx:id="lblTotalItem" layoutX="830.0" layoutY="57.0" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="20.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="839.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/product%20(1).png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

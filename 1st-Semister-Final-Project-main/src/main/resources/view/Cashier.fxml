@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="pane" prefHeight="758.0" prefWidth="1184.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.semisterfinal.controller.CashierController">
+   <children>
+      <Pane layoutX="17.0" layoutY="16.0" prefHeight="727.0" prefWidth="1150.0" style="-fx-background-color: #e6e6ff; -fx-background-radius: 20;">
+         <children>
+            <Pane layoutX="5.0" layoutY="416.0" prefHeight="105.0" prefWidth="294.0" style="-fx-background-color: white; -fx-background-radius: 10;">
+               <children>
+                  <Label layoutX="12.0" layoutY="31.0" text="Customer Id:">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <JFXComboBox fx:id="cmbCustomerId" layoutX="107.0" layoutY="15.0" onAction="#cmbCustomerOnAction" prefHeight="33.0" prefWidth="107.0" />
+                  <Label layoutX="11.0" layoutY="66.0" text="Customer Name:">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblCustomerName" layoutX="133.0" layoutY="68.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Label layoutX="14.0" layoutY="7.0" prefHeight="42.0" prefWidth="330.0" text="Add To Bill" textFill="#5e5c5c">
+               <font>
+                  <Font name="System Bold" size="26.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <TableView fx:id="tblOrderCart" layoutX="20.0" layoutY="72.0" prefHeight="353.0" prefWidth="831.0">
+         <columns>
+            <TableColumn fx:id="colItemCode" text="Item Code" />
+            <TableColumn fx:id="colDescription" prefWidth="232.0" text="Item Name" />
+            <TableColumn fx:id="colUnitPrice" prefWidth="123.0" text="Unit Price" />
+            <TableColumn fx:id="colQty" prefWidth="64.0" text="Qty" />
+            <TableColumn fx:id="colDiscount" prefWidth="96.0" text="Discount %" />
+            <TableColumn fx:id="colTotal" prefWidth="149.0" text="Total" />
+            <TableColumn fx:id="colAction" prefWidth="86.0" text="Action" />
+         </columns>
+      </TableView>
+      <Label fx:id="lblNetTotal" layoutX="704.0" layoutY="442.0" textFill="#00ff2f">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="599.0" layoutY="447.0" text="Net Total:">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Pane layoutX="854.0" layoutY="72.0" prefHeight="663.0" prefWidth="294.0" style="-fx-background-color: white; -fx-background-radius: 2;">
+         <children>
+            <Label layoutX="14.0" layoutY="27.0" text="Order Id:">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblOrderId" layoutX="99.0" layoutY="26.0" textFill="#278d7f">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+            <Label layoutX="15.0" layoutY="89.0" text="Item Code :">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <JFXComboBox fx:id="cmbItemCode" layoutX="105.0" layoutY="83.0" onAction="#cmbItemOnAction" prefHeight="26.0" prefWidth="107.0" />
+            <Label layoutX="14.0" layoutY="224.0" text="Unit Price:">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblUnitPrice" layoutX="101.0" layoutY="226.0" />
+            <Label layoutX="15.0" layoutY="161.0" text="Item Name :">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblItemName" layoutX="116.0" layoutY="163.0" />
+            <Label layoutX="14.0" layoutY="284.0" text="Qty. On Hand:">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblQtyOnHand" layoutX="125.0" layoutY="282.0" textFill="#00127e">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+            <Label layoutX="15.0" layoutY="348.0" text="Qty:">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtQty" layoutX="53.0" layoutY="337.0" onAction="#txtQtyOnAction" prefHeight="26.0" prefWidth="73.0" style="-fx-background-color: white;" />
+            <Label layoutX="13.0" layoutY="410.0" text="Discount % :">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtDiscount" layoutX="105.0" layoutY="407.0" onAction="#txtDiscountOnAction" prefHeight="25.0" prefWidth="107.0" style="-fx-background-color: white;" />
+            <Label layoutX="17.0" layoutY="630.0" text="Order date:">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblOrderDate" layoutX="110.0" layoutY="632.0" />
+            <JFXButton fx:id="btnAddToCart" buttonType="RAISED" contentDisplay="CENTER" layoutX="63.0" layoutY="472.0" onAction="#btnAddToCartOnAction" prefHeight="32.0" prefWidth="168.0" style="-fx-background-color: #3498db; -fx-background-radius: 10;" text="Add to cart" textAlignment="CENTER" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="63.0" layoutY="530.0" onAction="#btnPlaceOrderOnAction" prefHeight="32.0" prefWidth="168.0" style="-fx-background-color: #34495e; -fx-background-radius: 10;" text="Place Order" textAlignment="CENTER" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+         </children>
+      </Pane>
+      <JFXButton fx:id="reortOrder" buttonType="RAISED" contentDisplay="CENTER" layoutX="772.0" layoutY="703.0" onAction="#reportOnAction" prefHeight="32.0" prefWidth="71.0" style="-fx-background-color: #3498db; -fx-background-radius: 3;" text="Report" textAlignment="CENTER" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <Label layoutX="598.0" layoutY="478.0" text="Paid Amount :">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="paidAmount" layoutX="705.0" layoutY="474.0" prefHeight="26.0" prefWidth="131.0">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </TextField>
+      <Label layoutX="598.0" layoutY="513.0" text="Balence :">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblBalence" layoutX="703.0" layoutY="516.0" textFill="RED">
+         <font>
+            <Font name="Arial Bold" size="22.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

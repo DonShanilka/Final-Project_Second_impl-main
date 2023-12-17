@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="615.0" prefWidth="751.0" style="-fx-background-color: #e6e6ff;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.semisterfinal.controller.UpdateSupplierController">
+   <children>
+      <Label layoutX="501.0" layoutY="10.0" text="Update Employee" textFill="#420657">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="27.0" layoutY="102.0" text="Supplier ID:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="27.0" layoutY="193.0" text="Supplier Name :">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="27.0" layoutY="276.0" text="Item Name :">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="supId" layoutX="23.0" layoutY="119.0" onAction="#comUpdateSupplier" prefHeight="25.0" prefWidth="126.0" style="-fx-background-color: #e6e6ff;" />
+      <Line endX="24.0" layoutX="126.0" layoutY="145.0" startX="-100.0" stroke="#300440" />
+      <Line endX="73.0" layoutX="126.0" layoutY="238.0" startX="-100.0" stroke="#300440" />
+      <TextField fx:id="itemName" layoutX="26.0" layoutY="297.0" prefHeight="25.0" prefWidth="174.0" style="-fx-background-color: #e6e6ff;" />
+      <TextField fx:id="supName" layoutX="26.0" layoutY="210.0" prefHeight="25.0" prefWidth="174.0" style="-fx-background-color: #e6e6ff;" />
+      <Line endX="73.0" layoutX="126.0" layoutY="324.0" startX="-100.0" stroke="#300440" />
+      <JFXButton buttonType="RAISED" layoutX="632.0" layoutY="558.0" onAction="#itemUpdateSaveOnAction" prefHeight="36.0" prefWidth="77.0" style="-fx-background-color: #08084d;" text="Save" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></JFXButton>
+      <Label layoutX="262.0" layoutY="97.0" text="Supplier Mobile :">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Line endX="24.0" layoutX="363.0" layoutY="140.0" startX="-100.0" stroke="#300440" />
+      <TextField fx:id="supMobile" layoutX="262.0" layoutY="114.0" prefHeight="25.0" prefWidth="126.0" style="-fx-background-color: #e6e6ff;" />
+      <Label layoutX="262.0" layoutY="189.0" text="Qty :">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Line endX="24.0" layoutX="363.0" layoutY="237.0" startX="-100.0" stroke="#300440" />
+      <TextField fx:id="qty" layoutX="262.0" layoutY="209.0" prefHeight="25.0" prefWidth="126.0" style="-fx-background-color: #e6e6ff;" />
+   </children>
+</AnchorPane>

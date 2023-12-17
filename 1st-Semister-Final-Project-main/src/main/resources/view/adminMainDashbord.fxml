@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root" prefHeight="740.0" prefWidth="1350.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.semisterfinal.controller.AdminMainDashbordController">
+   <children>
+      <AnchorPane fx:id="root1" layoutX="133.0" prefHeight="776.0" prefWidth="1217.0" />
+      <JFXButton fx:id="cashiyer1" buttonType="RAISED" layoutX="16.0" layoutY="673.0" onAction="#logOutOnAction" prefHeight="55.0" prefWidth="60.0" ripplerFill="BLACK" style="-fx-background-color: #00004d; -fx-background-radius: 5;" text="." textFill="#4db6ac">
+         <font>
+            <Font name="Constantia Bold" size="1.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/logout.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <Pane layoutX="14.0" layoutY="-31.0" prefHeight="587.0" prefWidth="64.0" style="-fx-background-color: #00004DFF; -fx-background-radius: 40;">
+         <children>
+            <JFXButton id="button" fx:id="item" buttonType="RAISED" layoutX="12.0" layoutY="318.0" onAction="#itemOnAction" prefHeight="40.0" prefWidth="44.0" stylesheets="@style.css" text="." textFill="#202a44">
+               <font>
+                  <Font name="Constantia Bold" size="1.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="38.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/box.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton id="button" fx:id="supplier" buttonType="RAISED" layoutX="12.0" layoutY="189.0" onAction="#SupplierOnAction" prefHeight="40.0" prefWidth="40.0" stylesheets="@style.css" text=".">
+               <font>
+                  <Font name="Constantia Bold" size="1.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="38.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/supplier.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton id="button" fx:id="salary" buttonType="RAISED" layoutX="12.0" layoutY="252.0" onAction="#SalaryOnAction" prefHeight="40.0" prefWidth="40.0" stylesheets="@style.css" text=".">
+               <font>
+                  <Font name="Constantia Bold" size="1.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="38.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/salary.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton id="button" fx:id="customer" buttonType="RAISED" layoutX="12.0" layoutY="384.0" onAction="#CustomerOnAction" prefHeight="40.0" prefWidth="40.0" stylesheets="@style.css" text=".">
+               <font>
+                  <Font name="Constantia Bold" size="1.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="38.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/customer-service.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton id="button" fx:id="cashiyer" buttonType="RAISED" layoutX="11.0" layoutY="521.0" onAction="#CashiyerOnAction" prefHeight="40.0" prefWidth="40.0" stylesheets="@style.css" text=".">
+               <font>
+                  <Font name="Constantia Bold" size="1.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="35.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/addtocart.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton id="button" fx:id="Employee" buttonType="RAISED" layoutX="12.0" layoutY="124.0" onAction="#EmployeeOnAction" prefHeight="40.0" prefWidth="40.0" stylesheets="@style.css" text=".">
+               <font>
+                  <Font name="Constantia Bold" size="1.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="38.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/employ.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton id="button" fx:id="monthlyIncome" buttonType="RAISED" layoutX="10.0" layoutY="52.0" onAction="#monthlyIncomeOnAction" prefHeight="40.0" prefWidth="40.0" stylesheets="@style.css" text="." textAlignment="CENTER">
+               <font>
+                  <Font name="Constantia Bold" size="1.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="38.0">
+                     <image>
+                        <Image url="@../image/growth.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton id="button" fx:id="attendence" buttonType="RAISED" layoutX="11.0" layoutY="456.0" onAction="#AttendenceOnAction" prefHeight="40.0" prefWidth="40.0" stylesheets="@style.css" text=".">
+               <font>
+                  <Font name="Constantia Bold" size="1.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="35.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/schedule.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,54 @@
+.button {
+    -fx-background-color: #00004d;
+    -fx-background-radius: 5 5 5 5;
+}
+
+.button:hover {
+    -fx-background-color: rgb(4, 23, 116);
+    -fx-background-radius: 5 5 5 5;
+}
+
+.button:pressed{
+    -fx-background-color: rgba(0, 32, 144, 0.89);
+    -fx-background-radius: 5 5 5 5;
+}
+
+* {
+    -fx-primary-color: #007acc;
+    -fx-secondary-color: #4B6EAF;
+    -fx-grey-color: #c7e0ff;
+
+    -fx-focus-color: -fx-secondary-color;
+}
+
+.text-field {
+    -fx-accent: -fx-primary-color;
+    -fx-background-color: -fx-grey-color, white;
+    -fx-background-insets: 0, 0 0 2 0;
+    -fx-background-radius: 0;
+}
+
+.text-field:focused {
+    -fx-background-color: -fx-primary-color, white;
+}
+
+.total {
+    background: rgb(2,0,36);
+}
+
+.box {
+   -fx-background-color: white;
+    -fx-padding: 2em;
+    -fx-show-tick-labels: 0 0 20px 0px rgba(0,0,0,.5);
+}
+
+.table-row-cell:selected{
+    -fx-background-color:linear-gradient(from 0% 0% to 100% 100%, white 0%, #007bff 50%, white 100%);
+}
+
+.table-row-cell:selected .table-cell{
+    -fx-text-fill: black !important;
+}
+
+
+

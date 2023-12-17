@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="rootNode" prefHeight="766.0" prefWidth="1168.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.semisterfinal.controller.AddCustomerController">
+   <children>
+      <Pane layoutX="14.0" layoutY="20.0" prefHeight="703.0" prefWidth="1136.0" style="-fx-background-color: #e6e6ff; -fx-background-radius: 20;" styleClass="box" stylesheets="@style.css">
+         <children>
+            <JFXButton buttonType="RAISED" layoutX="210.0" layoutY="621.0" onAction="#CustomerDeleteOnAction" prefHeight="33.0" prefWidth="78.0" style="-fx-background-color: orange;" text="Delete" />
+            <JFXButton buttonType="RAISED" layoutX="108.0" layoutY="621.0" onAction="#CustomerUpdateOnAction" prefHeight="33.0" prefWidth="78.0" style="-fx-background-color: yellow;" text="Update" />
+            <JFXButton buttonType="RAISED" layoutX="13.0" layoutY="621.0" onAction="#CustomerAddOnAction" prefHeight="33.0" prefWidth="78.0" style="-fx-background-color: #2ecc71;" text="+ Add" />
+         </children></Pane>
+      <BorderPane fx:id="borderPane" prefHeight="192.0" prefWidth="761.0">
+         <center>
+            <AnchorPane prefHeight="337.0" prefWidth="1127.0" BorderPane.alignment="CENTER">
+               <children>
+                  <TableView fx:id="CustomerAddTable" layoutX="24.0" layoutY="140.0" prefHeight="279.0" prefWidth="1090.0">
+                    <columns>
+                      <TableColumn fx:id="tbCid" prefWidth="106.0" text="Customer id" />
+                      <TableColumn fx:id="tbCname" prefWidth="176.0" text="Customer Name" />
+                        <TableColumn fx:id="tbCaddress" minWidth="8.0" prefWidth="347.0" text="Address" />
+                        <TableColumn fx:id="tbCmobile" prefWidth="194.0" text="Mobile" />
+                        <TableColumn fx:id="tbCpayment" minWidth="0.0" prefWidth="171.0" text="Payment" />
+                        <TableColumn fx:id="tbCitemId" minWidth="0.0" prefWidth="95.0" text="Item Id" />
+                    </columns>
+                  </TableView>
+                  <Label fx:id="newCustomer" layoutX="24.0" layoutY="30.0" text="Add New Customer">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Rectangle arcHeight="30.0" arcWidth="30.0" height="82.0" layoutX="874.0" layoutY="39.0" stroke="#000590" strokeType="INSIDE" width="237.0">
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0" startX="0.3270142180094787" startY="0.895734597156398">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.0660940557718277" green="0.27645793557167053" blue="0.46052631735801697" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.032224658876657486" green="0.032224658876657486" blue="0.30263158679008484" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Rectangle>
+                  <Text fill="WHITE" layoutX="958.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total customer">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Text>
+                  <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="918.0" layoutY="84.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/value.png" />
+                     </image>
+                  </ImageView>
+                  <Text fill="WHITE" layoutX="883.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2" wrappingWidth="34.298828125">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+         </center>
+         <bottom>
+            <AnchorPane fx:id="sliderAnchor" prefHeight="177.0" prefWidth="1104.0" stylesheets="@style.css" BorderPane.alignment="CENTER">
+               <children>
+                  <TextField fx:id="txtCustId" layoutX="51.0" layoutY="69.0" prefHeight="25.0" prefWidth="158.0" style="-fx-background-color: #e6e6ff;" />
+                  <Label layoutX="18.0" layoutY="79.0" text="Id -">
+                     <font>
+                        <Font name="Candara Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="18.0" layoutY="129.0" text="Mobile - ">
+                     <font>
+                        <Font name="Candara Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtCustMobile" layoutX="68.0" layoutY="118.0" prefHeight="25.0" prefWidth="144.0" style="-fx-background-color: #e6e6ff;" />
+                  <Label layoutX="257.0" layoutY="79.0" text="Name -">
+                     <font>
+                        <Font name="Candara Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtCustName" layoutX="304.0" layoutY="68.0" prefHeight="25.0" prefWidth="151.0" style="-fx-background-color: #e6e6ff;" />
+                  <Label layoutX="256.0" layoutY="129.0" text="Payment - ">
+                     <font>
+                        <Font name="Candara Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtCustPayment" layoutX="314.0" layoutY="118.0" prefHeight="25.0" prefWidth="139.0" style="-fx-background-color: #e6e6ff;" />
+                  <Label layoutX="509.0" layoutY="76.0" text="Address - ">
+                     <font>
+                        <Font name="Candara Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtCustAddress" layoutX="563.0" layoutY="66.0" prefHeight="25.0" prefWidth="168.0" style="-fx-background-color: #e6e6ff;" />
+                  <Label layoutX="507.0" layoutY="134.0" text="Item id - ">
+                     <font>
+                        <Font name="Candara Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtCustitemId" layoutX="565.0" layoutY="121.0" prefHeight="25.0" prefWidth="166.0" style="-fx-background-color: #e6e6ff;" />
+                  <Line endX="100.0" layoutX="111.0" layoutY="97.0" startX="-62.0" />
+                  <Line endX="100.0" layoutX="360.0" layoutY="97.0" startX="-62.0" />
+                  <Line endX="100.0" layoutX="628.0" layoutY="94.0" startX="-62.0" />
+                  <Line endX="100.0" layoutX="628.0" layoutY="147.0" startX="-62.0" />
+                  <Line endX="75.0" layoutX="378.0" layoutY="146.0" startX="-62.0" />
+                  <Line endX="90.0" layoutX="123.0" layoutY="145.0" startX="-62.0" />
+               </children>
+            </AnchorPane>
+         </bottom>
+      </BorderPane>
+   </children>
+</AnchorPane>

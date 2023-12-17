@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="anroodNode" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="780.0" style="-fx-background-color: #ccffe6;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.semisterfinal.controller.EmployeeLoginController">
+   <children>
+      <Pane layoutX="60.0" layoutY="40.0" prefHeight="470.0" prefWidth="660.0" style="-fx-background-color: white; -fx-background-radius: 50;">
+         <children>
+            <ImageView fitHeight="550.0" fitWidth="780.0" layoutX="-60.0" layoutY="-40.0">
+               <image>
+                  <Image url="@../image/background.png" />
+               </image>
+            </ImageView>
+            <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#125ca1" height="465.0" layoutX="-32.0" layoutY="13.0" stroke="#125ca1" strokeType="INSIDE" width="725.0" />
+            <Rectangle arcHeight="50.0" arcWidth="50.0" fill="WHITE" height="455.0" layoutX="-27.0" layoutY="18.0" stroke="WHITE" strokeType="INSIDE" width="715.0" />
+            <Text fill="#35375e" layoutX="113.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login" wrappingWidth="115.13671875">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+            </Text>
+            <Line endX="100.0" layoutX="185.0" layoutY="208.0" startX="-152.0" />
+            <Line endX="100.0" layoutX="185.0" layoutY="258.0" startX="-152.0" />
+            <JFXButton layoutX="88.0" layoutY="315.0" onAction="#LoginOnEmp" prefHeight="40.0" prefWidth="115.0" style="-fx-background-color: #1F629F; -fx-background-radius: 10;" text="Login" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+            </JFXButton>
+            <TextField fx:id="empLoginName" layoutX="54.0" layoutY="181.0" prefHeight="26.0" prefWidth="231.0" promptText="user name" style="-fx-background-color: white;" />
+            <TextField fx:id="EmpPassword" layoutX="54.0" layoutY="231.0" prefHeight="26.0" prefWidth="231.0" promptText="password" style="-fx-background-color: white;" />
+            <Text layoutX="69.0" layoutY="406.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create an Account ?" wrappingWidth="132.9830722808838" />
+            <ImageView fitHeight="367.0" fitWidth="391.0" layoutX="292.0" layoutY="48.0">
+               <image>
+                  <Image url="@../image/Employee.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="60.0" fitWidth="120.0" layoutX="526.0" layoutY="409.0">
+               <image>
+                  <Image url="@../image/megalogo.png" />
+               </image>
+            </ImageView>
+            <Hyperlink layoutX="189.0" layoutY="389.0" onAction="#HyperRegisterEmp" text="Register" />
+            <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="33.0" layoutY="235.0">
+               <image>
+                  <Image url="@../image/padlock.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="33.0" layoutY="185.0">
+               <image>
+                  <Image url="@../image/user.png" />
+               </image>
+            </ImageView>
+            <JFXButton fx:id="empback" layoutX="616.0" layoutY="26.0" onAction="#EmpBackOnAction" prefHeight="23.0" prefWidth="63.0" style="-fx-background-radius: 200; -fx-background-color: #35375e;" text="&lt;- Back" textFill="WHITE" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
