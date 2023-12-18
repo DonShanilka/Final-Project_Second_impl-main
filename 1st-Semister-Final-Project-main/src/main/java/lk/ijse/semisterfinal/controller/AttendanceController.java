@@ -126,14 +126,6 @@ public class AttendanceController implements Initializable {
         }
     }
 
-    private void setData(AtendanceTm row) {
-        comEmpId.setValue(row.getEmployeeId());
-        lblName.setText(row.getEmployeeName());
-        date.setValue(LocalDate.parse(row.getDate()));
-        //presentAbsent.setText(String.valueOf(row.getMobile()));
-
-    }
-
     public void BackOnAction(ActionEvent event) {
 
     }
