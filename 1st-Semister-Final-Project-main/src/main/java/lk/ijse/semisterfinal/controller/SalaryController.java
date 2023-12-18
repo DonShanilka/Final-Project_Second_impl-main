@@ -7,23 +7,30 @@ import jakarta.mail.internet.MimeMessage;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+import lk.ijse.semisterfinal.DB.DbConnetion;
 import lk.ijse.semisterfinal.Tm.SalaryTm;
 import lk.ijse.semisterfinal.dto.AddEmployeeDTO;
 import lk.ijse.semisterfinal.dto.SalaryDTO;
 import lk.ijse.semisterfinal.model.AddEmployeeModel;
 import lk.ijse.semisterfinal.model.SalaryModel;
 
+import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Properties;
+import java.util.ResourceBundle;
 
 
-public class SalaryController {
+public class SalaryController implements Initializable {
 
     public AnchorPane root;
     public DatePicker date;
@@ -95,6 +102,8 @@ public class SalaryController {
         colName.setCellValueFactory(new PropertyValueFactory<>("employeeName"));
         colDate.setCellValueFactory(new PropertyValueFactory<>("date"));
         colSalary.setCellValueFactory(new PropertyValueFactory<>("salary"));
+        colPresentDay.setCellValueFactory(new PropertyValueFactory<>("totalPr"));
+        colAbsentDay.setCellValueFactory(new PropertyValueFactory<>("totalAb"));
 
     }
 
@@ -174,12 +183,49 @@ public class SalaryController {
         }
     }
 
+
+    public void attendanseP_AB() throws SQLException {
+        Connection connection = DbConnetion.getInstance().getConnection();
+
+        String sqlPr = "SELECT COUNT(presentAbsent) FROM attendance WHERE presentAbsent = 'Present'";
+        String sqlAb = "SELECT COUNT(presentAbsent) FROM attendance WHERE presentAbsent = 'Absent'";
+
+        String totalPr = null;
+        String totalAb = null;
+
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement(sqlPr);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            PreparedStatement preparedStatement1 = connection.prepareStatement(sqlAb);
+            ResultSet resultSet1 = preparedStatement1.executeQuery();
+
+            while(resultSet.next()){
+                totalPr = resultSet.getString("COUNT(presentAbsent)");
+            }
+            colPresentDay.setText(totalPr);
+
+            while(resultSet1.next()){
+                totalAb = resultSet1.getString("COUNT(presentAbsent)");
+            }
+            colAbsentDay.setText(totalAb);
+
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+
     public void sendEmailOnAction(ActionEvent event) {
 
         double amount = Double.parseDouble(salary.getText());
         String id = comEmpId.getValue();
         String Name = lblName.getText();
         String date1 = String.valueOf(date.getValue());
+        int otHcount = Integer.parseInt(oTinH.getText());
+        double pay1h = Double.parseDouble(pay1HourOt.getText());
+        double bonase = Double.parseDouble(txtBonase.getText());
+
 
         var dto = new SalaryDTO(amount, id, Name, date1);
 
@@ -207,6 +253,16 @@ public class SalaryController {
         System.out.println("end");
         Sending.setText("sended");
 
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        try {
+            attendanseP_AB();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 
