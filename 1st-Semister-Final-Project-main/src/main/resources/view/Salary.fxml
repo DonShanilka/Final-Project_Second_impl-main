@@ -18,42 +18,50 @@
    <children>
       <Pane accessibleRole="LIST_VIEW" layoutX="11.0" layoutY="14.0" prefHeight="693.0" prefWidth="1149.0" style="-fx-background-color: #e6e6ff; -fx-background-radius: 20;">
          <children>
-            <TableView fx:id="salaryTm" layoutX="182.0" layoutY="450.0" prefHeight="204.0" prefWidth="611.0">
+            <TableView fx:id="salaryTm" layoutX="89.0" layoutY="450.0" prefHeight="204.0" prefWidth="1038.0">
                <columns>
-                  <TableColumn fx:id="colId" prefWidth="121.0" text="Employee Id" />
-                  <TableColumn fx:id="colName" prefWidth="230.0" text="Employee Name" />
-                  <TableColumn fx:id="colDate" prefWidth="117.0" text="Date" />
-                  <TableColumn fx:id="colSalary" minWidth="0.0" prefWidth="145.0" text="Salary" />
+                  <TableColumn fx:id="colId" text="Employee Id" />
+                  <TableColumn fx:id="colName" prefWidth="154.0" text="Employee Name" />
+                  <TableColumn fx:id="colDate" prefWidth="98.0" text="Date" />
                   <TableColumn fx:id="colAction" minWidth="0.0" prefWidth="0.0" text="Remove" />
+                  <TableColumn fx:id="colSalary" minWidth="0.0" prefWidth="90.0" text="Basic Salary" />
+                  <TableColumn fx:id="colOtH" minWidth="0.0" prefWidth="51.0" text="OT -h" />
+                  <TableColumn fx:id="colPay1ot" minWidth="0.0" prefWidth="88.0" text="Pay 1 hour OT" />
+                  <TableColumn fx:id="colBonase" minWidth="0.0" prefWidth="74.0" text="Bonase" />
+                  <TableColumn fx:id="colEpf" minWidth="0.0" prefWidth="70.0" text="EPF " />
+                  <TableColumn fx:id="colEtf" minWidth="0.0" prefWidth="72.0" text="ETF" />
+                  <TableColumn fx:id="colPresentDay" minWidth="0.0" prefWidth="72.0" text="Present Day" />
+                  <TableColumn fx:id="colAbsentDay" minWidth="0.0" prefWidth="72.0" text="Absent Day" />
+                  <TableColumn fx:id="colTotalSalary" minWidth="0.0" prefWidth="116.0" text="Total Salary" />
                </columns>
             </TableView>
-            <Label layoutX="657.0" layoutY="148.0" text="Subject :">
+            <Label layoutX="795.0" layoutY="148.0" text="Subject :">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <Label layoutX="660.0" layoutY="64.0" text="To :">
+            <Label layoutX="798.0" layoutY="64.0" text="To :">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <TextField fx:id="txtTo" layoutX="661.0" layoutY="85.0" style="-fx-background-color: #e6e6ff;" />
-            <Line endX="48.0" layoutX="761.0" layoutY="112.0" startX="-100.0" />
-            <TextField fx:id="txtSubject" layoutX="657.0" layoutY="170.0" prefHeight="25.0" prefWidth="231.0" style="-fx-background-color: #e6e6ff;" />
-            <Line endX="135.0" layoutX="760.0" layoutY="196.0" startX="-100.0" />
-            <JFXButton buttonType="RAISED" layoutX="657.0" layoutY="362.0" onAction="#sendEmailOnAction" prefHeight="32.0" prefWidth="82.0" style="-fx-background-color: #2ecc71;" text="Pay" textFill="WHITE">
+            <TextField fx:id="txtTo" layoutX="799.0" layoutY="85.0" prefHeight="25.0" prefWidth="231.0" style="-fx-background-color: #e6e6ff;" />
+            <Line endX="134.0" layoutX="899.0" layoutY="112.0" startX="-100.0" />
+            <TextField fx:id="txtSubject" layoutX="795.0" layoutY="170.0" prefHeight="25.0" prefWidth="231.0" style="-fx-background-color: #e6e6ff;" />
+            <Line endX="135.0" layoutX="898.0" layoutY="196.0" startX="-100.0" />
+            <JFXButton buttonType="RAISED" layoutX="795.0" layoutY="362.0" onAction="#sendEmailOnAction" prefHeight="32.0" prefWidth="82.0" style="-fx-background-color: #2ecc71;" text="Pay" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </JFXButton>
-            <TextArea fx:id="txtMsg" layoutX="655.0" layoutY="259.0" prefHeight="83.0" prefWidth="283.0" style="-fx-background-color: #00004DFF;" />
-            <Text fx:id="Sending" layoutX="840.0" layoutY="389.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sending ...." wrappingWidth="96.0" />
-            <Label layoutX="656.0" layoutY="238.0" text="Subject :">
+            <TextArea fx:id="txtMsg" layoutX="793.0" layoutY="259.0" prefHeight="83.0" prefWidth="283.0" style="-fx-background-color: #00004DFF;" />
+            <Text fx:id="Sending" layoutX="978.0" layoutY="389.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sending ...." wrappingWidth="96.0" />
+            <Label layoutX="794.0" layoutY="238.0" text="Subject :">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <Line endX="177.0" layoutX="760.0" layoutY="345.0" startX="-100.0" />
+            <Line endX="177.0" layoutX="898.0" layoutY="345.0" startX="-100.0" />
             <DatePicker fx:id="date" layoutX="95.0" layoutY="98.0" style="-fx-background-color: #00004DFF;" />
             <Label layoutX="95.0" layoutY="75.0" text="Date :">
                <font>
@@ -70,22 +78,69 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <ComboBox fx:id="comEmpId" layoutX="94.0" layoutY="181.0" onAction="#comEmpIdOnAction" prefWidth="150.0" style="-fx-background-color: #e6e6ff;" />
-            <TextField fx:id="lblName" layoutX="94.0" layoutY="278.0" style="-fx-background-color: #e6e6ff;" />
-            <Line endX="60.0" layoutX="194.0" layoutY="303.0" startX="-100.0" />
-            <Line endX="60.0" layoutX="195.0" layoutY="210.0" startX="-100.0" />
-            <Label layoutX="93.0" layoutY="339.0" text="Salary Amount :">
+            <ComboBox fx:id="comEmpId" layoutX="94.0" layoutY="181.0" onAction="#comEmpIdOnAction" prefHeight="25.0" prefWidth="174.0" style="-fx-background-color: #e6e6ff;" />
+            <TextField fx:id="lblName" layoutX="94.0" layoutY="278.0" prefHeight="25.0" prefWidth="174.0" style="-fx-background-color: #e6e6ff;" />
+            <Line endX="77.0" layoutX="194.0" layoutY="303.0" startX="-100.0" />
+            <Line endX="73.0" layoutX="195.0" layoutY="210.0" startX="-100.0" />
+            <Label layoutX="93.0" layoutY="339.0" text="Basic Salary :">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <TextField fx:id="salary" layoutX="93.0" layoutY="360.0" prefHeight="25.0" prefWidth="161.0" style="-fx-background-color: #e6e6ff;" />
-            <Line endX="60.0" layoutX="195.0" layoutY="387.0" startX="-100.0" />
+            <TextField fx:id="salary" layoutX="93.0" layoutY="360.0" prefHeight="25.0" prefWidth="174.0" style="-fx-background-color: #e6e6ff;" />
+            <Line endX="72.0" layoutX="195.0" layoutY="387.0" startX="-100.0" />
+            <Label layoutX="333.0" layoutY="74.0" text="OT - h">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="oTinH" layoutX="332.0" layoutY="98.0" prefHeight="25.0" prefWidth="174.0" style="-fx-background-color: #e6e6ff;" />
+            <Line endX="72.0" layoutX="433.0" layoutY="124.0" startX="-100.0" />
+            <Label layoutX="333.0" layoutY="159.0" text="Pay 1 hour OT">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="pay1HourOt" layoutX="329.0" layoutY="181.0" prefHeight="25.0" prefWidth="174.0" style="-fx-background-color: #e6e6ff;" />
+            <Line endX="72.0" layoutX="433.0" layoutY="209.0" startX="-100.0" />
+            <Label layoutX="337.0" layoutY="249.0" text="Bonase :">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtBonase" layoutX="332.0" layoutY="274.0" prefHeight="25.0" prefWidth="174.0" style="-fx-background-color: #e6e6ff;" />
+            <Line endX="72.0" layoutX="433.0" layoutY="300.0" startX="-100.0" />
+            <Label layoutX="333.0" layoutY="339.0" text="EPF :">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="416.0" layoutY="339.0" text="ETF :">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtEpf" layoutX="332.0" layoutY="361.0" prefHeight="25.0" prefWidth="44.0" />
+            <TextField fx:id="txtEtf" layoutX="415.0" layoutY="361.0" prefHeight="25.0" prefWidth="44.0" />
+            <Label layoutX="538.0" layoutY="72.0" text="Absent :">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="absent" layoutX="537.0" layoutY="96.0" prefHeight="25.0" prefWidth="174.0" style="-fx-background-color: #e6e6ff;" />
+            <Line endX="72.0" layoutX="638.0" layoutY="122.0" startX="-100.0" />
+            <Label layoutX="538.0" layoutY="157.0" text="Prsent :">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="prsent" layoutX="537.0" layoutY="181.0" prefHeight="25.0" prefWidth="174.0" style="-fx-background-color: #e6e6ff;" />
+            <Line endX="72.0" layoutX="638.0" layoutY="207.0" startX="-100.0" />
+            <Label layoutX="29.0" layoutY="14.0" prefHeight="31.0" prefWidth="129.0" text="Salary">
+               <font>
+                  <Font name="Arial Bold" size="21.0" />
+               </font>
+            </Label>
          </children></Pane>
-      <Label layoutX="24.0" layoutY="24.0" prefHeight="31.0" prefWidth="129.0" text="Salary">
-         <font>
-            <Font name="Arial Bold" size="21.0" />
-         </font>
-      </Label>
    </children>
 </AnchorPane>
