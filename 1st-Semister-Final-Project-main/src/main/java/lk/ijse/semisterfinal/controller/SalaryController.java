@@ -40,20 +40,21 @@ public class SalaryController {
     public TextField txtTo;
     public TextField txtSubject;
     public Text Sending;
-    public TableColumn colOtH;
-    public TableColumn colPay1ot;
-    public TableColumn colBonase;
-    public TableColumn colEpf;
-    public TableColumn colEtf;
-    public TableColumn colPresentDay;
-    public TableColumn colAbsentDay;
-    public TableColumn colTotalSalary;
+    public TableColumn <?,?> colOtH;
+    public TableColumn<?,?> colPay1ot;
+    public TableColumn <?,?> colBonase;
+    public TableColumn <?,?> colEpf;
+    public TableColumn <?,?> colEtf;
+    public TableColumn <?,?> colPresentDay;
+    public TableColumn <?,?> colAbsentDay;
+    public TableColumn <?,?> colTotalSalary;
     public TextField pay1HourOt;
     public TextField txtBonase;
     public TextField txtEpf;
     public TextField txtEtf;
     public TextField absent;
     public TextField prsent;
+    public TextField oTinH;
 
     private ObservableList<SalaryTm> obList = FXCollections.observableArrayList();
 

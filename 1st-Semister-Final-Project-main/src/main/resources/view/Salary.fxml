@@ -141,6 +141,13 @@
                   <Font name="Arial Bold" size="21.0" />
                </font>
             </Label>
+            <Label layoutX="548.0" layoutY="249.0" text="Total Salary :">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtTotalSalary" layoutX="547.0" layoutY="273.0" prefHeight="25.0" prefWidth="174.0" style="-fx-background-color: #e6e6ff;" />
+            <Line endX="72.0" layoutX="648.0" layoutY="299.0" startX="-100.0" />
          </children></Pane>
    </children>
 </AnchorPane>
