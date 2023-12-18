@@ -62,6 +62,7 @@ public class SalaryController implements Initializable {
     public TextField absent;
     public TextField prsent;
     public TextField oTinH;
+    public TextField txtTotalSalary;
 
     private ObservableList<SalaryTm> obList = FXCollections.observableArrayList();
 
@@ -184,6 +185,7 @@ public class SalaryController implements Initializable {
     }
 
 
+
     public void attendanseP_AB() throws SQLException {
         Connection connection = DbConnetion.getInstance().getConnection();
 
@@ -225,7 +227,11 @@ public class SalaryController implements Initializable {
         int otHcount = Integer.parseInt(oTinH.getText());
         double pay1h = Double.parseDouble(pay1HourOt.getText());
         double bonase = Double.parseDouble(txtBonase.getText());
-
+        int epf = Integer.parseInt(txtEpf.getText());
+        int etf = Integer.parseInt(txtEtf.getText());
+        int prCount = Integer.parseInt(prsent.getText());
+        int abcount = Integer.parseInt(absent.getText());
+        double totalsalary = Double.parseDouble(txtTotalSalary.getText());
 
         var dto = new SalaryDTO(amount, id, Name, date1);
 
