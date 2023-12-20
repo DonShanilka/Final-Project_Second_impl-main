@@ -37,18 +37,18 @@ public class SalaryController implements Initializable {
     public ComboBox<String> comEmpId;
     public TextField lblName;
     public TextArea txtMsg;
-    public TableColumn<?, ?> colId;
-    public TableColumn<?, ?> colName;
-    public TableColumn<?, ?> colDate;
-    public TableColumn<?, ?> colSalary;
-    public TableColumn<?, ?> colAction;
+    public TableColumn <?, ?> colId;
+    public TableColumn <?, ?> colName;
+    public TableColumn <?, ?> colDate;
+    public TableColumn <?, ?> colSalary;
+    public TableColumn <?, ?> colAction;
     public TextField salary;
     public TableView<SalaryTm> salaryTm;
     public TextField txtTo;
     public TextField txtSubject;
     public Text Sending;
     public TableColumn <?,?> colOtH;
-    public TableColumn<?,?> colPay1ot;
+    public TableColumn <?,?> colPay1ot;
     public TableColumn <?,?> colBonase;
     public TableColumn <?,?> colEpf;
     public TableColumn <?,?> colEtf;
@@ -64,7 +64,7 @@ public class SalaryController implements Initializable {
     public TextField oTinH;
     public TextField txtTotalSalary;
 
-    private ObservableList<SalaryTm> obList = FXCollections.observableArrayList();
+    private ObservableList <SalaryTm> obList = FXCollections.observableArrayList();
 
     public void initialize() {
         date.setPromptText(String.valueOf(LocalDate.now()));
@@ -189,8 +189,8 @@ public class SalaryController implements Initializable {
     public void attendanseP_AB() throws SQLException {
         Connection connection = DbConnetion.getInstance().getConnection();
 
-        String sqlPr = "SELECT COUNT(presentAbsent) FROM attendance WHERE presentAbsent = 'Present'";
-        String sqlAb = "SELECT COUNT(presentAbsent) FROM attendance WHERE presentAbsent = 'Absent'";
+        String sqlPr = "SELECT COUNT(presentAbsent) FROM attendance WHERE employee_id  = 'Present'";
+        String sqlAb = "SELECT COUNT(presentAbsent) FROM attendance WHERE employee_id WHERE presentAbsent = 'Absent'";
 
         String totalPr = null;
         String totalAb = null;
@@ -233,7 +233,7 @@ public class SalaryController implements Initializable {
         int abcount = Integer.parseInt(absent.getText());
         double totalsalary = Double.parseDouble(txtTotalSalary.getText());
 
-        var dto = new SalaryDTO(amount, id, Name, date1);
+        var dto = new SalaryDTO(amount,id,Name,date1,otHcount,pay1h,bonase,epf,etf,prCount,abcount,totalsalary);
 
         try {
             boolean isaddite = SalaryModel.addSalary(dto);
@@ -265,6 +265,12 @@ public class SalaryController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
             attendanseP_AB();
+            date.setPromptText(String.valueOf(LocalDate.now()));
+            loadEmployeeId();
+            clearField();
+            tableListener();
+            setCellValueFactory();
+            loadAllSalary();
 
         } catch (SQLException e) {
             throw new RuntimeException(e);

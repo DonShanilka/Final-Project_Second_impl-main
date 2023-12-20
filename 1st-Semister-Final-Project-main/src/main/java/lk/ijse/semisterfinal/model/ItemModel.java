@@ -25,6 +25,7 @@ public class ItemModel {
         ptm.setString(5, dto.getWarrantyPeriod());
         ptm.setString(6, String.valueOf(dto.getItemQty()));
 
+
         boolean isSaved = ptm.executeUpdate()>0;
         return isSaved;
     }

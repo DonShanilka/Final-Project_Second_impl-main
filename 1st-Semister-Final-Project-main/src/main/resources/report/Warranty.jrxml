@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Warranty" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="32390e55-54cb-43b8-803a-66d1cbe05bc7">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MegaMartAdapter"/>
+	<queryString language="SQL">
+		<![CDATA[select item_code,item_name,warranty from item]]>
+	</queryString>
+	<field name="item_code" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="item_code"/>
+		<property name="com.jaspersoft.studio.field.label" value="item_code"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="item"/>
+	</field>
+	<field name="item_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="item_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="item_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="item"/>
+	</field>
+	<field name="warranty" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="warranty"/>
+		<property name="com.jaspersoft.studio.field.label" value="warranty"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="item"/>
+	</field>
+	<group name="item_code">
+		<groupExpression><![CDATA[$F{item_code}]]></groupExpression>
+	</group>
+	<group name="item_name">
+		<groupExpression><![CDATA[$F{item_name}]]></groupExpression>
+	</group>
+	<group name="warranty">
+		<groupExpression><![CDATA[$F{warranty}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="83" splitType="Stretch">
+			<staticText>
+				<reportElement x="116" y="26" width="323" height="47" uuid="9cf185e8-76a7-49d6-816a-07ee9edb4db6"/>
+				<textElement textAlignment="Center">
+					<font size="26" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Warranty Card]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<line>
+				<reportElement x="-2" y="22" width="560" height="1" uuid="403d8e85-d888-4c92-a77a-fdd8d088e16d"/>
+			</line>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="30" y="0" width="100" height="30" uuid="da053c9e-d263-41fc-9a0b-e5fc78025ad9">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c31ad714-7ac5-49fb-b998-54b7cc3b923e"/>
+				</reportElement>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[item_code]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="231" y="0" width="100" height="30" uuid="560ab1d8-7785-4411-83e5-95a10462c0d2">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="18e1bd2d-f807-41b2-a29c-1bfba166613c"/>
+				</reportElement>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[item_name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="428" y="0" width="100" height="30" uuid="00ba8ab7-6d01-46de-af03-14c07e2995cc">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c1413d07-055d-48e1-adb0-a3efb2efb4e9"/>
+				</reportElement>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[warranty]]></text>
+			</staticText>
+			<line>
+				<reportElement x="-2" y="35" width="560" height="1" uuid="f3a12bf4-7edd-4f18-b55e-efe90433ea1b"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="62" splitType="Stretch">
+			<textField>
+				<reportElement x="30" y="20" width="100" height="30" uuid="5e9ac4ae-4041-4430-947e-59367185c158">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c31ad714-7ac5-49fb-b998-54b7cc3b923e"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{item_code}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="230" y="20" width="100" height="30" uuid="76660e82-7a88-4962-b9b6-e136d99b8ef8">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="18e1bd2d-f807-41b2-a29c-1bfba166613c"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{item_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="430" y="19" width="100" height="30" uuid="54af9088-4858-4d60-9783-7864bd77f5e3">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c1413d07-055d-48e1-adb0-a3efb2efb4e9"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{warranty}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="29" splitType="Stretch">
+			<line>
+				<reportElement x="-3" y="7" width="560" height="1" uuid="d425ff11-fcd7-4bcf-9f4f-dfcfb5d1b109"/>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="33" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="30" uuid="da74e24d-ba70-4370-ab01-7803a96ea1cd"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mega Mart]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

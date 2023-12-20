@@ -11,6 +11,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.semisterfinal.DB.DbConnetion;
 import lk.ijse.semisterfinal.Tm.CartTm;
 import lk.ijse.semisterfinal.dto.*;
 import lk.ijse.semisterfinal.model.*;
@@ -25,6 +26,7 @@ import java.io.InputStream;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 import java.util.regex.Pattern;
@@ -346,28 +348,18 @@ public class CashierController {
 
 
     public void reportOnAction(ActionEvent event) throws JRException, SQLException {
-        /*HashMap map = new HashMap<>();
 
-        map.put("fee", tm.getParkingFee());
-        map.put("space", tm.getSpaceNum());
-        map.put("type", tm.getType());
-
-        InputStream resourceAsStream =
-                getClass().getResourceAsStream("../report/parkingticket.jrxml");
-        JasperDesign load = JRXmlLoader.load(resourceAsStream);
-        JasperReport compileReport = JasperCompileManager.compileReport(load);
-        JasperPrint jasperPrint =
-                JasperFillManager.fillReport(
-                        compileReport,
-                        map,
-                        new JREmptyDataSource()
-                );
-        JasperViewer.viewReport(jasperPrint, false);
+        InputStream inputStream = getClass().getResourceAsStream("../report/MegaMartBill.jrxml");
+        JasperDesign jasperDesign = JRXmlLoader.load(inputStream);
+        JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport,null,
+                DbConnetion.getInstance().getConnection());
+        JasperViewer.viewReport(jasperPrint,false);
 
     }
 
     public void mouseClicakAction(MouseEvent mouseEvent) {
-        Integer index = customerModel.getSelectionModel().getSelectedIndex();
+        /*Integer index = customerModel.getSelectionModel().getSelectedIndex();
         if (index <= -1) {
             return;
         }

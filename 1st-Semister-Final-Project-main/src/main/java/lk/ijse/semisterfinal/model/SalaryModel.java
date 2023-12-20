@@ -12,15 +12,21 @@ public class SalaryModel {
     public static boolean addSalary(SalaryDTO dto) throws SQLException {
         Connection connection = DbConnetion.getInstance().getConnection();
 
-        String sql = "INSERT INTO salary VALUES(?,?,?,?)";
+        String sql = "INSERT INTO salary VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
 
         PreparedStatement ptm = connection.prepareStatement(sql);
         ptm.setString(1, dto.getDate());
         ptm.setString(2, dto.getEmployeeId());
         ptm.setString(3, dto.getEmployeeName());
         ptm.setDouble(4, dto.getSalary());
-
-
+        ptm.setInt(5, dto.getOtcount());
+        ptm.setDouble(6,dto.getPay1h());
+        ptm.setDouble(7, dto.getBonase());
+        ptm.setInt(8, dto.getEpf());
+        ptm.setInt(9, dto.getEtf());
+        ptm.setInt(10, dto.getPrCount());
+        ptm.setInt(11, dto.getAbcount());
+        ptm.setDouble(12, dto.getTotalsalary());
 
         boolean isSaved = ptm.executeUpdate()>0;
         return isSaved;

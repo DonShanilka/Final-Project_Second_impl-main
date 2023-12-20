@@ -31,7 +31,7 @@
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </JFXButton>
-                  <TableView fx:id="ItemTm" layoutX="14.0" layoutY="284.0" prefHeight="322.0" prefWidth="807.0" style="-fx-background-color: #00004DFF;">
+                  <TableView fx:id="ItemTm" layoutX="14.0" layoutY="284.0" prefHeight="322.0" prefWidth="807.0">
                     <columns>
                       <TableColumn fx:id="tmItemCode" prefWidth="70.0" text="Item Code" />
                       <TableColumn fx:id="tmItemDetails" prefWidth="325.0" text="Item Details" />
@@ -42,6 +42,11 @@
                     </columns>
                   </TableView>
                   <JFXButton buttonType="RAISED" layoutX="600.0" layoutY="202.0" onAction="#UpdateOnAction" prefHeight="36.0" prefWidth="86.0" style="-fx-background-color: yellow;" text="Update" />
+                  <JFXButton fx:id="btnWarranty" buttonType="RAISED" layoutX="821.0" layoutY="202.0" onAction="#btnWarrantyOnAction" prefHeight="36.0" prefWidth="97.0" style="-fx-background-color: blue;" text="Warranty" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </JFXButton>
                </children></Pane>
             <TextField fx:id="txtItemCode" layoutX="26.0" layoutY="99.0" prefHeight="25.0" prefWidth="201.0" promptText="item Code" style="-fx-background-color: #e6e6ff;" />
             <Line endX="100.0" layoutX="126.0" layoutY="124.0" startX="-100.0" />
