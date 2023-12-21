@@ -133,7 +133,7 @@ public class CashierController {
         try {
             List<CusromerDTO> idList = customerModel.getAllCustomer();
             for (CusromerDTO dto : idList) {
-                obList.add(dto.getTxtCustId());
+                obList.add(dto.getTxtCustMobile());
             }
             cmbCustomerId.setItems(obList);
         } catch (SQLException e) {
@@ -169,19 +169,19 @@ public class CashierController {
         lblOrderDate.setText(String.valueOf(LocalDate.now()));
     }
 
-    public void cmbCustomerId(ActionEvent actionEvent) {
+    /*public void cmbCustomerId(ActionEvent actionEvent) {
         String id = cmbCustomerId.getValue();
 
         try {
             CusromerDTO cusromerDTO = customerModel.searchCustomer(id);
-            txtCustName.setText(cusromerDTO.getTxtCustName());
+            txtCustName.setText(cusromerDTO.getTxtCustMobile());
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-    }
+    }*/
 
-    public void cmbItemCode(ActionEvent actionEvent) {
+    /*public void cmbItemCode(ActionEvent actionEvent) {
         String id = cmbItemCode.getValue();
 
         try {
@@ -192,7 +192,7 @@ public class CashierController {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-    }
+    }*/
 
     public void cmbCustomerOnAction(ActionEvent event) {
         String id = cmbCustomerId.getValue();
@@ -349,7 +349,7 @@ public class CashierController {
 
     public void reportOnAction(ActionEvent event) throws JRException, SQLException {
 
-        InputStream inputStream = getClass().getResourceAsStream("../report/MegaMartBill.jrxml");
+        InputStream inputStream = getClass().getResourceAsStream("../reports/MegaMartBill.jrxml");
         JasperDesign jasperDesign = JRXmlLoader.load(inputStream);
         JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
         JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport,null,

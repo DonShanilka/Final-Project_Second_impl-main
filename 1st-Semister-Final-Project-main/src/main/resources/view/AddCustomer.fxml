@@ -30,7 +30,7 @@
          <center>
             <AnchorPane prefHeight="337.0" prefWidth="1127.0" BorderPane.alignment="CENTER">
                <children>
-                  <TableView fx:id="CustomerAddTable" layoutX="24.0" layoutY="140.0" prefHeight="279.0" prefWidth="1090.0">
+                  <TableView fx:id="CustomerAddTable" layoutX="24.0" layoutY="173.0" prefHeight="276.0" prefWidth="1090.0">
                     <columns>
                       <TableColumn fx:id="tbCid" prefWidth="106.0" text="Customer id" />
                       <TableColumn fx:id="tbCname" prefWidth="176.0" text="Customer Name" />
@@ -82,7 +82,7 @@
             </AnchorPane>
          </center>
          <bottom>
-            <AnchorPane fx:id="sliderAnchor" prefHeight="177.0" prefWidth="1104.0" stylesheets="@style.css" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="177.0" prefWidth="1104.0" stylesheets="@style.css" BorderPane.alignment="CENTER">
                <children>
                   <TextField fx:id="txtCustId" layoutX="51.0" layoutY="69.0" prefHeight="25.0" prefWidth="158.0" style="-fx-background-color: #e6e6ff;" />
                   <Label layoutX="18.0" layoutY="79.0" text="Id -">

@@ -1,5 +1,8 @@
 package lk.ijse.semisterfinal.Tm;
 
+import lombok.Getter;
+
+@Getter
 public class CustomerTm {
     private String id;
     private String name;
@@ -8,15 +11,6 @@ public class CustomerTm {
     private String payment;
     private String itemId;
 
-    public CustomerTm() {
-    }
-
-    public CustomerTm(String id, String name, String address, String tel) {
-        this.id = id;
-        this.name = name;
-        this.address = address;
-        this.tel = tel;
-    }
 
     public CustomerTm(String txtCustId, String txtCustName, String txtCustAddress, String txtCustMobile, String txtCustPayment, String txtCustitemId) {
         this.id = txtCustId;
@@ -27,32 +21,16 @@ public class CustomerTm {
         this.itemId = txtCustitemId;
     }
 
-    public String getId() {
-        return id;
-    }
-
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    public String getTel() {
-        return tel;
     }
 
     public void setTel(String tel) {
@@ -69,16 +47,8 @@ public class CustomerTm {
                 '}';
     }
 
-    public String getPayment() {
-        return payment;
-    }
-
     public void setPayment(String payment) {
         this.payment = payment;
-    }
-
-    public String getItemId() {
-        return itemId;
     }
 
     public void setItemId(String itemId) {

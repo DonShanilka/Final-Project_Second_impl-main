@@ -2,10 +2,13 @@ package lk.ijse.semisterfinal.controller;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -21,22 +24,28 @@ import lk.ijse.semisterfinal.model.CustomerModel;
 import org.controlsfx.control.Notifications;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
+import static java.awt.SystemColor.activeCaption;
 import static java.awt.SystemColor.text;
 
-public class AddCustomerController {
+public class AddCustomerController implements Initializable {
 
     public TableView <CustomerTm> CustomerAddTable;
+
+    public TableView<lk.ijse.semisterfinal.Tm.CustomerTm> CusttomerTm;
     public TableColumn <?, ?> tbCid;
     public TableColumn <?, ?> tbCname;
     public TableColumn <?, ?> tbCaddress;
     public TableColumn <?, ?> tbCmobile;
     public TableColumn <?, ?> tbCpayment;
     public TableColumn <?, ?> tbCitemId;
+    public TextField serachItem;
     @FXML
     private BorderPane borderPane;
 
@@ -52,13 +61,20 @@ public class AddCustomerController {
     @FXML
     private AnchorPane sliderAnchor;
 
-
+    @FXML
     public TextField txtCustMobile;
+    @FXML
     public TextField txtCustName;
+    @FXML
     public TextField txtCustPayment;
+    @FXML
     public TextField txtCustAddress;
+    @FXML
     public TextField txtCustitemId;
+    @FXML
     public TextField txtCustId;
+
+
 
     private void clearField() {
         txtCustId.setText("");
@@ -113,7 +129,7 @@ public class AddCustomerController {
             if (!validateCustomer()){
                 return;
             }
-            var dto = new CusromerDTO(custId,custName,custAddress,custMobile,custItemid,custPayment);
+            var dto = new CusromerDTO(custId,custAddress,custName,custMobile,custItemid,custPayment);
             boolean isadd= CustomerModel.AddCustomer(dto);
             if (isadd){
                 new Alert(Alert.AlertType.CONFIRMATION,"Customer is Added").show();
@@ -193,6 +209,56 @@ public class AddCustomerController {
                 .showError();
     }
 
+    public void itemSerachOnAction() {
+        FilteredList<CustomerTm> filteredData = new FilteredList<>(CusttomerTm.getItems(), b -> true);
+
+        serachItem.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(item -> {
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                String serchKey = newValue.toLowerCase();
+
+                if (item.getTel().toString().contains(serchKey)) {
+                    return true;
+                } else if (item.getId().toLowerCase().contains(serchKey)){
+                    return true;
+                } else return false;
+            });
+        });
+
+        SortedList<CustomerTm> sortedList = new SortedList<>(filteredData);
+        sortedList.comparatorProperty().bind(CusttomerTm.comparatorProperty());
+        CusttomerTm.setItems(sortedList);
+    }
+
+    /*public void serchCustomerOnAction(ActionEvent actionEvent) {
+        FilteredList<CustomerTm> filteredData = new FilteredList<>(CusttomerTm.getItems(), b -> true);
+
+        serchCust.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(item -> {
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                String serchKey = newValue.toLowerCase();
+
+                if (item.getTel().toString().contains(serchKey)) {
+                    return true;
+                } else if (item.getId().toLowerCase().contains(serchKey)){
+                    return true;
+                } else return false;
+            });
+        });
+
+        SortedList<CustomerTm> sortedList = new SortedList<>(filteredData);
+        sortedList.comparatorProperty().bind(CusttomerTm.comparatorProperty());
+        CusttomerTm.setItems(sortedList);
+    }*/
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        itemSerachOnAction();
+    }
 }
 
 

@@ -17,8 +17,6 @@ import java.util.Objects;
 
 public class AdminMainDashbordController {
 
-    SelectrollController selectrollController = new SelectrollController();
-
     public JFXButton monthlyIncome;
     public JFXButton item;
     public JFXButton Employee;
@@ -30,7 +28,7 @@ public class AdminMainDashbordController {
     public JFXButton cashiyer;
     public JFXButton attendence;
 
-    @FXML
+    /*@FXML
     public BarChart <?,?> orderDataChart;
     @FXML
     public Label lblTotalOrders;
@@ -39,7 +37,7 @@ public class AdminMainDashbordController {
     @FXML
     public Label lblTotalInCome;
     @FXML
-    public AreaChart <?,?> incomeDataChart;
+    public AreaChart <?,?> incomeDataChart;*/
 
 
     public void initialize() throws IOException {

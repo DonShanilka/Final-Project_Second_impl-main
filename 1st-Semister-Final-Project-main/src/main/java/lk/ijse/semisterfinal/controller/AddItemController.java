@@ -17,16 +17,12 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import lk.ijse.semisterfinal.DB.DbConnetion;
 import lk.ijse.semisterfinal.Tm.ItemTm;
-import lk.ijse.semisterfinal.dto.CusromerDTO;
 import lk.ijse.semisterfinal.dto.ItemDTO;
 import lk.ijse.semisterfinal.dto.SupplierDTO;
-import lk.ijse.semisterfinal.model.CustomerModel;
 import lk.ijse.semisterfinal.model.ItemModel;
 import lk.ijse.semisterfinal.model.SupplierModel;
 import net.sf.jasperreports.engine.*;
-import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.design.JasperDesign;
-import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
 import org.controlsfx.control.Notifications;
@@ -40,8 +36,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
@@ -330,7 +324,7 @@ public class AddItemController implements Initializable {
     }
 
     public void btnWarrantyOnAction(ActionEvent actionEvent) throws SQLException, JRException {
-        InputStream inputStream = getClass().getResourceAsStream("../report/Warranty.jrxml");
+        InputStream inputStream = getClass().getResourceAsStream("../reports/Warranty.jrxml");
         JasperDesign jasperDesign = JRXmlLoader.load(inputStream);
         JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
         JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport,null,
