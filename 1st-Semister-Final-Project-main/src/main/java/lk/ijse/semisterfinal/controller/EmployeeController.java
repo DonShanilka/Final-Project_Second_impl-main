@@ -55,6 +55,11 @@ public class EmployeeController implements Initializable {
     public TableColumn <?,?> tmQualification;
     public TableColumn <?,?> tmExperiance;
     public TableColumn <?,?> tmBasicSalary;
+    public ChoiceBox <String> gender;
+    public ChoiceBox <String> department;
+
+    private String[] mf = {"Male" , "Female"};
+    private String[] dep = {"HR", "Finance & Accounting", "Service", "IT"};
 
     public void initialize(){
         loadAllEmployee();
@@ -86,7 +91,6 @@ public class EmployeeController implements Initializable {
         txtEmployeePhone.setText("");
         txtEmail.setText("");
         txtPossition.setText("");
-        txtGender.setText("");
         txtEducation.setText("");
         txtBasicSalary.setText("");
         txtExpiriance.setText("");
@@ -117,12 +121,12 @@ public class EmployeeController implements Initializable {
         String date = String.valueOf(empDate.getValue());
         String email = txtEmail.getText();
         String position = txtPossition.getText();
-        String gender = txtGender.getText();
+        String gende = gender.getValue();
         String education = txtEducation.getText();
         double basic = Double.parseDouble(txtBasicSalary.getText());
         String experiance = txtExpiriance.getText();
 
-        var dto = new AddEmployeeDTO(id,name,address,tele,date,email,position,gender,education,basic,experiance);
+        var dto = new AddEmployeeDTO(id,name,address,tele,date,email,position,gende,education,basic,experiance);
 
         try {
             boolean addSup= AddEmployeeModel.addEmployee(dto);
@@ -221,6 +225,8 @@ public class EmployeeController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
+            department.getItems().addAll(dep);
+            gender.getItems().addAll(mf);
             totalItem();
             loadAllEmployee();
             clearField();

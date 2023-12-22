@@ -18,7 +18,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="rootNode" prefHeight="766.0" prefWidth="1168.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.semisterfinal.controller.AddCustomerController">
+<AnchorPane prefHeight="766.0" prefWidth="1168.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.semisterfinal.controller.AddCustomerController">
    <children>
       <Pane layoutX="14.0" layoutY="20.0" prefHeight="703.0" prefWidth="1136.0" style="-fx-background-color: #e6e6ff; -fx-background-radius: 20;" styleClass="box" stylesheets="@style.css">
          <children>
@@ -78,6 +78,7 @@
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Text>
+                  <TextField fx:id="serachItem" layoutX="24.0" layoutY="114.0" prefHeight="25.0" prefWidth="295.0" />
                </children>
             </AnchorPane>
          </center>

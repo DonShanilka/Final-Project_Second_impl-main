@@ -62,7 +62,7 @@
             <TextField fx:id="lblName" layoutX="38.0" layoutY="289.0" style="-fx-background-color: #e6e6ff;" />
             <Line endX="60.0" layoutX="138.0" layoutY="314.0" startX="-100.0" />
             <Line endX="60.0" layoutX="139.0" layoutY="221.0" startX="-100.0" />
-            <ChoiceBox fx:id="presentAbsent" layoutX="309.0" layoutY="109.0" prefWidth="150.0" />
+            <ChoiceBox fx:id="presentAbsent" layoutX="309.0" layoutY="109.0" prefWidth="150.0" style="-fx-background-color: blue;" />
             <Label layoutX="309.0" layoutY="86.0" text="Present / Absent :">
                <font>
                   <Font name="System Bold" size="15.0" />

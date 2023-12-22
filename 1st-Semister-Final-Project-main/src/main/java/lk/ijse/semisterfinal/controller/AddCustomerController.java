@@ -16,6 +16,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import lk.ijse.semisterfinal.DB.DbConnetion;
 import lk.ijse.semisterfinal.Tm.CustomerTm;
 import lk.ijse.semisterfinal.Tm.EmployeeTm;
 import lk.ijse.semisterfinal.Tm.ItemTm;
@@ -25,8 +26,12 @@ import org.controlsfx.control.Notifications;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
@@ -37,8 +42,6 @@ import static java.awt.SystemColor.text;
 public class AddCustomerController implements Initializable {
 
     public TableView <CustomerTm> CustomerAddTable;
-
-    public TableView<lk.ijse.semisterfinal.Tm.CustomerTm> CusttomerTm;
     public TableColumn <?, ?> tbCid;
     public TableColumn <?, ?> tbCname;
     public TableColumn <?, ?> tbCaddress;
@@ -209,55 +212,36 @@ public class AddCustomerController implements Initializable {
                 .showError();
     }
 
-    public void itemSerachOnAction() {
-        FilteredList<CustomerTm> filteredData = new FilteredList<>(CusttomerTm.getItems(), b -> true);
-
-        serachItem.textProperty().addListener((observable, oldValue, newValue) -> {
-            filteredData.setPredicate(item -> {
-                if (newValue == null || newValue.isEmpty()) {
-                    return true;
-                }
-                String serchKey = newValue.toLowerCase();
-
-                if (item.getTel().toString().contains(serchKey)) {
-                    return true;
-                } else if (item.getId().toLowerCase().contains(serchKey)){
-                    return true;
-                } else return false;
-            });
-        });
-
-        SortedList<CustomerTm> sortedList = new SortedList<>(filteredData);
-        sortedList.comparatorProperty().bind(CusttomerTm.comparatorProperty());
-        CusttomerTm.setItems(sortedList);
-    }
-
-    /*public void serchCustomerOnAction(ActionEvent actionEvent) {
-        FilteredList<CustomerTm> filteredData = new FilteredList<>(CusttomerTm.getItems(), b -> true);
-
-        serchCust.textProperty().addListener((observable, oldValue, newValue) -> {
-            filteredData.setPredicate(item -> {
-                if (newValue == null || newValue.isEmpty()) {
-                    return true;
-                }
-                String serchKey = newValue.toLowerCase();
-
-                if (item.getTel().toString().contains(serchKey)) {
-                    return true;
-                } else if (item.getId().toLowerCase().contains(serchKey)){
-                    return true;
-                } else return false;
-            });
-        });
-
-        SortedList<CustomerTm> sortedList = new SortedList<>(filteredData);
-        sortedList.comparatorProperty().bind(CusttomerTm.comparatorProperty());
-        CusttomerTm.setItems(sortedList);
-    }*/
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        loadAllCustomer();
+        setCellValueFactory();
+        clearField();
         itemSerachOnAction();
+    }
+
+
+    public void itemSerachOnAction() {
+            FilteredList<CustomerTm> filteredData = new FilteredList<>(CustomerAddTable.getItems(), b -> true);
+            serachItem.textProperty().addListener((observable, oldValue, newValue) -> {
+                filteredData.setPredicate(item -> {
+                    if (newValue == null || newValue.isEmpty()) {
+                        return true;
+                    }
+                    String serchKey = newValue.toLowerCase();
+
+                    if (item.getTel().toString().contains(serchKey)) {
+                        return true;
+                    } else if (item.getId().toLowerCase().contains(serchKey)) {
+                        return true;
+                    } else return false;
+                });
+            });
+            
+            SortedList<CustomerTm> sortedList = new SortedList<>(filteredData);
+            sortedList.comparatorProperty().bind(CustomerAddTable.comparatorProperty());
+            CustomerAddTable.setItems(sortedList);
     }
 }
 

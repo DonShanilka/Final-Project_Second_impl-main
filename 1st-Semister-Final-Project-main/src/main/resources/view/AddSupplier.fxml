@@ -20,17 +20,8 @@
 
 <AnchorPane prefHeight="766.0" prefWidth="1171.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.semisterfinal.controller.AddSupplierControlller">
    <children>
-      <Pane accessibleRole="LIST_VIEW" layoutX="14.0" layoutY="24.0" prefHeight="695.0" prefWidth="1141.0" style="-fx-background-color: #e6e6ff; -fx-background-radius: 20;">
+      <Pane accessibleRole="LIST_VIEW" layoutX="15.0" layoutY="36.0" prefHeight="695.0" prefWidth="1141.0" style="-fx-background-color: #e6e6ff; -fx-background-radius: 20;">
          <children>
-            <TableView fx:id="supplierAddTable" layoutX="25.0" layoutY="108.0" prefHeight="287.0" prefWidth="1076.0" style="-fx-background-color: #00004DFF;">
-              <columns>
-                <TableColumn fx:id="tmSupId" prefWidth="113.0" text="Supplier id" />
-                <TableColumn fx:id="tmSupName" prefWidth="315.0" text="Supplier Name" />
-                  <TableColumn fx:id="supItemName" minWidth="6.0" prefWidth="381.0" text="Item Name" />
-                  <TableColumn fx:id="tmqty" prefWidth="97.0" text="Qty" />
-                  <TableColumn fx:id="tmSupMobile" prefWidth="169.0" text="Mobile" />
-              </columns>
-            </TableView>
             <Rectangle arcHeight="30.0" arcWidth="30.0" height="71.0" layoutX="864.0" layoutY="14.0" stroke="#000590" strokeType="INSIDE" width="237.0">
                <fill>
                   <LinearGradient endX="1.0" endY="1.0" startX="0.3270142180094787" startY="0.895734597156398">
@@ -64,27 +55,27 @@
                   <Font name="Arial Bold" size="21.0" />
                </font>
             </Label>
-            <Label layoutX="25.0" layoutY="429.0" text="Supplier id :">
+            <Label layoutX="54.0" layoutY="153.0" text="Supplier id :">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <Label layoutX="25.0" layoutY="488.0" text="Suppler Name :">
+            <Label layoutX="54.0" layoutY="212.0" text="Suppler Name :">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <Label layoutX="25.0" layoutY="552.0" text="Item Name :">
+            <Label layoutX="410.0" layoutY="212.0" text="Item Name :">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <Line endX="100.0" layoutX="212.0" layoutY="450.0" startX="-100.0" />
-            <Line endX="100.0" layoutX="212.0" layoutY="573.0" startX="-100.0" />
-            <Line endX="101.0" layoutX="237.0" layoutY="510.0" startX="-100.0" />
-            <TextField fx:id="txtSupName" layoutX="135.0" layoutY="484.0" prefHeight="25.0" prefWidth="201.0" style="-fx-background-color: #e6e6ff;" />
-            <TextField fx:id="txtSupId" layoutX="111.0" layoutY="424.0" prefHeight="25.0" prefWidth="201.0" style="-fx-background-color: #e6e6ff;" />
-            <TextField fx:id="txtsupItemName" layoutX="112.0" layoutY="547.0" prefHeight="25.0" prefWidth="201.0" style="-fx-background-color: #e6e6ff;" />
+            <Line endX="100.0" layoutX="241.0" layoutY="174.0" startX="-100.0" />
+            <Line endX="100.0" layoutX="599.0" layoutY="233.0" startX="-100.0" />
+            <Line endX="101.0" layoutX="266.0" layoutY="234.0" startX="-100.0" />
+            <TextField fx:id="txtSupName" layoutX="164.0" layoutY="208.0" prefHeight="25.0" prefWidth="201.0" style="-fx-background-color: #e6e6ff;" />
+            <TextField fx:id="txtSupId" layoutX="140.0" layoutY="148.0" prefHeight="25.0" prefWidth="201.0" style="-fx-background-color: #e6e6ff;" />
+            <TextField fx:id="txtsupItemName" layoutX="498.0" layoutY="207.0" prefHeight="25.0" prefWidth="201.0" style="-fx-background-color: #e6e6ff;" />
             <JFXButton buttonType="RAISED" layoutX="24.0" layoutY="619.0" onAction="#addSupplierOnAction" prefHeight="31.0" prefWidth="117.0" style="-fx-background-color: #2ecc71;" text="Add Supplier" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="17.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
@@ -121,21 +112,37 @@
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
+            <Label layoutX="785.0" layoutY="91.0" text="Qty :">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtSupQty" layoutX="822.0" layoutY="86.0" prefHeight="25.0" prefWidth="68.0" style="-fx-background-color: #e6e6ff;" />
+            <Line endX="-27.0" layoutX="920.0" layoutY="113.0" startX="-100.0" />
+            <TableView fx:id="supplierAddTable" layoutX="24.0" layoutY="387.0" prefHeight="176.0" prefWidth="1076.0">
+              <columns>
+                <TableColumn fx:id="tmSupId" prefWidth="113.0" text="Supplier id" />
+                <TableColumn fx:id="tmSupName" prefWidth="315.0" text="Supplier Name" />
+                  <TableColumn fx:id="supItemName" minWidth="6.0" prefWidth="381.0" text="Item Name" />
+                  <TableColumn fx:id="tmqty" prefWidth="97.0" text="Qty" />
+                  <TableColumn fx:id="tmSupMobile" prefWidth="169.0" text="Mobile" />
+              </columns>
+            </TableView>
+            <Label layoutX="54.0" layoutY="276.0" text="Mobile :">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Line endX="33.0" layoutX="216.0" layoutY="299.0" startX="-100.0" />
+            <TextField fx:id="txtSupMobile" layoutX="116.0" layoutY="272.0" prefHeight="25.0" prefWidth="134.0" style="-fx-background-color: #e6e6ff;" />
+            <Label layoutX="410.0" layoutY="153.0" text="Email :">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Line endX="33.0" layoutX="572.0" layoutY="176.0" startX="-100.0" />
+            <TextField fx:id="txtEmail" layoutX="472.0" layoutY="149.0" prefHeight="25.0" prefWidth="134.0" style="-fx-background-color: #e6e6ff;" />
          </children>
       </Pane>
-      <Label layoutX="393.0" layoutY="450.0" text="Qty :">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </Label>
-      <Label layoutX="393.0" layoutY="511.0" text="Mobile :">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </Label>
-      <TextField fx:id="txtSupQty" layoutX="430.0" layoutY="445.0" prefHeight="25.0" prefWidth="68.0" style="-fx-background-color: #e6e6ff;" />
-      <Line endX="-27.0" layoutX="528.0" layoutY="472.0" startX="-100.0" />
-      <Line endX="33.0" layoutX="555.0" layoutY="534.0" startX="-100.0" />
-      <TextField fx:id="txtSupMobile" layoutX="455.0" layoutY="507.0" prefHeight="25.0" prefWidth="134.0" style="-fx-background-color: #e6e6ff;" />
    </children>
 </AnchorPane>

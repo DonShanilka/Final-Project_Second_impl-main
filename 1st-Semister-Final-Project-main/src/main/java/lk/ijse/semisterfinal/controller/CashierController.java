@@ -169,31 +169,6 @@ public class CashierController {
         lblOrderDate.setText(String.valueOf(LocalDate.now()));
     }
 
-    /*public void cmbCustomerId(ActionEvent actionEvent) {
-        String id = cmbCustomerId.getValue();
-
-        try {
-            CusromerDTO cusromerDTO = customerModel.searchCustomer(id);
-            txtCustName.setText(cusromerDTO.getTxtCustMobile());
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }*/
-
-    /*public void cmbItemCode(ActionEvent actionEvent) {
-        String id = cmbItemCode.getValue();
-
-        try {
-            ItemDTO itemDTO = itemModel.searchItemId(id);
-            lblItemName.setText(itemDTO.getItemDetails());
-            lblUnitPrice.setText(String.valueOf(itemDTO.getItemPrice()));
-            lblQtyOnHand.setText(String.valueOf(itemDTO.getItemQty()));
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }*/
-
     public void cmbCustomerOnAction(ActionEvent event) {
         String id = cmbCustomerId.getValue();
 
