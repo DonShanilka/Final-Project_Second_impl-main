@@ -43,7 +43,9 @@ public class AddSupplierControlller {
     public AnchorPane rood;
     public TableView <SupplierTm> supplierAddTable;
     public Label lbltotalSup;
-
+    public TextField txtEmail;
+    public TextField txtEmail1;
+    public TextField txtEmail2;
 
 
     public void initialize() throws SQLException {

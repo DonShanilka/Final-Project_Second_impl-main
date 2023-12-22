@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
@@ -55,7 +56,7 @@
                   <Font name="Arial Bold" size="21.0" />
                </font>
             </Label>
-            <Label layoutX="54.0" layoutY="153.0" text="Supplier id :">
+            <Label layoutX="54.0" layoutY="153.0" text="Supplier NIC :">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
@@ -65,17 +66,17 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <Label layoutX="410.0" layoutY="212.0" text="Item Name :">
+            <Label layoutX="664.0" layoutY="214.0" text="Item Name :">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <Line endX="100.0" layoutX="241.0" layoutY="174.0" startX="-100.0" />
-            <Line endX="100.0" layoutX="599.0" layoutY="233.0" startX="-100.0" />
+            <Line endX="100.0" layoutX="241.0" layoutY="174.0" startX="-89.998046875" />
+            <Line endX="100.0" layoutX="853.0" layoutY="235.0" startX="-100.0" />
             <Line endX="101.0" layoutX="266.0" layoutY="234.0" startX="-100.0" />
             <TextField fx:id="txtSupName" layoutX="164.0" layoutY="208.0" prefHeight="25.0" prefWidth="201.0" style="-fx-background-color: #e6e6ff;" />
-            <TextField fx:id="txtSupId" layoutX="140.0" layoutY="148.0" prefHeight="25.0" prefWidth="201.0" style="-fx-background-color: #e6e6ff;" />
-            <TextField fx:id="txtsupItemName" layoutX="498.0" layoutY="207.0" prefHeight="25.0" prefWidth="201.0" style="-fx-background-color: #e6e6ff;" />
+            <TextField fx:id="txtSupId" layoutX="157.0" layoutY="148.0" prefHeight="25.0" prefWidth="184.0" style="-fx-background-color: #e6e6ff;" />
+            <TextField fx:id="txtsupItemName" layoutX="752.0" layoutY="209.0" prefHeight="25.0" prefWidth="201.0" style="-fx-background-color: #e6e6ff;" />
             <JFXButton buttonType="RAISED" layoutX="24.0" layoutY="619.0" onAction="#addSupplierOnAction" prefHeight="31.0" prefWidth="117.0" style="-fx-background-color: #2ecc71;" text="Add Supplier" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="17.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
@@ -142,6 +143,26 @@
             </Label>
             <Line endX="33.0" layoutX="572.0" layoutY="176.0" startX="-100.0" />
             <TextField fx:id="txtEmail" layoutX="472.0" layoutY="149.0" prefHeight="25.0" prefWidth="134.0" style="-fx-background-color: #e6e6ff;" />
+            <Label layoutX="410.0" layoutY="212.0" text="Company Register id :">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Line endX="33.0" layoutX="580.0" layoutY="260.0" startX="-100.0" />
+            <TextField fx:id="txtEmail1" layoutX="480.0" layoutY="233.0" prefHeight="25.0" prefWidth="134.0" style="-fx-background-color: #e6e6ff;" />
+            <Label layoutX="410.0" layoutY="276.0" text="Company Address :">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Line endX="33.0" layoutX="581.0" layoutY="326.0" startX="-100.0" />
+            <TextField fx:id="txtEmail2" layoutX="480.0" layoutY="299.0" prefHeight="25.0" prefWidth="134.0" style="-fx-background-color: #e6e6ff;" />
+            <Label layoutX="664.0" layoutY="152.0" text="Item Code :">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <JFXComboBox fx:id="cmbItemCode" layoutX="753.0" layoutY="148.0" prefHeight="25.0" prefWidth="129.0" />
          </children>
       </Pane>
    </children>
