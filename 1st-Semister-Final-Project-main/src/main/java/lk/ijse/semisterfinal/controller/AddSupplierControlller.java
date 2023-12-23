@@ -34,7 +34,6 @@ import java.util.List;
 
 public class AddSupplierControlller  {
     public TextField txtSupName;
-    public TextField txtSupId;
     public TableColumn <?,?> tmSupId;
     public TableColumn <?,?> tmSupName;
     public TextField txtSupQty;
@@ -120,7 +119,7 @@ public class AddSupplierControlller  {
 
 
     private void clearField() {
-        txtSupId.setText("");
+        txtSupNic.setText("");
         txtSupName.setText("");
         txtItemDis.setText("");
         txtSupQty.setText("");
@@ -129,7 +128,7 @@ public class AddSupplierControlller  {
     }
 
     public void deleteSupplierOnAction(ActionEvent event) {
-        String id = txtSupId.getText();
+        String id = txtSupNic.getText();
 
         try {
             boolean isDeleted = SupplierModel.deleteSupplier(id);
