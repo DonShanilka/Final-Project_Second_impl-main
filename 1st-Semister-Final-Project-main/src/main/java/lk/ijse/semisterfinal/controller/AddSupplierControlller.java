@@ -1,10 +1,12 @@
 package lk.ijse.semisterfinal.controller;
 
+import com.jfoenix.controls.JFXComboBox;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -29,24 +31,36 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class AddSupplierControlller {
+public class AddSupplierControlller  {
     public TextField txtSupName;
     public TextField txtSupId;
-    public TextField txtsupItemName;
     public TableColumn <?,?> tmSupId;
     public TableColumn <?,?> tmSupName;
     public TableColumn <?,?> supItemName;
     public TextField txtSupQty;
     public TextField txtSupMobile;
-    public TableColumn <?,?> tmqty;
-    public TableColumn <?,?> tmSupMobile;
     public AnchorPane rood;
     public TableView <SupplierTm> supplierAddTable;
     public Label lbltotalSup;
     public TextField txtEmail;
-    public TextField txtEmail1;
-    public TextField txtEmail2;
+    public JFXComboBox cmbItemCode;
+    public ChoiceBox <String> itemCatagoryBox;
+    public TextField txtCompAddress;
+    public TextField txtCompName;
+    public TableColumn <?,?> tmMobile;
+    public TableColumn <?,?> tmEmail;
+    public TableColumn <?,?> tmcompName;
+    public TableColumn <?,?> tmCompAddress;
+    public TableColumn <?,?> tmItemCode;
+    public TableColumn <?,?> tmItemDis;
+    public TableColumn <?,?> tmQty;
+    public TableColumn <?,?> tmBacthNum;
+    public TableColumn <?,?> tmCatagory;
+    public TextField txtItemDis;
+    public TextField txtBnuM;
 
+
+    String[] ca = {};
 
     public void initialize() throws SQLException {
         setCellValueFactory();
@@ -64,7 +78,7 @@ public class AddSupplierControlller {
     private void setData(SupplierTm row) {
         txtSupId.setText(row.getSupId());
         txtSupName.setText(row.getSupName());
-        txtsupItemName.setText(row.getSupItemName());
+        txtItemDis.setText(row.getSupItemName());
         txtSupQty.setText(String.valueOf(row.getSupqty()));
         txtSupMobile.setText(String.valueOf(row.getSupMobile()));
     }
@@ -72,9 +86,15 @@ public class AddSupplierControlller {
     public void addSupplierOnAction(ActionEvent event) {
             String supId = txtSupId.getText();
             String supName = txtSupName.getText();
-            String supItemName = txtsupItemName.getText();
-            int supqty = Integer.parseInt(txtSupQty.getText());
-            String supMobile = txtSupMobile.getText();
+            int mobile = Integer.parseInt(txtSupMobile.getText());
+            String email = txtEmail.getText();
+            String coName = txtCompName.getText();
+            String coAddress = txtCompAddress.getText();
+            int itemcode = (int) cmbItemCode.getValue();
+            String itemName = txtItemDis.getText();
+            int qty = Integer.parseInt(txtSupQty.getText());
+            String bNum = txtBnuM.getText();
+            String catagory = itemCatagoryBox.getValue();
 
             var dto = new SupplierDTO(supId,supName,supItemName,supqty,supMobile);
 
@@ -132,9 +152,9 @@ public class AddSupplierControlller {
     private void setCellValueFactory() {
         tmSupId.setCellValueFactory(new PropertyValueFactory<>("SupId"));
         tmSupName.setCellValueFactory(new PropertyValueFactory<>("SupName"));
-        supItemName.setCellValueFactory(new PropertyValueFactory<>("SupItemName"));
-        tmqty.setCellValueFactory(new PropertyValueFactory<>("supqty"));
-        tmSupMobile.setCellValueFactory(new PropertyValueFactory<>("supMobile"));
+        //supItemName.setCellValueFactory(new PropertyValueFactory<>("SupItemName"));
+        //tmqty.setCellValueFactory(new PropertyValueFactory<>("supqty"));
+        //tmSupMobile.setCellValueFactory(new PropertyValueFactory<>("supMobile"));
 
     }
 

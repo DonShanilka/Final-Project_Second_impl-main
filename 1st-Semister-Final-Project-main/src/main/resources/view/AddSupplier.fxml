@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -23,7 +24,7 @@
    <children>
       <Pane accessibleRole="LIST_VIEW" layoutX="15.0" layoutY="36.0" prefHeight="695.0" prefWidth="1141.0" style="-fx-background-color: #e6e6ff; -fx-background-radius: 20;">
          <children>
-            <Rectangle arcHeight="30.0" arcWidth="30.0" height="71.0" layoutX="864.0" layoutY="14.0" stroke="#000590" strokeType="INSIDE" width="237.0">
+            <Rectangle arcHeight="30.0" arcWidth="30.0" height="71.0" layoutX="863.0" layoutY="6.0" stroke="#000590" strokeType="INSIDE" width="237.0">
                <fill>
                   <LinearGradient endX="1.0" endY="1.0" startX="0.3270142180094787" startY="0.895734597156398">
                      <stops>
@@ -41,12 +42,12 @@
                   </LinearGradient>
                </fill>
             </Rectangle>
-            <Text fill="WHITE" layoutX="946.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Suppliers">
+            <Text fill="WHITE" layoutX="946.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Suppliers">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Text>
-            <ImageView fitHeight="30.0" fitWidth="40.0" layoutX="908.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="30.0" fitWidth="40.0" layoutX="908.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../image/employee%20(1).png" />
                </image>
@@ -66,7 +67,7 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label layoutX="626.0" layoutY="204.0" text="Item Name :">
+            <Label layoutX="626.0" layoutY="204.0" text="Item Discrption :">
                <font>
                   <Font size="15.0" />
                </font>
@@ -76,8 +77,8 @@
             <Line endX="93.0" layoutX="162.0" layoutY="262.0" startX="-100.0" />
             <TextField fx:id="txtSupName" layoutX="60.0" layoutY="236.0" prefHeight="25.0" prefWidth="191.0" style="-fx-background-color: #e6e6ff;" />
             <TextField fx:id="txtSupId" layoutX="60.0" layoutY="135.0" prefHeight="25.0" prefWidth="184.0" style="-fx-background-color: #e6e6ff;" />
-            <TextField fx:id="txtsupItemName" layoutX="626.0" layoutY="233.0" prefHeight="25.0" prefWidth="201.0" style="-fx-background-color: #e6e6ff;" />
-            <JFXButton buttonType="RAISED" layoutX="782.0" layoutY="339.0" onAction="#addSupplierOnAction" prefHeight="31.0" prefWidth="117.0" style="-fx-background-color: #2ecc71;" text="Add Supplier" textFill="WHITE">
+            <TextField fx:id="txtItemDis" layoutX="626.0" layoutY="233.0" prefHeight="25.0" prefWidth="201.0" style="-fx-background-color: #e6e6ff;" />
+            <JFXButton buttonType="RAISED" layoutX="782.0" layoutY="381.0" onAction="#addSupplierOnAction" prefHeight="31.0" prefWidth="117.0" style="-fx-background-color: #2ecc71;" text="Add Supplier" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="17.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -92,7 +93,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </JFXButton>
-            <JFXButton buttonType="RAISED" layoutX="926.0" layoutY="339.0" onAction="#updateSupplierOnAction" prefHeight="31.0" prefWidth="87.0" style="-fx-background-color: yellow;" text="Update">
+            <JFXButton buttonType="RAISED" layoutX="926.0" layoutY="381.0" onAction="#updateSupplierOnAction" prefHeight="31.0" prefWidth="87.0" style="-fx-background-color: yellow;" text="Update">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -100,7 +101,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </JFXButton>
-            <JFXButton buttonType="RAISED" layoutX="1042.0" layoutY="339.0" onAction="#deleteSupplierOnAction" prefHeight="31.0" prefWidth="85.0" style="-fx-background-color: orange;" text="Delete">
+            <JFXButton buttonType="RAISED" layoutX="1042.0" layoutY="381.0" onAction="#deleteSupplierOnAction" prefHeight="31.0" prefWidth="85.0" style="-fx-background-color: orange;" text="Delete">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -113,20 +114,26 @@
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <Label layoutX="785.0" layoutY="91.0" text="Qty :">
+            <Label layoutX="626.0" layoutY="301.0" text="Qty :">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <TextField fx:id="txtSupQty" layoutX="822.0" layoutY="86.0" prefHeight="25.0" prefWidth="68.0" style="-fx-background-color: #e6e6ff;" />
-            <Line endX="-27.0" layoutX="920.0" layoutY="113.0" startX="-100.0" />
-            <TableView fx:id="supplierAddTable" layoutX="60.0" layoutY="400.0" prefHeight="224.0" prefWidth="1069.0">
+            <TextField fx:id="txtSupQty" layoutX="623.0" layoutY="327.0" prefHeight="25.0" prefWidth="68.0" style="-fx-background-color: #e6e6ff;" />
+            <Line endX="-27.0" layoutX="726.0" layoutY="352.0" startX="-100.0" />
+            <TableView fx:id="supplierAddTable" layoutX="1.0" layoutY="434.0" prefHeight="224.0" prefWidth="1134.0">
               <columns>
-                <TableColumn fx:id="tmSupId" prefWidth="113.0" text="Supplier id" />
-                <TableColumn fx:id="tmSupName" prefWidth="315.0" text="Supplier Name" />
-                  <TableColumn fx:id="supItemName" minWidth="6.0" prefWidth="381.0" text="Item Name" />
-                  <TableColumn fx:id="tmqty" prefWidth="97.0" text="Qty" />
-                  <TableColumn fx:id="tmSupMobile" prefWidth="169.0" text="Mobile" />
+                <TableColumn fx:id="tmSupId" prefWidth="83.0" text="Supplier NIC" />
+                <TableColumn fx:id="tmSupName" prefWidth="104.0" text="Supplier Name" />
+                  <TableColumn fx:id="tmMobile" minWidth="6.0" prefWidth="95.0" text="Mobile" />
+                  <TableColumn fx:id="tmEmail" prefWidth="148.0" text="Email" />
+                  <TableColumn fx:id="tmcompName" prefWidth="121.0" text="Company Name" />
+                  <TableColumn fx:id="tmCompAddress" prefWidth="106.0" text="Company Address" />
+                  <TableColumn fx:id="tmItemCode" prefWidth="72.0" text="Item Code" />
+                  <TableColumn fx:id="tmItemDis" prefWidth="168.0" text="Item DIscription" />
+                  <TableColumn fx:id="tmQty" prefWidth="58.0" text="QTY" />
+                  <TableColumn fx:id="tmBacthNum" prefWidth="68.0" text="Bacth Num" />
+                  <TableColumn fx:id="tmCatagory" prefWidth="110.0" text="Catagory" />
               </columns>
             </TableView>
             <Label layoutX="59.0" layoutY="301.0" text="Mobile :">
@@ -141,19 +148,19 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <TextField fx:id="txtEmail" layoutX="343.0" layoutY="132.0" prefHeight="25.0" prefWidth="191.0" style="-fx-background-color: #e6e6ff;" />
-            <Label layoutX="341.0" layoutY="204.0" text="Company Register id :">
+            <TextField fx:id="txtEmail" layoutX="343.0" layoutY="133.0" prefHeight="25.0" prefWidth="191.0" style="-fx-background-color: #e6e6ff;" />
+            <Label layoutX="341.0" layoutY="204.0" text="Company Name :">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <TextField fx:id="txtEmail1" layoutX="341.0" layoutY="234.0" prefHeight="25.0" prefWidth="191.0" style="-fx-background-color: #e6e6ff;" />
+            <TextField fx:id="txtCompName" layoutX="341.0" layoutY="234.0" prefHeight="25.0" prefWidth="191.0" style="-fx-background-color: #e6e6ff;" />
             <Label layoutX="342.0" layoutY="301.0" text="Company Address :">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <TextField fx:id="txtEmail2" layoutX="339.0" layoutY="327.0" prefHeight="25.0" prefWidth="191.0" style="-fx-background-color: #e6e6ff;" />
+            <TextField fx:id="txtCompAddress" layoutX="339.0" layoutY="327.0" prefHeight="25.0" prefWidth="191.0" style="-fx-background-color: #e6e6ff;" />
             <Label layoutX="626.0" layoutY="111.0" text="Item Code :">
                <font>
                   <Font size="15.0" />
@@ -163,6 +170,19 @@
             <Line endX="100.0" layoutX="432.0" layoutY="160.0" startX="-89.998046875" />
             <Line endX="100.0" layoutX="431.0" layoutY="260.0" startX="-89.998046875" />
             <Line endX="100.0" layoutX="430.0" layoutY="353.0" startX="-89.998046875" />
+            <ChoiceBox fx:id="itemCatagoryBox" layoutX="871.0" layoutY="233.0" prefWidth="150.0" />
+            <Label layoutX="872.0" layoutY="204.0" text="Item Catagory :">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="870.0" layoutY="111.0" text="Bacth Number :">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtBnuM" layoutX="869.0" layoutY="131.0" prefHeight="25.0" prefWidth="112.0" style="-fx-background-color: #e6e6ff;" />
+            <Line endX="11.0" layoutX="972.0" layoutY="156.0" startX="-100.0" />
          </children>
       </Pane>
    </children>
