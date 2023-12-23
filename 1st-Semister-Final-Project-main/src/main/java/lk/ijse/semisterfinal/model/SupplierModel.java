@@ -12,40 +12,23 @@ public class SupplierModel {
     public static boolean addSuppliers(SupplierDTO dto) throws SQLException {
         Connection connection = DbConnetion.getInstance().getConnection();
 
-        String sql = "INSERT INTO supplier VALUES(?,?,?,?,?)";
+        String sql = "INSERT INTO supplier VALUES(?,?,?,?,?,?,?,?,?,?,?)";
         PreparedStatement ptm = connection.prepareStatement(sql);
 
-        ptm.setString(1, dto.getSupId());
+        ptm.setString(1, dto.getSupNic());
         ptm.setString(2, dto.getSupName());
-        ptm.setString(3, dto.getSupItemName());
-        ptm.setString(4, String.valueOf(dto.getSupqty()));
-        ptm.setString(5, dto.getSupMobile());
+        ptm.setInt(3, dto.getMobile());
+        ptm.setString(4, dto.getEmail());
+        ptm.setString(5, dto.getCoName());
+        ptm.setString(6, dto.getCoAddress());
+        ptm.setInt(7, dto.getItemcode());
+        ptm.setString(8, dto.getItemName());
+        ptm.setInt(9, dto.getQty());
+        ptm.setString(10, dto.getBNum());
+        ptm.setString(11, dto.getCatagory());
 
         return ptm.executeUpdate()>0;
 
-    }
-
-    public static List<SupplierDTO> loadAllSupplier() throws SQLException {
-        Connection connection = DbConnetion.getInstance().getConnection();
-
-        String sql = "SELECT * FROM supplier";
-        PreparedStatement pstm = connection.prepareStatement(sql);
-
-        List<SupplierDTO> supidlist = new ArrayList<>();
-
-        ResultSet resultSet = pstm.executeQuery();
-        while (resultSet.next()) {
-            supidlist.add(new SupplierDTO(
-                    resultSet.getString(1),
-                    resultSet.getString(2),
-                    resultSet.getString(3),
-                    resultSet.getInt(4),
-                    resultSet.getString(5)
-
-            ));
-        }
-
-        return supidlist;
     }
 
     public static boolean deleteSupplier(String id) throws SQLException {
@@ -63,15 +46,21 @@ public class SupplierModel {
     public static boolean updateSupplier(SupplierDTO dto) throws SQLException {
         Connection connection = DbConnetion.getInstance().getConnection();
 
-        String sql = "UPDATE supplier SET supplier_name = ?, item_name = ?, qty = ?, supplier_mobile = ?  WHERE supplier_id = ?";
+        String sql = "UPDATE supplier SET supplier_name = ?,mobile = ?, email = ?, company_name = ?, company_address = ?, item_code = ?, item_name = ?, qty = ?, bacth_num = ?, item_catagory = ? WHERE supplier_id = ?";
 
         PreparedStatement pstm = connection.prepareStatement(sql);
 
         pstm.setString(1,dto.getSupName());
-        pstm.setString(2,dto.getSupItemName());
-        pstm.setInt(3,dto.getSupqty());
-        pstm.setString(4, dto.getSupMobile());
-        pstm.setString(5, dto.getSupId());
+        pstm.setInt(2,dto.getMobile());
+        pstm.setString(3,dto.getEmail());
+        pstm.setString(4, dto.getCoName());
+        pstm.setString(5, dto.getCoAddress());
+        pstm.setInt(6, dto.getItemcode());
+        pstm.setString(7, dto.getItemName());
+        pstm.setInt(8, dto.getQty());
+        pstm.setString(9, dto.getBNum());
+        pstm.setString(10, dto.getCatagory());
+        pstm.setString(11, dto.getSupNic());
 
         return pstm.executeUpdate() >0;
 
@@ -92,9 +81,15 @@ public class SupplierModel {
                     new SupplierDTO(
                             resultSet.getString(1),
                             resultSet.getString(2),
-                            resultSet.getString(3),
-                            resultSet.getInt(4),
-                            resultSet.getString(5)
+                            resultSet.getInt(3),
+                            resultSet.getString(4),
+                            resultSet.getString(5),
+                            resultSet.getString(6),
+                            resultSet.getInt(7),
+                            resultSet.getString(8),
+                            resultSet.getInt(9),
+                            resultSet.getString(10),
+                            resultSet.getString(11)
                     )
             );
         }
@@ -114,13 +109,20 @@ public class SupplierModel {
         SupplierDTO dto = null;
 
         if (resultSet.next()){
-            String sid = resultSet.getString(1);
-            String name = resultSet.getString(2);
-            String itemName = resultSet.getString(3);
-            int Qty = resultSet.getInt(4);
-            String mobile = resultSet.getString(5);
+            String supId = resultSet.getString(1);
+            String supName = resultSet.getString(2);
+            int mobile = resultSet.getInt(3);
+            String email = resultSet.getString(4);
+            String coName = resultSet.getString(5);
+            String coAddress = resultSet.getString(6);
+            int itemcode = resultSet.getInt(7);
+            String itemName = resultSet.getString(8);
+            int qty = resultSet.getInt(9);
+            String bNum = resultSet.getString(10);
+            String catagory = resultSet.getString(11);
 
-            dto = new SupplierDTO(sid,name,itemName,Qty,mobile);
+            dto = new SupplierDTO(supId,supName,mobile,email,coName,coAddress,itemcode,itemName,qty,bNum,catagory);
+
         }
         return dto;
     }

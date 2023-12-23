@@ -27,10 +27,10 @@ public class UpdateSupplierController {
 
         try{
             SupplierDTO dto = SupplierModel.searchsupplier(id);
-            supName.setText(dto.getSupName());
+            /*supName.setText(dto.getSupName());
             itemName.setText(dto.getSupItemName());
             qty.setText(String.valueOf(dto.getSupqty()));
-            supMobile.setText(dto.getSupMobile());
+            supMobile.setText(dto.getSupMobile());*/
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -39,7 +39,7 @@ public class UpdateSupplierController {
 
 
     public void itemUpdateSaveOnAction(ActionEvent event) {
-        String id = (String) supId.getValue();
+        /*String id = (String) supId.getValue();
         String name = supName.getText();
         String iName = itemName.getText();
         int Qty = Integer.parseInt(qty.getText());
@@ -58,7 +58,7 @@ public class UpdateSupplierController {
             }
         }catch (SQLException e){
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
-        }
+        }*/
     }
 
     public void initialize() {
@@ -72,7 +72,7 @@ public class UpdateSupplierController {
             List<SupplierDTO> idList = SupplierModel.getAllSupplier();
 
             for (SupplierDTO dto : idList) {
-                obList.add(dto.getSupId());
+                obList.add(dto.getSupNic());
             }
             supId.setItems(obList);
         } catch (SQLException e) {

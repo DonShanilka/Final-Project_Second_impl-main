@@ -22,6 +22,7 @@ import lk.ijse.semisterfinal.model.CustomerModel;
 import lk.ijse.semisterfinal.model.SupplierModel;
 
 import java.io.IOException;
+import java.rmi.RemoteException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -36,14 +37,12 @@ public class AddSupplierControlller  {
     public TextField txtSupId;
     public TableColumn <?,?> tmSupId;
     public TableColumn <?,?> tmSupName;
-    public TableColumn <?,?> supItemName;
     public TextField txtSupQty;
     public TextField txtSupMobile;
     public AnchorPane rood;
     public TableView <SupplierTm> supplierAddTable;
     public Label lbltotalSup;
     public TextField txtEmail;
-    public JFXComboBox cmbItemCode;
     public ChoiceBox <String> itemCatagoryBox;
     public TextField txtCompAddress;
     public TextField txtCompName;
@@ -58,15 +57,18 @@ public class AddSupplierControlller  {
     public TableColumn <?,?> tmCatagory;
     public TextField txtItemDis;
     public TextField txtBnuM;
+    public TextField txtItemCode;
+    public TextField txtSupNic;
 
-
-    String[] ca = {};
+    String[] ca = { "Electrical", "Furniture", "Toys", "Exercise equipment", "Office equipment"};
 
     public void initialize() throws SQLException {
         setCellValueFactory();
         loadAllSupplier();
         tableListener();
         totalSupplier();
+        itemCatagoryBox.getItems().addAll(ca);
+
     }
 
     private void tableListener() {
@@ -76,27 +78,33 @@ public class AddSupplierControlller  {
     }
 
     private void setData(SupplierTm row) {
-        txtSupId.setText(row.getSupId());
+        txtSupNic.setText(row.getSupId());
         txtSupName.setText(row.getSupName());
-        txtItemDis.setText(row.getSupItemName());
-        txtSupQty.setText(String.valueOf(row.getSupqty()));
-        txtSupMobile.setText(String.valueOf(row.getSupMobile()));
+        txtSupMobile.setText(String.valueOf(row.getMobile()));
+        txtEmail.setText(String.valueOf(row.getEmail()));
+        txtCompName.setText(row.getCoName());
+        txtCompAddress.setText(row.getCoAddress());
+        txtItemCode.setText(String.valueOf(row.getItemcode()));
+        txtItemDis.setText(row.getItemName());
+        txtSupQty.setText(String.valueOf(row.getQty()));
+        txtBnuM.setText(String.valueOf(row.getBNum()));
+        itemCatagoryBox.setValue(String.valueOf(row.getCatagory()));
     }
 
     public void addSupplierOnAction(ActionEvent event) {
-            String supId = txtSupId.getText();
+            String supId = txtSupNic.getText();
             String supName = txtSupName.getText();
             int mobile = Integer.parseInt(txtSupMobile.getText());
             String email = txtEmail.getText();
             String coName = txtCompName.getText();
             String coAddress = txtCompAddress.getText();
-            int itemcode = (int) cmbItemCode.getValue();
+            int itemcode = Integer.parseInt(txtItemCode.getText());
             String itemName = txtItemDis.getText();
             int qty = Integer.parseInt(txtSupQty.getText());
             String bNum = txtBnuM.getText();
             String catagory = itemCatagoryBox.getValue();
 
-            var dto = new SupplierDTO(supId,supName,supItemName,supqty,supMobile);
+            var dto = new SupplierDTO(supId,supName,mobile,email,coName,coAddress,itemcode,itemName,qty,bNum,catagory);
 
             try {
                 boolean addSup = SupplierModel.addSuppliers(dto);
@@ -106,7 +114,7 @@ public class AddSupplierControlller  {
                     clearField();
                 }
             } catch (SQLException e) {
-                new Alert(Alert.AlertType.ERROR,"Try Again").show();
+                new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
             }
         }
 
@@ -114,7 +122,7 @@ public class AddSupplierControlller  {
     private void clearField() {
         txtSupId.setText("");
         txtSupName.setText("");
-        txtsupItemName.setText("");
+        txtItemDis.setText("");
         txtSupQty.setText("");
         txtSupMobile.setText("");
 
@@ -137,7 +145,33 @@ public class AddSupplierControlller  {
     }
 
     public void updateSupplierOnAction(ActionEvent event) throws IOException {
-        Stage stage = new Stage();
+
+        String supId = txtSupNic.getText();
+        String supName = txtSupName.getText();
+        int mobile = Integer.parseInt(txtSupMobile.getText());
+        String email = txtEmail.getText();
+        String coName = txtCompName.getText();
+        String coAddress = txtCompAddress.getText();
+        int itemcode = Integer.parseInt(txtItemCode.getText());
+        String itemName = txtItemDis.getText();
+        int qty = Integer.parseInt(txtSupQty.getText());
+        String bNum = txtBnuM.getText();
+        String catagory = itemCatagoryBox.getValue();
+
+        var dto = new SupplierDTO(supName,mobile,email,coName,coAddress,itemcode,itemName,qty,bNum,catagory,supId);
+
+        try {
+            boolean updateSup = SupplierModel.updateSupplier(dto);
+            if (updateSup) {
+                new Alert(Alert.AlertType.CONFIRMATION, "Supplier Update").show();
+                loadAllSupplier();
+                clearField();
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+        }
+
+        /*Stage stage = new Stage();
         stage.setScene(new Scene(FXMLLoader.load(this.getClass().getResource("/view/UpdateSupplier.fxml"))));
         stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
@@ -146,15 +180,21 @@ public class AddSupplierControlller  {
             }
         });
         stage.centerOnScreen();
-        stage.show();
+        stage.show();*/
     }
 
     private void setCellValueFactory() {
-        tmSupId.setCellValueFactory(new PropertyValueFactory<>("SupId"));
-        tmSupName.setCellValueFactory(new PropertyValueFactory<>("SupName"));
-        //supItemName.setCellValueFactory(new PropertyValueFactory<>("SupItemName"));
-        //tmqty.setCellValueFactory(new PropertyValueFactory<>("supqty"));
-        //tmSupMobile.setCellValueFactory(new PropertyValueFactory<>("supMobile"));
+        tmSupId.setCellValueFactory(new PropertyValueFactory<>("supId"));
+        tmSupName.setCellValueFactory(new PropertyValueFactory<>("supName"));
+        tmMobile.setCellValueFactory(new PropertyValueFactory<>("mobile"));
+        tmEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
+        tmcompName.setCellValueFactory(new PropertyValueFactory<>("coName"));
+        tmCompAddress.setCellValueFactory(new PropertyValueFactory<>("coAddress"));
+        tmItemCode.setCellValueFactory(new PropertyValueFactory<>("itemcode"));
+        tmItemDis.setCellValueFactory(new PropertyValueFactory<>("itemName"));
+        tmQty.setCellValueFactory(new PropertyValueFactory<>("qty"));
+        tmBacthNum.setCellValueFactory(new PropertyValueFactory<>("bNum"));
+        tmCatagory.setCellValueFactory(new PropertyValueFactory<>("catagory"));
 
     }
 
@@ -168,11 +208,17 @@ public class AddSupplierControlller  {
             for (SupplierDTO dto : dtoList) {
                 obList.add(
                         new SupplierTm(
-                                dto.getSupId(),
+                                dto.getSupNic(),
                                 dto.getSupName(),
-                                dto.getSupItemName(),
-                                dto.getSupqty(),
-                                dto.getSupMobile()
+                                dto.getMobile(),
+                                dto.getEmail(),
+                                dto.getCoName(),
+                                dto.getCoAddress(),
+                                dto.getItemcode(),
+                                dto.getItemName(),
+                                dto.getQty(),
+                                dto.getBNum(),
+                                dto.getCatagory()
 
                         )
                 );

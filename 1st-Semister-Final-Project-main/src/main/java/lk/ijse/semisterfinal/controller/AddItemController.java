@@ -127,7 +127,7 @@ public class AddItemController implements Initializable {
         String id = (String) comsupid.getValue();
         try {
             SupplierDTO dto = SupplierModel.searchsupplier(id);
-            tmSupplierId.setText(dto.getSupId());
+            tmSupplierId.setText(dto.getSupNic());
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
@@ -232,7 +232,7 @@ public class AddItemController implements Initializable {
 
         try {
             SupplierDTO dto = SupplierModel.searchsupplier(id);
-            comsupid.setValue(dto.getSupId());
+            comsupid.setValue(dto.getSupNic());
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
