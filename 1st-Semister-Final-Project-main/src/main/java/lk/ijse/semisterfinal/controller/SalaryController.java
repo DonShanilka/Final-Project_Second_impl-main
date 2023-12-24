@@ -237,10 +237,11 @@ public class SalaryController implements Initializable {
             System.out.println("Last Salary Amount" + lastSalary);
         } else if (abcount > 26) {
             System.out.println("26 +");
-            int ab = abcount - 26;
+            int ab = abcount - 24;
             System.out.println("ab" + ab);
-            double daySalary = ab * (amount / 23);
-
+            double noPay = ab * (amount / 23);
+            System.out.println(noPay);
+            lastSalary = totSalary - ((ep + et) + (noPay));
             System.out.println(lastSalary);
 
         }
