@@ -104,14 +104,14 @@ public class SalaryController implements Initializable {
         colName.setCellValueFactory(new PropertyValueFactory<>("employeeId"));
         colDate.setCellValueFactory(new PropertyValueFactory<>("employeeName"));
         colSalary.setCellValueFactory(new PropertyValueFactory<>("salary"));
-        colSalary.setCellValueFactory(new PropertyValueFactory<>("otcount"));
-        colOtH.setCellValueFactory(new PropertyValueFactory<>("pay1h"));
-        colPay1ot.setCellValueFactory(new PropertyValueFactory<>("bonase"));
-        colBonase.setCellValueFactory(new PropertyValueFactory<>("epf"));
-        colEpf.setCellValueFactory(new PropertyValueFactory<>("etf"));
-        colEtf.setCellValueFactory(new PropertyValueFactory<>("prCount"));
-        colPresentDay.setCellValueFactory(new PropertyValueFactory<>("abcount"));
-        colAbsentDay.setCellValueFactory(new PropertyValueFactory<>("totalsalary"));
+        colOtH.setCellValueFactory(new PropertyValueFactory<>("otcount"));
+        colPay1ot.setCellValueFactory(new PropertyValueFactory<>("pay1h"));
+        colBonase.setCellValueFactory(new PropertyValueFactory<>("bonase"));
+        colEpf.setCellValueFactory(new PropertyValueFactory<>("epf"));
+        colEtf.setCellValueFactory(new PropertyValueFactory<>("etf"));
+        colPresentDay.setCellValueFactory(new PropertyValueFactory<>("prCount"));
+        colAbsentDay.setCellValueFactory(new PropertyValueFactory<>("abcount"));
+        colTotalSalary.setCellValueFactory(new PropertyValueFactory<>("totalsalary"));
 
     }
 
@@ -161,6 +161,7 @@ public class SalaryController implements Initializable {
         try {
             AddEmployeeDTO dto = AddEmployeeModel.searchEmployee(id);
             lblName.setText(dto.getEmployeeName());
+            salary.setText(String.valueOf(dto.getBasicSalary()));
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
@@ -179,9 +180,9 @@ public class SalaryController implements Initializable {
                 //setRemoveBtnAction(btn, dto);
                 obList.add(
                         new SalaryTm(
-                                dto.getDate(),
                                 dto.getEmployeeId(),
                                 dto.getEmployeeName(),
+                                dto.getDate(),
                                 dto.getSalary(),
                                 dto.getOtcount(),
                                 dto.getPay1h(),
@@ -294,6 +295,14 @@ public class SalaryController implements Initializable {
         }
     }
 
+    public void calSalaryOnAction(ActionEvent actionEvent) {
+
+        double total = 0;
+
+
+        txtTotalSalary.setText("Rs : " + total);
+        //(String.valueOf
+    }
 
     public class Mail implements Runnable {
         private String msg;
