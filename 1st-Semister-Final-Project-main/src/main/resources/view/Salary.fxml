@@ -14,9 +14,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="root" prefHeight="766.0" prefWidth="1171.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.semisterfinal.controller.SalaryController">
+<AnchorPane fx:id="root" prefHeight="766.0" prefWidth="1186.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.semisterfinal.controller.SalaryController">
    <children>
-      <Pane accessibleRole="LIST_VIEW" layoutX="11.0" layoutY="14.0" prefHeight="693.0" prefWidth="1149.0" style="-fx-background-color: #e6e6ff; -fx-background-radius: 20;">
+      <Pane accessibleRole="LIST_VIEW" layoutY="14.0" prefHeight="693.0" prefWidth="1197.0" style="-fx-background-color: #e6e6ff; -fx-background-radius: 20;">
          <children>
             <TableView fx:id="salaryTm" layoutX="89.0" layoutY="450.0" prefHeight="204.0" prefWidth="1038.0">
                <columns>

@@ -9,7 +9,7 @@
 
 <AnchorPane fx:id="root" prefHeight="740.0" prefWidth="1350.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.semisterfinal.controller.AdminMainDashbordController">
    <children>
-      <AnchorPane fx:id="root1" layoutX="133.0" prefHeight="776.0" prefWidth="1217.0" />
+      <AnchorPane fx:id="root1" layoutX="164.0" prefHeight="776.0" prefWidth="1186.0" />
       <JFXButton fx:id="cashiyer1" buttonType="RAISED" layoutX="16.0" layoutY="673.0" onAction="#logOutOnAction" prefHeight="55.0" prefWidth="60.0" ripplerFill="BLACK" style="-fx-background-color: #00004d; -fx-background-radius: 5;" text="." textFill="#4db6ac">
          <font>
             <Font name="Constantia Bold" size="1.0" />
@@ -22,7 +22,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <Pane layoutX="14.0" layoutY="-31.0" prefHeight="587.0" prefWidth="64.0" style="-fx-background-color: #00004DFF; -fx-background-radius: 40;">
+      <Pane layoutX="-8.0" layoutY="-31.0" prefHeight="811.0" prefWidth="155.0" style="-fx-background-color: #092843;">
          <children>
             <JFXButton id="button" fx:id="item" buttonType="RAISED" layoutX="12.0" layoutY="318.0" onAction="#itemOnAction" prefHeight="40.0" prefWidth="44.0" stylesheets="@style.css" text="." textFill="#202a44">
                <font>
@@ -84,7 +84,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton id="button" fx:id="Employee" buttonType="RAISED" layoutX="12.0" layoutY="124.0" onAction="#EmployeeOnAction" prefHeight="40.0" prefWidth="40.0" stylesheets="@style.css" text=".">
+            <JFXButton id="button" fx:id="Employee" buttonType="RAISED" layoutX="12.0" layoutY="124.0" onAction="#EmployeeOnAction" prefHeight="40.0" prefWidth="40.0" stylesheets="@style.css" text="." textFill="#092642">
                <font>
                   <Font name="Constantia Bold" size="1.0" />
                </font>
