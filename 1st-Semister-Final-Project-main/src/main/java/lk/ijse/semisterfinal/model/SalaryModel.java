@@ -67,16 +67,22 @@ public class SalaryModel {
         while(resultSet.next()) {
             dtoList.add(
                     new SalaryDTO(
-                            resultSet.getString(1),
+                            String.valueOf(resultSet.getDate(1)),
                             resultSet.getString(2),
                             resultSet.getString(3),
-                            resultSet.getDouble(4)
+                            resultSet.getDouble(4),
+                            resultSet.getInt(5),
+                            resultSet.getDouble(6),
+                            resultSet.getDouble(7),
+                            resultSet.getInt(8),
+                            resultSet.getInt(9),
+                            resultSet.getInt(10),
+                            resultSet.getInt(11),
+                            resultSet.getDouble(12)
                     )
             );
         }
         return dtoList;
     }
-
-
 
 }

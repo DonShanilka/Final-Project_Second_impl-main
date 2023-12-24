@@ -13,6 +13,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import lk.ijse.semisterfinal.DB.DbConnetion;
+import lk.ijse.semisterfinal.Tm.EmployeeTm;
 import lk.ijse.semisterfinal.Tm.SalaryTm;
 import lk.ijse.semisterfinal.dto.AddEmployeeDTO;
 import lk.ijse.semisterfinal.dto.SalaryDTO;
@@ -99,17 +100,23 @@ public class SalaryController implements Initializable {
     }
 
     private void setCellValueFactory() {
-        colId.setCellValueFactory(new PropertyValueFactory<>("employeeId"));
-        colName.setCellValueFactory(new PropertyValueFactory<>("employeeName"));
-        colDate.setCellValueFactory(new PropertyValueFactory<>("date"));
+        colId.setCellValueFactory(new PropertyValueFactory<>("date"));
+        colName.setCellValueFactory(new PropertyValueFactory<>("employeeId"));
+        colDate.setCellValueFactory(new PropertyValueFactory<>("employeeName"));
         colSalary.setCellValueFactory(new PropertyValueFactory<>("salary"));
-        colPresentDay.setCellValueFactory(new PropertyValueFactory<>("totalPr"));
-        colAbsentDay.setCellValueFactory(new PropertyValueFactory<>("totalAb"));
+        colSalary.setCellValueFactory(new PropertyValueFactory<>("otcount"));
+        colOtH.setCellValueFactory(new PropertyValueFactory<>("pay1h"));
+        colPay1ot.setCellValueFactory(new PropertyValueFactory<>("bonase"));
+        colBonase.setCellValueFactory(new PropertyValueFactory<>("epf"));
+        colEpf.setCellValueFactory(new PropertyValueFactory<>("etf"));
+        colEtf.setCellValueFactory(new PropertyValueFactory<>("prCount"));
+        colPresentDay.setCellValueFactory(new PropertyValueFactory<>("abcount"));
+        colAbsentDay.setCellValueFactory(new PropertyValueFactory<>("totalsalary"));
 
     }
 
     public void AddSalaryOnAction(ActionEvent event) {
-        /*double amount = Double.parseDouble(salary.getText());
+        double amount = Double.parseDouble(salary.getText());
         String id = comEmpId.getValue();
         String Name = lblName.getText();
         String date1 = String.valueOf(date.getValue());
@@ -125,13 +132,13 @@ public class SalaryController implements Initializable {
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
-        }*/
+        }
     }
 
 
-    /*public void BackOnAction(ActionEvent event) {
+    public void BackOnAction(ActionEvent event) {
 
-    }*/
+    }
 
     private void loadEmployeeId() {
         ObservableList<String> obList = FXCollections.observableArrayList();
@@ -162,6 +169,8 @@ public class SalaryController implements Initializable {
     private void loadAllSalary() {
         var model = new SalaryModel();
 
+        ObservableList<SalaryTm> obList = FXCollections.observableArrayList();
+
         try {
             List<SalaryDTO> dtoList = model.getAllSalary();
 
@@ -174,7 +183,15 @@ public class SalaryController implements Initializable {
                                 dto.getEmployeeId(),
                                 dto.getEmployeeName(),
                                 dto.getSalary(),
-                                btn
+                                dto.getOtcount(),
+                                dto.getPay1h(),
+                                dto.getBonase(),
+                                dto.getEpf(),
+                                dto.getEtf(),
+                                dto.getPrCount(),
+                                dto.getAbcount(),
+                                dto.getTotalsalary()
+
                         )
                 );
             }

@@ -1,14 +1,9 @@
 package lk.ijse.semisterfinal.Tm;
 
-import javafx.scene.control.Button;
+
 import javafx.scene.control.ChoiceDialog;
 import lombok.*;
 
-import java.sql.Date;
-
-
-@AllArgsConstructor
-@NoArgsConstructor
 @Getter
 @Setter
 @ToString
@@ -18,9 +13,29 @@ public class SalaryTm {
     private String employeeId;
     private String employeeName;
     private double salary;
-    private Button removeBtn;
+    private int otcount;
+    private double pay1h;
+    private double bonase;
+    private int epf;
+    private int etf;
+    private int prCount;
+    private int abcount;
+    private double totalsalary;
 
-
+    public SalaryTm(String date, String employeeId, String employeeName, double salary, int otcount, double pay1h, double bonase, int epf, int etf, int prCount, int abcount, double totalsalary) {
+        this.date = date;
+        this.employeeId = employeeId;
+        this.employeeName = employeeName;
+        this.salary = salary;
+        this.otcount = otcount;
+        this.pay1h = pay1h;
+        this.bonase = bonase;
+        this.epf = epf;
+        this.etf = etf;
+        this.prCount = prCount;
+        this.abcount = abcount;
+        this.totalsalary = totalsalary;
+    }
 
 
     public static ChoiceDialog<Object> getSelectionModel() {
@@ -29,4 +44,5 @@ public class SalaryTm {
         choiceDialog.setHeaderText("Are you sure you want to delete this item?");
         return choiceDialog;
     }
+
 }
