@@ -1,6 +1,8 @@
 package lk.ijse.semisterfinal.model;
 
 import lk.ijse.semisterfinal.DB.DbConnetion;
+import lk.ijse.semisterfinal.dto.AddEmployeeDTO;
+import lk.ijse.semisterfinal.dto.AtendanceDTO;
 import lk.ijse.semisterfinal.dto.ItemDTO;
 import lk.ijse.semisterfinal.dto.SalaryDTO;
 
@@ -83,6 +85,49 @@ public class SalaryModel {
             );
         }
         return dtoList;
+    }
+
+    public static AtendanceDTO getABcount(String id) throws SQLException {
+        Connection connection = DbConnetion.getInstance().getConnection();
+
+        //String sqlPr = "SELECT COUNT(presentAbsent) FROM attendance WHERE employee_id  = 'Present'";
+        String sqlAb = "SELECT COUNT(*) FROM attendance WHERE employee_id = ? AND presentAbsent = 'Absent'";
+
+        PreparedStatement pstm = connection.prepareStatement(sqlAb);
+        pstm.setString(1, String.valueOf(id));
+
+        ResultSet resultSet = pstm.executeQuery();
+
+        AtendanceDTO dto = null;
+
+        if (resultSet.next()) {
+            String ab = resultSet.getString(1);
+
+            dto = new AtendanceDTO(ab);
+        }
+        return dto;
+    }
+
+
+    public static AtendanceDTO getPRcount(String id) throws SQLException {
+        Connection connection = DbConnetion.getInstance().getConnection();
+
+        //String sqlPr = "SELECT COUNT(presentAbsent) FROM attendance WHERE employee_id  = 'Present'";
+        String sqlAb = "SELECT COUNT(*) FROM attendance WHERE employee_id = ? AND presentAbsent = 'Present'";
+
+        PreparedStatement pstm = connection.prepareStatement(sqlAb);
+        pstm.setString(1, String.valueOf(id));
+
+        ResultSet resultSet = pstm.executeQuery();
+
+        AtendanceDTO dto = null;
+
+        if (resultSet.next()) {
+            String pr = resultSet.getString(1);
+
+            dto = new AtendanceDTO(pr);
+        }
+        return dto;
     }
 
 }

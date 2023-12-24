@@ -2,7 +2,6 @@ package lk.ijse.semisterfinal.dto;
 
 import lombok.*;
 
-@NoArgsConstructor
 @Getter
 @Setter
 @ToString
@@ -12,6 +11,8 @@ public class AtendanceDTO {
     private String employeeId;
     private String employeeName;
     private String pOra;
+    private String anInt;
+    private String abInt;
 
     public AtendanceDTO(String date, String id, String name, String pOra) {
         this.date = String.valueOf(date);
@@ -19,4 +20,10 @@ public class AtendanceDTO {
         employeeName = name;
         this.pOra = pOra;
     }
+
+    public AtendanceDTO(String anInt) {
+        this.abInt = anInt;
+    }
+
+
 }

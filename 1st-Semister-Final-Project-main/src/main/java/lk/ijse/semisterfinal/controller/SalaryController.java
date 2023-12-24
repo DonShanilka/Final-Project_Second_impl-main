@@ -16,6 +16,7 @@ import lk.ijse.semisterfinal.DB.DbConnetion;
 import lk.ijse.semisterfinal.Tm.EmployeeTm;
 import lk.ijse.semisterfinal.Tm.SalaryTm;
 import lk.ijse.semisterfinal.dto.AddEmployeeDTO;
+import lk.ijse.semisterfinal.dto.AtendanceDTO;
 import lk.ijse.semisterfinal.dto.SalaryDTO;
 import lk.ijse.semisterfinal.model.AddEmployeeModel;
 import lk.ijse.semisterfinal.model.SalaryModel;
@@ -26,6 +27,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 import java.util.ResourceBundle;
@@ -160,8 +162,12 @@ public class SalaryController implements Initializable {
         String id = (String) comEmpId.getValue();
         try {
             AddEmployeeDTO dto = AddEmployeeModel.searchEmployee(id);
+            AtendanceDTO dto1 = SalaryModel.getABcount(id);
+            AtendanceDTO dto2 = SalaryModel.getPRcount(id);
             lblName.setText(dto.getEmployeeName());
             salary.setText(String.valueOf(dto.getBasicSalary()));
+            absent.setText(dto1.getAbInt());
+            prsent.setText(dto2.getAbInt());
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
@@ -202,39 +208,43 @@ public class SalaryController implements Initializable {
         }
     }
 
+    public void calTotalSalary() {
 
+        double amount = Double.parseDouble(salary.getText());
+        int otHcount = Integer.parseInt(oTinH.getText());
+        double pay1h = Double.parseDouble(pay1HourOt.getText());
+        double bonase = Double.parseDouble(txtBonase.getText());
+        int epf = Integer.parseInt(txtEpf.getText());
+        int etf = Integer.parseInt(txtEtf.getText());
+        int prCount = Integer.parseInt(prsent.getText());
+        int abcount = Integer.parseInt(absent.getText());
 
-    public void attendanseP_AB() throws SQLException {
-        Connection connection = DbConnetion.getInstance().getConnection();
+        double lastSalary;
 
-        String sqlPr = "SELECT COUNT(presentAbsent) FROM attendance WHERE employee_id  = 'Present'";
-        String sqlAb = "SELECT COUNT(presentAbsent) FROM attendance WHERE employee_id WHERE presentAbsent = 'Absent'";
+        double totSalary = amount + bonase + (pay1h * otHcount);
+        System.out.println(totSalary);
 
-        String totalPr = null;
-        String totalAb = null;
+        int ep = (int) (totSalary * epf / 100);
+        System.out.println(ep);
 
-        try{
-            PreparedStatement preparedStatement = connection.prepareStatement(sqlPr);
-            ResultSet resultSet = preparedStatement.executeQuery();
+        int et = (int) (totSalary * etf / 100);
+        System.out.println(et);
 
-            PreparedStatement preparedStatement1 = connection.prepareStatement(sqlAb);
-            ResultSet resultSet1 = preparedStatement1.executeQuery();
+        if (abcount < 24) {
+            System.out.println("Hi");
+            lastSalary = totSalary - (ep + et);
+            System.out.println("Hello");
+            System.out.println("Last Salary Amount" + lastSalary);
+        } else if (abcount > 26) {
+            System.out.println("26 +");
+            int ab = abcount - 26;
+            System.out.println("ab" + ab);
+            double daySalary = ab * (amount / 23);
 
-            while(resultSet.next()){
-                totalPr = resultSet.getString("COUNT(presentAbsent)");
-            }
-            colPresentDay.setText(totalPr);
+            System.out.println(lastSalary);
 
-            while(resultSet1.next()){
-                totalAb = resultSet1.getString("COUNT(presentAbsent)");
-            }
-            colAbsentDay.setText(totalAb);
-
-        } catch (Exception e){
-            e.printStackTrace();
         }
     }
-
 
     public void sendEmailOnAction(ActionEvent event) {
 
@@ -281,26 +291,21 @@ public class SalaryController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        try {
-            attendanseP_AB();
-            date.setPromptText(String.valueOf(LocalDate.now()));
-            loadEmployeeId();
-            clearField();
-            tableListener();
-            setCellValueFactory();
-            loadAllSalary();
+        //attendanseP_AB();
+        date.setPromptText(String.valueOf(LocalDate.now()));
+        loadEmployeeId();
+        clearField();
+        tableListener();
+        setCellValueFactory();
+        loadAllSalary();
 
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     public void calSalaryOnAction(ActionEvent actionEvent) {
 
-        double total = 0;
+        calTotalSalary();
 
-
-        txtTotalSalary.setText("Rs : " + total);
+        //txtTotalSalary.setText("Rs : " + total);
         //(String.valueOf
     }
 

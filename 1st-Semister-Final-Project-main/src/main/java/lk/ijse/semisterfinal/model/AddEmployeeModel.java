@@ -2,7 +2,7 @@ package lk.ijse.semisterfinal.model;
 
 import lk.ijse.semisterfinal.DB.DbConnetion;
 import lk.ijse.semisterfinal.dto.AddEmployeeDTO;
-
+import lk.ijse.semisterfinal.dto.SalaryDTO;
 
 
 import java.sql.Connection;

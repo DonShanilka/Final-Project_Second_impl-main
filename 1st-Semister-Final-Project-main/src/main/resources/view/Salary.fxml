@@ -49,13 +49,13 @@
             <Line endX="134.0" layoutX="899.0" layoutY="112.0" startX="-100.0" />
             <TextField fx:id="txtSubject" layoutX="795.0" layoutY="170.0" prefHeight="25.0" prefWidth="231.0" style="-fx-background-color: #e6e6ff;" />
             <Line endX="135.0" layoutX="898.0" layoutY="196.0" startX="-100.0" />
-            <JFXButton buttonType="RAISED" layoutX="795.0" layoutY="362.0" onAction="#sendEmailOnAction" prefHeight="32.0" prefWidth="82.0" style="-fx-background-color: #2ecc71;" text="Pay" textFill="WHITE">
+            <JFXButton buttonType="RAISED" layoutX="911.0" layoutY="360.0" onAction="#sendEmailOnAction" prefHeight="32.0" prefWidth="82.0" style="-fx-background-color: #2ecc71;" text="Pay" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </JFXButton>
             <TextArea fx:id="txtMsg" layoutX="793.0" layoutY="259.0" prefHeight="83.0" prefWidth="283.0" style="-fx-background-color: #00004DFF;" />
-            <Text fx:id="Sending" layoutX="978.0" layoutY="389.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sending ...." wrappingWidth="96.0" />
+            <Text fx:id="Sending" layoutX="1002.0" layoutY="389.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sending ...." wrappingWidth="74.0" />
             <Label layoutX="794.0" layoutY="238.0" text="Subject :">
                <font>
                   <Font name="System Bold" size="15.0" />
@@ -148,7 +148,7 @@
             </Label>
             <TextField fx:id="txtTotalSalary" layoutX="538.0" layoutY="358.0" prefHeight="25.0" prefWidth="174.0" style="-fx-background-color: #e6e6ff;" />
             <Line endX="72.0" layoutX="639.0" layoutY="384.0" startX="-100.0" />
-            <JFXButton buttonType="RAISED" layoutX="544.0" layoutY="271.0" onAction="#calSalaryOnAction" prefHeight="32.0" prefWidth="82.0" style="-fx-background-color: blue;" text="Cal Salary" textFill="WHITE">
+            <JFXButton buttonType="RAISED" layoutX="793.0" layoutY="360.0" onAction="#calSalaryOnAction" prefHeight="32.0" prefWidth="82.0" style="-fx-background-color: blue;" text="Cal Salary" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>

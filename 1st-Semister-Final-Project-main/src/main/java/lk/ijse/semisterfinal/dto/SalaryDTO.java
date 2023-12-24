@@ -50,6 +50,7 @@ public class SalaryDTO {
         this.totalsalary = totalsalary;
     }
 
-    public SalaryDTO(String string, String string1, String string2, double aDouble) {
+    public SalaryDTO(int anInt) {
+        this.abcount = anInt;
     }
 }
