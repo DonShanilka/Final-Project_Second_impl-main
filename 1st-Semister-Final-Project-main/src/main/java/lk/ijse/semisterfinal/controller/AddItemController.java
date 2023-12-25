@@ -1,5 +1,7 @@
 package lk.ijse.semisterfinal.controller;
 
+import com.google.zxing.WriterException;
+import com.jfoenix.controls.JFXButton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -60,6 +62,9 @@ public class AddItemController implements Initializable {
     @FXML
     public Label lblTotalItem;
     public TableColumn <?,?> tmQty;
+    public JFXButton btnWarrantyQr;
+    public ChoiceBox itemCatagory;
+    public TableColumn tmCatogory;
 
     public void initialize() throws SQLException {
         totalItem();
@@ -336,6 +341,19 @@ public class AddItemController implements Initializable {
             JasperPrint jasPrint = JasperFillManager.fillReport(jasReport, null,DbConnetion.getInstance().getConnection());
             JasperViewer.viewReport(jasPrint,false);*/
 
+    }
+
+    public void btnWarrantyQRonAction(ActionEvent actionEvent) throws WriterException, SQLException {
+        String values = txtItemCode.getText() + "," + txtitemDetails.getText() + "," + txtWarrantyPeriod + "," +txtItemPrice.getText() ;//QR code ekata watenna oone details tika..
+
+        String filepath = "C:\\Users\\Shanilka\\Documents\\QR"+ "qr"+ txtItemCode.getText() +".png"; //Save wenna oone folder eke path eka..
+        boolean isGenerated = QR.generateQrCode(values, 1250, 1250, filepath);
+
+        if (isGenerated){
+            new Alert(Alert.AlertType.CONFIRMATION, "Generated QR Code WARRANTY").show();
+        } else {
+            new Alert(Alert.AlertType.WARNING, "Try Again").show();;
+        }
     }
 }
 

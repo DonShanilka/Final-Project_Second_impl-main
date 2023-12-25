@@ -21,9 +21,12 @@ public class EmployeeTm {
     private String Education;
     private double BasicSalary;
     private String Expiriance;
+    private String de;
 
 
-    public EmployeeTm(String employeeId, String employeeName, String empAddress, int employeePhone, String empDate, String empPosition, String email, String gender, String education, double basicSalary, String expiriance) {
+
+
+    public EmployeeTm(String employeeId, String employeeName, String empAddress, int employeePhone, String empDate, String empPosition, String email, String gender, String education, double basicSalary, String expiriance, String de) {
         this.id = employeeId;
         this.name = employeeName;
         this.address = empAddress;
@@ -35,5 +38,6 @@ public class EmployeeTm {
         this.Education = education;
         this.BasicSalary = basicSalary;
         this.Expiriance = expiriance;
+        this.de = de;
     }
 }

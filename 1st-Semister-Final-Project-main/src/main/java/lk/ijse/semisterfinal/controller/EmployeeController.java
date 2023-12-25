@@ -58,6 +58,7 @@ public class EmployeeController implements Initializable {
     public TableColumn <?,?> tmBasicSalary;
     public ChoiceBox <String> gender;
     public ChoiceBox <String> department;
+    public TableColumn tmDepartment;
 
     private String[] mf = {"Male" , "Female"};
     private String[] dep = {"HR", "Finance & Accounting", "Service", "IT"};
@@ -82,6 +83,7 @@ public class EmployeeController implements Initializable {
         tmQualification.setCellValueFactory(new PropertyValueFactory<>("Education"));
         tmBasicSalary.setCellValueFactory(new PropertyValueFactory<>("BasicSalary"));
         tmExperiance.setCellValueFactory(new PropertyValueFactory<>("Expiriance"));
+        tmDepartment.setCellValueFactory(new PropertyValueFactory<>("de"));
 
     }
 
@@ -126,8 +128,9 @@ public class EmployeeController implements Initializable {
         String education = txtEducation.getText();
         double basic = Double.parseDouble(txtBasicSalary.getText());
         String experiance = txtExpiriance.getText();
+        String de = department.getValue();
 
-        var dto = new AddEmployeeDTO(id,name,address,tele,date,email,position,gende,education,basic,experiance);
+        var dto = new AddEmployeeDTO(id,name,address,tele,date,email,position,gende,education,basic,experiance,de);
 
         try {
             boolean addSup= AddEmployeeModel.addEmployee(dto);
@@ -191,7 +194,8 @@ public class EmployeeController implements Initializable {
                                 dto.getGender(),
                                 dto.getEducation(),
                                 dto.getBasicSalary(),
-                                dto.getExpiriance()
+                                dto.getExpiriance(),
+                                dto.getDe()
                         )
                 );
             }

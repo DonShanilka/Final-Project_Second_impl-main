@@ -52,10 +52,10 @@ public class AdminMainDashbordController {
         root1.getChildren().clear();
         root1.getChildren().add(load);
         for (int i = 0; i < formArray.length; i++) {
-            btnArray[i].setStyle("/*-fx-background-color:  #ffffff;*/ -fx-font-size: 1; /*-fx-text-fill: #202A44FF*/");
+            btnArray[i].setStyle("/*-fx-background-color:  #ffffff;*/ -fx-font-size: 22; /*-fx-text-fill: #202A44FF*/");
 
             if (form.equals(formArray[i])){
-                btnArray[i].setStyle("/*-fx-background-color: #ffffff;*/ -fx-font-size: 20 /*-fx-text-fill: #ffffff*/");
+                btnArray[i].setStyle("-fx-background-color: #00bd1f; -fx-font-size: 22; -fx-text-fill: #000000");
             }
         }
     }

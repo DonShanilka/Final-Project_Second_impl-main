@@ -16,7 +16,7 @@ public class AddEmployeeModel {
     public static boolean addEmployee(AddEmployeeDTO dto) throws SQLException {
         Connection connection = DbConnetion.getInstance().getConnection();
 
-        String sql = "INSERT INTO employee VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO employee VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
         PreparedStatement ptm = connection.prepareStatement(sql);
 
         ptm.setString(1, dto.getEmployeeId());
@@ -30,6 +30,7 @@ public class AddEmployeeModel {
         ptm.setString(9,dto.getEducation());
         ptm.setDouble(10,dto.getBasicSalary());
         ptm.setString(11,dto.getExpiriance());
+        ptm.setString(12,dto.getDe());
 
         return ptm.executeUpdate()>0;
 
@@ -57,7 +58,8 @@ public class AddEmployeeModel {
                             resultSet.getString(8),
                             resultSet.getString(9),
                             resultSet.getDouble(10),
-                            resultSet.getString(11)
+                            resultSet.getString(11),
+                            resultSet.getString(12)
                     )
             );
         }

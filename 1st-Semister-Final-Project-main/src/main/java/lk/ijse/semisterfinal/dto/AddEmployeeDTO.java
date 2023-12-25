@@ -20,6 +20,7 @@ public class AddEmployeeDTO {
     private String Education;
     private double BasicSalary;
     private String Expiriance;
+    private String de;
 
     public AddEmployeeDTO(String id, String name, String address, int tele, String date, String email, String position) {
         this.employeeId = id;
@@ -31,7 +32,8 @@ public class AddEmployeeDTO {
         this.empPosition = position;
     }
 
-    public AddEmployeeDTO(String id, String name, String address, int tele, String date, String email, String position, String gende, String education, double basic, String experiance) {
+
+    public AddEmployeeDTO(String id, String name, String address, int tele, String date, String email, String position, String gende, String education, double basic, String experiance, String de) {
         this.employeeId = id;
         this.EmployeeName = name;
         this.EmpAddress = address;
@@ -43,7 +45,6 @@ public class AddEmployeeDTO {
         this.Education = education;
         this.BasicSalary = basic;
         this.Expiriance = experiance;
-
+        this.de = de;
     }
-
 }
