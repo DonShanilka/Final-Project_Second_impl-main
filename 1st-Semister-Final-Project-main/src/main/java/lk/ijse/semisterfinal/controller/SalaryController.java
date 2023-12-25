@@ -65,7 +65,8 @@ public class SalaryController implements Initializable {
     public TextField absent;
     public TextField prsent;
     public TextField oTinH;
-    public TextField txtTotalSalary;
+
+    public Label lblTotalSalary;
 
     private ObservableList <SalaryTm> obList = FXCollections.observableArrayList();
 
@@ -208,6 +209,9 @@ public class SalaryController implements Initializable {
         }
     }
 
+
+    int lastSalary;
+
     public void calTotalSalary() {
 
         double amount = Double.parseDouble(salary.getText());
@@ -219,9 +223,8 @@ public class SalaryController implements Initializable {
         int prCount = Integer.parseInt(prsent.getText());
         int abcount = Integer.parseInt(absent.getText());
 
-        double lastSalary;
 
-        double totSalary = amount + bonase + (pay1h * otHcount);
+        double totSalary =  (amount + bonase + (pay1h * otHcount));
         System.out.println(totSalary);
 
         int ep = (int) (totSalary * epf / 100);
@@ -232,17 +235,23 @@ public class SalaryController implements Initializable {
 
         if (abcount < 24) {
             System.out.println("Hi");
-            lastSalary = totSalary - (ep + et);
+            lastSalary = (int) (totSalary - (ep + et));
+
             System.out.println("Hello");
             System.out.println("Last Salary Amount" + lastSalary);
+            lblTotalSalary.setText(String.valueOf(lastSalary));
+
         } else if (abcount > 26) {
             System.out.println("26 +");
             int ab = abcount - 24;
+
             System.out.println("ab" + ab);
             double noPay = ab * (amount / 23);
             System.out.println(noPay);
-            lastSalary = totSalary - ((ep + et) + (noPay));
+
+            lastSalary = (int) (totSalary - ((ep + et) + (noPay)));
             System.out.println(lastSalary);
+            lblTotalSalary.setText(String.valueOf(lastSalary));
 
         }
     }
@@ -260,7 +269,7 @@ public class SalaryController implements Initializable {
         int etf = Integer.parseInt(txtEtf.getText());
         int prCount = Integer.parseInt(prsent.getText());
         int abcount = Integer.parseInt(absent.getText());
-        double totalsalary = Double.parseDouble(txtTotalSalary.getText());
+        double totalsalary = Double.parseDouble(lblTotalSalary.getText());
 
         var dto = new SalaryDTO(amount,id,Name,date1,otHcount,pay1h,bonase,epf,etf,prCount,abcount,totalsalary);
 
@@ -288,6 +297,7 @@ public class SalaryController implements Initializable {
         System.out.println("end");
         Sending.setText("sended");
 
+        calTotalSalary();
     }
 
     @Override

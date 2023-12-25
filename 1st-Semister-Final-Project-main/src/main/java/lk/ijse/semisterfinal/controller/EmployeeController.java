@@ -1,5 +1,6 @@
 package lk.ijse.semisterfinal.controller;
 
+import com.google.zxing.WriterException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -237,6 +238,10 @@ public class EmployeeController implements Initializable {
         }
     }
 
-    public void EmployeeSalaryViewOnAction(ActionEvent actionEvent) {
+    public void EmployeeSalaryViewOnAction(ActionEvent actionEvent) throws WriterException {
+        String values = txtemployeeId.getText() + "," + txtEmployeeName.getText() + "," + txtPossition + "," + txtGender.getText() + "," +txtEducation.getText() + "," + txtAddress.getText() + "," + txtEmail.getText();//QR code ekata watenna oone details tika..
+
+        String filepath = "/home/kitty/Documents/qrCodes/"+ "qr"+ txtemployeeId.getText() +".png"; //Save wenna oone folder eke path eka..
+        boolean isGenerated = QR.generateQrCode(values, 1250, 1250, filepath);
     }
 }

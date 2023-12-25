@@ -256,7 +256,6 @@ public class CashierController {
             total += (double) colTotal.getCellData(i);
         }
         lblNetTotal.setText("Rs : " + total);
-        //(String.valueOf
     }
 
     private void setRemoveBtnAction(Button btn) {

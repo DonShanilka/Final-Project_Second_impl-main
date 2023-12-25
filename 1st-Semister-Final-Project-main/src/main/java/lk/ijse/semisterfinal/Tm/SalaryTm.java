@@ -2,6 +2,7 @@ package lk.ijse.semisterfinal.Tm;
 
 
 import javafx.scene.control.ChoiceDialog;
+import javafx.scene.control.Label;
 import lombok.*;
 
 @Getter
@@ -21,6 +22,7 @@ public class SalaryTm {
     private int prCount;
     private int abcount;
     private double totalsalary;
+    private double lblTotalSalary;
 
     public SalaryTm(String date, String employeeId, String employeeName, double salary, int otcount, double pay1h, double bonase, int epf, int etf, int prCount, int abcount, double totalsalary) {
         this.date = date;
@@ -35,6 +37,10 @@ public class SalaryTm {
         this.prCount = prCount;
         this.abcount = abcount;
         this.totalsalary = totalsalary;
+    }
+
+    public SalaryTm(double lblTotalSalary) {
+        this.lblTotalSalary = lblTotalSalary;
     }
 
 
