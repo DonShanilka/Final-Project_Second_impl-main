@@ -15,7 +15,7 @@ public class ItemModel {
     public static boolean addItem(ItemDTO dto) throws SQLException {
         Connection connection = DbConnetion.getInstance().getConnection();
 
-        String sql = "INSERT INTO item VALUES(?,?,?,?,?,?)";
+        String sql = "INSERT INTO item VALUES(?,?,?,?,?,?,?)";
 
         PreparedStatement ptm = connection.prepareStatement(sql);
         ptm.setString(1, dto.getItemCode());
@@ -24,6 +24,7 @@ public class ItemModel {
         ptm.setString(4, dto.getSupplierId());
         ptm.setString(5, dto.getWarrantyPeriod());
         ptm.setString(6, String.valueOf(dto.getItemQty()));
+        ptm.setString(5, dto.getCato());
 
 
         boolean isSaved = ptm.executeUpdate()>0;
@@ -57,7 +58,8 @@ public class ItemModel {
                     resultSet.getDouble(3),
                     resultSet.getString(4),
                     resultSet.getString(5),
-                    resultSet.getInt(6)
+                    resultSet.getInt(6),
+                    resultSet.getString(7)
             );
             itemList.add(dto);
         }
@@ -83,7 +85,8 @@ public class ItemModel {
                             resultSet.getDouble(3),
                             resultSet.getString(4),
                             resultSet.getString(5),
-                            resultSet.getInt(6)
+                            resultSet.getInt(6),
+                            resultSet.getString(7)
                     )
             );
         }
@@ -108,8 +111,9 @@ public class ItemModel {
             String sup_id = resultSet.getString(4);
             String warranty = resultSet.getString(5);
             String qty = String.valueOf(resultSet.getInt(6));
+            String cat = resultSet.getString(7);
 
-            dto = new ItemDTO(item_code,item_name,item_price,sup_id,warranty,qty);
+            dto = new ItemDTO(item_code,item_name,item_price,sup_id,warranty,qty,cat);
         }
         return dto;
     }
@@ -139,7 +143,7 @@ public class ItemModel {
     public static boolean updateItem(ItemDTO dto) throws SQLException {
         Connection connection = DbConnetion.getInstance().getConnection();
 
-        String sql = "UPDATE item SET item_name = ?, item_price = ?, supplier_id = ? , warranty =?, qty =?  WHERE item_code = ?";
+        String sql = "UPDATE item SET item_name = ?, item_price = ?, supplier_id = ? , warranty =?, qty =?, catogary =?  WHERE item_code = ?";
 
         PreparedStatement pstm = connection.prepareStatement(sql);
 
@@ -148,7 +152,9 @@ public class ItemModel {
         pstm.setString(3,dto.getSupplierId());
         pstm.setString(4, dto.getWarrantyPeriod());
         pstm.setInt(5, dto.getItemQty());
-        pstm.setString(6, dto.getItemCode());
+        pstm.setString(6, dto.getCato());
+        pstm.setString(7, dto.getItemCode());
+
 
         return pstm.executeUpdate() >0;
 

@@ -15,14 +15,16 @@ public class ItemTm {
         private String SupplierId;
         private String WarrantyPeriod;
         private int ItemQty;
+        private String cato;
 
-    public ItemTm(String itemCode, String itemDetails, double itemPrice, String supplierId, String warrantyPeriod,int ItemQty) {
+    public ItemTm(String itemCode, String itemDetails, double itemPrice, String supplierId, String warrantyPeriod,int ItemQty,String cato) {
         ItemCode = itemCode;
         this.itemDetails = itemDetails;
         ItemPrice = itemPrice;
         SupplierId = supplierId;
         WarrantyPeriod = warrantyPeriod;
         this.ItemQty = ItemQty;
+        this.cato = cato;
     }
 
     public ItemTm(String supId) {

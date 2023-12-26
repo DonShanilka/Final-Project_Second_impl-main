@@ -101,12 +101,13 @@ public class UpdateItemController {
     }
 
     public void itemUpdateSaveOnAction(ActionEvent event) {
-        String id = (String) itemId.getValue();
+        /*String id = (String) itemId.getValue();
         String name = itemName.getText();
         double price = Double.parseDouble(itemPrice.getText());
         String supid = supplierId.getText();
         String warranty = waranty.getText();
         int Qty = Integer.parseInt(qty.getText());
+        int cat = .getText());
 
         try{
             if (!validateEmployee()){
@@ -121,6 +122,6 @@ public class UpdateItemController {
             }
         }catch (SQLException e){
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
-        }
+        }*/
     }
 }

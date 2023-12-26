@@ -19,6 +19,7 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import lk.ijse.semisterfinal.DB.DbConnetion;
 import lk.ijse.semisterfinal.Tm.ItemTm;
+import lk.ijse.semisterfinal.dto.AddEmployeeDTO;
 import lk.ijse.semisterfinal.dto.ItemDTO;
 import lk.ijse.semisterfinal.dto.SupplierDTO;
 import lk.ijse.semisterfinal.model.ItemModel;
@@ -38,6 +39,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
@@ -90,6 +92,7 @@ public class AddItemController implements Initializable {
         comsupid.setValue(row.getSupplierId());
         txtWarrantyPeriod.setText(row.getWarrantyPeriod());
         txtQty.setText(String.valueOf(row.getItemQty()));
+        itemCatagory.setValue(String.valueOf(row.getCato()));
 
     }
 
@@ -112,9 +115,9 @@ public class AddItemController implements Initializable {
         String SupplierId = (String) comsupid.getValue();
         String WarrantyPeriod = txtWarrantyPeriod.getText();
         int qty  = Integer.parseInt(txtQty.getText());
+        String cat = itemCatagory.getValue();
 
-
-        var dto = new ItemDTO(ItemCode,ItemName,ItemPrice,SupplierId,WarrantyPeriod,qty);
+        var dto = new ItemDTO(ItemCode,ItemName,ItemPrice,SupplierId,WarrantyPeriod,qty,cat);
 
         try {
             boolean isaddite = ItemModel.addItem(dto);
@@ -127,16 +130,6 @@ public class AddItemController implements Initializable {
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
-        }
-    }
-
-    public void cmbsupidOnAction(ActionEvent event) {
-        String id = (String) comsupid.getValue();
-        try {
-            SupplierDTO dto = SupplierModel.searchsupplier(id);
-            tmSupplierId.setText(dto.getSupNic());
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
 
@@ -155,7 +148,8 @@ public class AddItemController implements Initializable {
                                 dto.getItemPrice(),
                                 dto.getSupplierId(),
                                 dto.getWarrantyPeriod(),
-                                dto.getItemQty()
+                                dto.getItemQty(),
+                                dto.getCato()
 
                         ));
             }
@@ -195,25 +189,34 @@ public class AddItemController implements Initializable {
         tmSupplierId.setCellValueFactory(new PropertyValueFactory<>("SupplierId"));
         tmWarranty.setCellValueFactory(new PropertyValueFactory<>("WarrantyPeriod"));
         tmQty.setCellValueFactory(new PropertyValueFactory<>("ItemQty"));
+        tmCatogory.setCellValueFactory(new PropertyValueFactory<>("cato"));
 
     }
 
     public void UpdateOnAction(ActionEvent event) throws IOException {
-        Stage stage = new Stage();
-        stage.setScene(new Scene(FXMLLoader.load(this.getClass().getResource("/view/UpdateItem.fxml"))));
-        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-            @Override
-            public void handle(WindowEvent windowEvent) {
+        String id = txtItemCode.getText();
+        String name = txtitemDetails.getText();
+        double price = Double.parseDouble(txtItemPrice.getText());
+        String supid = (String) comsupid.getValue();
+        String warranty = txtWarrantyPeriod.getText();
+        int Qty = Integer.parseInt(txtQty.getText());
+        String cat = itemCatagory.getValue();
+
+        try{
+            /*if (!validateEmployee()){
+                return;
+            }*/
+            var dto = new ItemDTO(id,name,price,supid,warranty,Qty,cat);
+            boolean isUpdate = ItemModel.updateItem(dto);
+
+            if (isUpdate){
+                new Alert(Alert.AlertType.CONFIRMATION,"Employee is updated").show();
                 loadAllItem();
-                try {
-                    totalItem();
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                }
+                clearField();
             }
-        });
-        stage.centerOnScreen();
-        stage.show();
+        }catch (SQLException e){
+            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+        }
     }
 
     public void deleteOnAction(ActionEvent event) {
@@ -245,6 +248,19 @@ public class AddItemController implements Initializable {
         }
     }
 
+public void loadAllSupplier() {
+    ObservableList<String> obList = FXCollections.observableArrayList();
+    try {
+        ArrayList<SupplierDTO> teacherDtos = SupplierModel.getAllSupplier();
+
+        for (SupplierDTO dto : teacherDtos) {
+            obList.add(dto.getSupNic());
+        }
+        comsupid.setItems(obList);
+    } catch (SQLException e) {
+        throw new RuntimeException(e);
+    }
+}
     public void itemSerachOnAction() {
         FilteredList<ItemTm> filteredData = new FilteredList<>(ItemTm.getItems(), b -> true);
 
@@ -292,6 +308,7 @@ public class AddItemController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
+            loadAllSupplier();
             itemCatagory.getItems().addAll(cata);
             totalItem();
             setCellValueFactory();
