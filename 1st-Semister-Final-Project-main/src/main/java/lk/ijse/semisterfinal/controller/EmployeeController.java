@@ -174,7 +174,8 @@ public class EmployeeController implements Initializable {
 
             if (isUpdate){
                 new Alert(Alert.AlertType.CONFIRMATION,"Employee is updated").show();
-                //clearFileds();
+                loadAllEmployee();
+                clearField();
             }
         }catch (SQLException e){
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();

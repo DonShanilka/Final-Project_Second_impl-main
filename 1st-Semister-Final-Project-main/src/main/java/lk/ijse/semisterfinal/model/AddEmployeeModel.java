@@ -69,7 +69,7 @@ public class AddEmployeeModel {
     public static boolean updateEmployee(AddEmployeeDTO dto) throws SQLException {
         Connection connection = DbConnetion.getInstance().getConnection();
 
-        String sql = "UPDATE employee SET employee_name = ?, employee_address = ?, employee_teliphone = ?, job_start_date = ? , position =?, email =?  WHERE employee_id = ?";
+        String sql = "UPDATE employee SET employee_name = ?, employee_address = ?, employee_teliphone = ?, job_start_date = ? , position =?, email =?, gender =?, education =?, basicSalary =?, experiance =?, department =?  WHERE employee_id = ?";
 
         PreparedStatement pstm = connection.prepareStatement(sql);
 
@@ -79,7 +79,12 @@ public class AddEmployeeModel {
         pstm.setString(4, dto.getEmpDate());
         pstm.setString(5, dto.getEmpPosition());
         pstm.setString(6, dto.getEmail());
-        pstm.setString(7, dto.getEmployeeId());
+        pstm.setString(7, dto.getGender());
+        pstm.setString(8, dto.getEducation());
+        pstm.setDouble(9, dto.getBasicSalary());
+        pstm.setString(10, dto.getExpiriance());
+        pstm.setString(11, dto.getDe());
+        pstm.setString(12, dto.getEmployeeId());
 
         return pstm.executeUpdate() >0;
 
