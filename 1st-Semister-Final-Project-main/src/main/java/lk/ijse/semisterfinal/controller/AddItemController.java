@@ -63,8 +63,10 @@ public class AddItemController implements Initializable {
     public Label lblTotalItem;
     public TableColumn <?,?> tmQty;
     public JFXButton btnWarrantyQr;
-    public ChoiceBox itemCatagory;
-    public TableColumn tmCatogory;
+    public ChoiceBox <String> itemCatagory;
+    public TableColumn <?,?> tmCatogory;
+
+    private String[] cata = {"Electrical", "Furniture", "Toys", "Exercise equipment", "Office equipment", "Other"};
 
     public void initialize() throws SQLException {
         totalItem();
@@ -290,6 +292,7 @@ public class AddItemController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
+            itemCatagory.getItems().addAll(cata);
             totalItem();
             setCellValueFactory();
             tableListener();

@@ -59,7 +59,7 @@ public class AddSupplierControlller  {
     public TextField txtItemCode;
     public TextField txtSupNic;
 
-    String[] ca = { "Electrical", "Furniture", "Toys", "Exercise equipment", "Office equipment"};
+    String[] ca = { "Electrical", "Furniture", "Toys", "Exercise equipment", "Office equipment", "Other"};
 
     public void initialize() throws SQLException {
         setCellValueFactory();

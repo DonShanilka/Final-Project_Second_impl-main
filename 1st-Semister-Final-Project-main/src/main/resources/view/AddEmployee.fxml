@@ -101,7 +101,6 @@
                </font>
             </JFXButton>
             <Line endX="100.0" layoutX="646.0" layoutY="174.0" startX="-100.0" />
-            <TextField fx:id="txtEducation" layoutX="546.0" layoutY="148.0" prefHeight="25.0" prefWidth="201.0" promptText="Qualifications" style="-fx-background-color: #e6e6ff;" />
             <Line endX="100.0" layoutX="646.0" layoutY="230.0" startX="-100.0" />
             <TextField fx:id="txtBasicSalary" layoutX="546.0" layoutY="204.0" prefHeight="25.0" prefWidth="201.0" promptText="Basic Salary" style="-fx-background-color: #e6e6ff;" />
             <Line endX="100.0" layoutX="646.0" layoutY="286.0" startX="-100.0" />
@@ -115,6 +114,8 @@
             <Text layoutX="275.0" layoutY="228.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender :" />
             <ChoiceBox fx:id="department" layoutX="869.0" layoutY="149.0" prefHeight="25.0" prefWidth="146.0" />
             <Text layoutX="797.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Department :" />
+            <ChoiceBox fx:id="txtEducation" layoutX="608.0" layoutY="147.0" prefHeight="25.0" prefWidth="139.0" />
+            <Text layoutX="546.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Education :" />
          </children>
       </Pane>
       <Label fx:id="lblTotalEmployee" layoutX="914.0" layoutY="31.0" prefHeight="30.0" prefWidth="0.0" textFill="WHITE">

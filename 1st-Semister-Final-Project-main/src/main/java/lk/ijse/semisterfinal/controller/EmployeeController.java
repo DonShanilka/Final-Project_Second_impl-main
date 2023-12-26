@@ -49,7 +49,6 @@ public class EmployeeController implements Initializable {
     public TableColumn <?, ?> tmEmpJob;
     public TableColumn <?, ?> tmEmpEmail;
     public TextField txtGender;
-    public TextField txtEducation;
     public TextField txtBasicSalary;
     public TextField txtExpiriance;
     public TableColumn<?,?> tmGender;
@@ -59,9 +58,11 @@ public class EmployeeController implements Initializable {
     public ChoiceBox <String> gender;
     public ChoiceBox <String> department;
     public TableColumn tmDepartment;
+    public ChoiceBox <String> txtEducation;
 
     private String[] mf = {"Male" , "Female"};
     private String[] dep = {"HR", "Finance & Accounting", "Service", "IT"};
+    private String[] edu = {"O/L", "A/L", "Diploma", "HND", "Degree", "Masters"};
 
     public void initialize(){
         loadAllEmployee();
@@ -94,7 +95,7 @@ public class EmployeeController implements Initializable {
         txtEmployeePhone.setText("");
         txtEmail.setText("");
         txtPossition.setText("");
-        txtEducation.setText("");
+        txtEducation.setValue("");
         txtBasicSalary.setText("");
         txtExpiriance.setText("");
 
@@ -111,9 +112,15 @@ public class EmployeeController implements Initializable {
         txtEmployeeName.setText(row.getName());
         txtAddress.setText(row.getAddress());
         txtEmployeePhone.setText(String.valueOf(row.getMobile()));
-        txtPossition.setText(String.valueOf(row.getPossition()));
-        txtEmail.setText(String.valueOf(row.getEmail()));
+        txtPossition.setText(String.valueOf(row.getEmail()));
+        txtEmail.setText(String.valueOf(row.getPossition()));
         empDate.setValue(LocalDate.parse(row.getDate()));
+        gender.setValue(row.getGender());
+        txtEducation.setValue(row.getEducation());
+        txtBasicSalary.setText(String.valueOf(row.getBasicSalary()));
+        txtExpiriance.setText(row.getExpiriance());
+        department.setValue(String.valueOf(row.getDe()));
+
     }
 
     public void EmployeeAddOnAction(ActionEvent event) {
@@ -125,7 +132,7 @@ public class EmployeeController implements Initializable {
         String email = txtEmail.getText();
         String position = txtPossition.getText();
         String gende = gender.getValue();
-        String education = txtEducation.getText();
+        String education = txtEducation.getValue();
         double basic = Double.parseDouble(txtBasicSalary.getText());
         String experiance = txtExpiriance.getText();
         String de = department.getValue();
@@ -145,16 +152,33 @@ public class EmployeeController implements Initializable {
     }
 
     public void EmployeeUpdateOnAction(ActionEvent event) throws IOException {
-        Stage stage = new Stage();
-        stage.setScene(new Scene(FXMLLoader.load(this.getClass().getResource("/view/UpdateEmployee.fxml"))));
-        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-            @Override
-            public void handle(WindowEvent windowEvent) {
-                loadAllEmployee();
+        String id = txtemployeeId.getText();
+        String name = txtEmployeeName.getText();
+        String address = txtAddress.getText();
+        int tele = Integer.parseInt(txtEmployeePhone.getText());
+        String date = String.valueOf(empDate.getValue());
+        String position = txtPossition.getText();
+        String email = txtEmail.getText();
+        String gende = gender.getValue();
+        String education = txtEducation.getValue();
+        double basic = Double.parseDouble(txtBasicSalary.getText());
+        String experiance = txtExpiriance.getText();
+        String de = department.getValue();
+
+        try{
+            /*if (!validateEmployee()){
+                return;
+            }*/
+            var dto = new AddEmployeeDTO(id,name,address,tele,date,email,position,gende,education,basic,experiance,de);
+            boolean isUpdate = AddEmployeeModel.updateEmployee(dto);
+
+            if (isUpdate){
+                new Alert(Alert.AlertType.CONFIRMATION,"Employee is updated").show();
+                //clearFileds();
             }
-        });
-        stage.centerOnScreen();
-        stage.show();
+        }catch (SQLException e){
+            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+        }
     }
 
     public void EmployeeDeleteOnAction(ActionEvent event) {
@@ -237,13 +261,15 @@ public class EmployeeController implements Initializable {
             clearField();
             setCellValueFactory();
             tableListener();
+            txtEducation.getItems().addAll(edu);
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
     public void EmployeeSalaryViewOnAction(ActionEvent actionEvent) throws WriterException, SQLException {
-        String values = txtemployeeId.getText() + "," + txtEmployeeName.getText() + "," + txtPossition + "," + gender.getValue() + "," +txtEducation.getText() + "," + txtAddress.getText() + "," + txtEmail.getText();//QR code ekata watenna oone details tika..
+        String values = txtemployeeId.getText() + "," + txtEmployeeName.getText() + "," + txtPossition + "," + gender.getValue() + "," +txtEducation.getValue() + "," + txtAddress.getText() + "," + txtEmail.getText();//QR code ekata watenna oone details tika..
 
         String filepath = "C:\\Users\\Shanilka\\Documents\\QR"+ "qr"+ txtemployeeId.getText() +".png"; //Save wenna oone folder eke path eka..
         boolean isGenerated = QR.generateQrCode(values, 1250, 1250, filepath);
