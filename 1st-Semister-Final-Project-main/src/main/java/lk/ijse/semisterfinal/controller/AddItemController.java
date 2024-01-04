@@ -160,28 +160,6 @@ public class AddItemController implements Initializable {
         }
     }
 
-    /*private void loadAllSupId() {
-        ObservableList<SupplierTm> obList = FXCollections.observableArrayList();
-
-        try {
-            ArrayList<SupplierDTO> dtoList = SupplierModel.getAllSupplier();
-
-            for (SupplierDTO dto : dtoList) {
-                obList.add(
-                        new SupplierTm(
-                                dto.getSupId(),
-                                dto.getSupName(),
-                                dto.getSupItemName(),
-                                dto.getSupMobile(),
-                                dto.getSupqty()
-                        ));
-            }
-            SupplierTm.
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }*/
-
     private void setCellValueFactory() {
         tmItemCode.setCellValueFactory(new PropertyValueFactory<>("ItemCode"));
         tmItemDetails.setCellValueFactory(new PropertyValueFactory<>("itemDetails"));
@@ -261,6 +239,7 @@ public void loadAllSupplier() {
         throw new RuntimeException(e);
     }
 }
+
     public void itemSerachOnAction() {
         FilteredList<ItemTm> filteredData = new FilteredList<>(ItemTm.getItems(), b -> true);
 

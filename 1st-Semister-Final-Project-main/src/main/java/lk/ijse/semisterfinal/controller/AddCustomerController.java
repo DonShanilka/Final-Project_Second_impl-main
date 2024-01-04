@@ -92,16 +92,27 @@ public class AddCustomerController implements Initializable {
 
 
     public void CustomerUpdateOnAction(ActionEvent event) throws IOException {
-        Stage stage = new Stage();
-        stage.setScene(new Scene(FXMLLoader.load(this.getClass().getResource("/view/UpdateCustomer.fxml"))));
-        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-            @Override
-            public void handle(WindowEvent windowEvent) {
-                loadAllCustomer();
+        String id = txtCustId.getText();
+        String address = txtCustAddress.getText();
+        String name = txtCustName.getText();
+        String contact = txtCustMobile.getText();
+        String item_id = txtCustitemId.getText();
+        String  Payment = txtCustPayment.getText();
+
+        try{
+            /*if (!validateEmployee()){
+                return;
+            }*/
+            var dto = new CusromerDTO(id,address,name,contact,item_id,Payment);
+            boolean isUpdate = CustomerModel.updateCustomer(dto);
+
+            if (isUpdate){
+                new Alert(Alert.AlertType.CONFIRMATION,"Employee is updated").show();
+               // clearFileds();
             }
-        });
-        stage.centerOnScreen();
-        stage.show();
+        }catch (SQLException e){
+            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+        }
         
     }
 
