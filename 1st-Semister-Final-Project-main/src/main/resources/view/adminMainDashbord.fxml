@@ -16,25 +16,11 @@
                <font>
                   <Font name="Constantia Bold" size="20.0" />
                </font>
-               <graphic>
-                  <ImageView fitHeight="35.0" fitWidth="35.0">
-                     <image>
-                        <Image url="@../image/product%20(2).png" />
-                     </image>
-                  </ImageView>
-               </graphic>
             </JFXButton>
             <JFXButton id="button" fx:id="supplier" buttonType="RAISED" layoutX="17.0" layoutY="303.0" onAction="#SupplierOnAction" prefHeight="40.0" prefWidth="197.0" stylesheets="@style.css" text="Suppliers" textFill="#02d267">
                <font>
                   <Font name="Constantia Bold" size="20.0" />
                </font>
-               <graphic>
-                  <ImageView fitHeight="35.0" fitWidth="35.0">
-                     <image>
-                        <Image url="@../image/supplier%20(1).png" />
-                     </image>
-                  </ImageView>
-               </graphic>
             </JFXButton>
             <JFXButton id="button" fx:id="salary" buttonType="RAISED" layoutX="17.0" layoutY="360.0" onAction="#SalaryOnAction" prefHeight="40.0" prefWidth="197.0" stylesheets="@style.css" text="Salary" textFill="#02d267">
                <font>
@@ -45,77 +31,75 @@
                <font>
                   <Font name="Constantia Bold" size="20.0" />
                </font>
-               <graphic>
-                  <ImageView fitHeight="35.0" fitWidth="35.0">
-                     <image>
-                        <Image url="@../image/support.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
             </JFXButton>
             <JFXButton id="button" fx:id="cashiyer" buttonType="RAISED" layoutX="17.0" layoutY="606.0" onAction="#CashiyerOnAction" prefHeight="40.0" prefWidth="197.0" stylesheets="@style.css" text="Cashiyer" textFill="#02d267">
                <font>
                   <Font name="Constantia Bold" size="20.0" />
                </font>
-               <graphic>
-                  <ImageView fitHeight="35.0" fitWidth="35.0">
-                     <image>
-                        <Image url="@../image/shopping-cart.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
             </JFXButton>
             <JFXButton id="button" fx:id="Employee" buttonType="RAISED" layoutX="17.0" layoutY="245.0" onAction="#EmployeeOnAction" prefHeight="40.0" prefWidth="197.0" stylesheets="@style.css" text="Employee" textAlignment="RIGHT" textFill="#02d267">
                <font>
                   <Font name="Constantia Bold" size="20.0" />
                </font>
-               <graphic>
-                  <ImageView fitHeight="35.0" fitWidth="35.0">
-                     <image>
-                        <Image url="@../image/employee%20(2).png" />
-                     </image>
-                  </ImageView>
-               </graphic>
             </JFXButton>
             <JFXButton id="button" fx:id="monthlyIncome" buttonType="RAISED" layoutX="17.0" layoutY="190.0" onAction="#monthlyIncomeOnAction" prefHeight="40.0" prefWidth="197.0" stylesheets="@style.css" text="Dashbord" textAlignment="CENTER" textFill="#02d267">
                <font>
                   <Font name="Constantia Bold" size="20.0" />
                </font>
-               <graphic>
-                  <ImageView fitHeight="35.0" fitWidth="35.0">
-                     <image>
-                        <Image url="@../image/dashboard.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
             </JFXButton>
             <JFXButton id="button" fx:id="attendence" buttonType="RAISED" layoutX="17.0" layoutY="545.0" onAction="#AttendenceOnAction" prefHeight="40.0" prefWidth="197.0" stylesheets="@style.css" text="Attendance" textFill="#02d267">
                <font>
                   <Font name="Constantia Bold" size="20.0" />
                </font>
-               <graphic>
-                  <ImageView fitHeight="35.0" fitWidth="35.0">
-                     <image>
-                        <Image url="@../image/attendance.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
             </JFXButton>
             <JFXButton fx:id="cashiyer1" buttonType="RAISED" layoutX="27.0" layoutY="690.0" onAction="#logOutOnAction" prefHeight="40.0" prefWidth="143.0" ripplerFill="BLACK" style="-fx-background-color: #00004d; -fx-background-radius: 5;" text="LogOut" textFill="#02d267">
                <font>
                   <Font name="Constantia Bold" size="20.0" />
                </font>
-               <graphic>
-                  <ImageView fitHeight="35.0" fitWidth="35.0">
-                     <image>
-                        <Image url="@../image/logout%20(1).png" />
-                     </image>
-                  </ImageView>
-               </graphic>
             </JFXButton>
             <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="27.0" layoutY="363.0">
                <image>
                   <Image url="@../image/salary%20(1).png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="27.0" layoutY="306.0">
+               <image>
+                  <Image url="@../image/supplier%20(1).png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="27.0" layoutY="252.0">
+               <image>
+                  <Image url="@../image/employee%20(2).png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="27.0" layoutY="193.0">
+               <image>
+                  <Image url="@../image/dashboard.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="27.0" layoutY="424.0">
+               <image>
+                  <Image url="@../image/product%20(2).png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="29.0" layoutY="489.0">
+               <image>
+                  <Image url="@../image/support.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="27.0" layoutY="548.0">
+               <image>
+                  <Image url="@../image/attendance.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="27.0" layoutY="609.0">
+               <image>
+                  <Image url="@../image/shopping-cart.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="31.0" fitWidth="30.0" layoutX="32.0" layoutY="695.0">
+               <image>
+                  <Image url="@../image/logout%20(1).png" />
                </image>
             </ImageView>
          </children>

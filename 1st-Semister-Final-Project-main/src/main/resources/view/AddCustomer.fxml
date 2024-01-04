@@ -28,7 +28,7 @@
          </children></Pane>
       <BorderPane fx:id="borderPane" prefHeight="192.0" prefWidth="761.0">
          <center>
-            <AnchorPane prefHeight="337.0" prefWidth="1127.0" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="337.0" prefWidth="1134.0" BorderPane.alignment="CENTER">
                <children>
                   <TableView fx:id="CustomerAddTable" layoutX="24.0" layoutY="173.0" prefHeight="276.0" prefWidth="1090.0">
                     <columns>
