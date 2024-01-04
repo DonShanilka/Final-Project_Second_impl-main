@@ -42,7 +42,7 @@ public class CustomerModel {
     public static List<CusromerDTO> getAllCustomer() throws SQLException {
         Connection connection = DbConnetion.getInstance().getConnection();
 
-        String sql = "SELECT customer_id,customer_name,customer_address,customer_mobile,payment,item_id FROM customer";
+        String sql = "SELECT customer_id,customer_address,customer_name,customer_mobile,payment,item_id FROM customer";
         PreparedStatement pstm = connection.prepareStatement(sql);
         ResultSet resultSet = pstm.executeQuery();
 

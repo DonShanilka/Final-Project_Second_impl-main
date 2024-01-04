@@ -90,6 +90,39 @@ public class AddCustomerController implements Initializable {
     }
 
 
+    private void tableListener() {
+        CustomerAddTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValued, newValue) -> {
+            setData(newValue);
+
+        });
+    }
+
+    private void setData(CustomerTm row) {
+        txtCustId.setText(row.getId());
+        txtCustAddress.setText(row.getAddress());
+        txtCustName.setText(row.getName());
+        txtCustMobile.setText(row.getTel());
+        txtCustPayment.setText(row.getPayment());
+        txtCustitemId.setText(row.getItemId());
+
+    }
+
+    public void initialize() {
+        setCellValueFactory();
+        loadAllCustomer();
+        clearField();
+    }
+
+    private void setCellValueFactory() {
+        tbCid.setCellValueFactory(new PropertyValueFactory<>("id"));
+        tbCaddress.setCellValueFactory(new PropertyValueFactory<>("address"));
+        tbCname.setCellValueFactory(new PropertyValueFactory<>("name"));
+        tbCmobile.setCellValueFactory(new PropertyValueFactory<>("tel"));
+        tbCpayment.setCellValueFactory(new PropertyValueFactory<>("payment"));
+        tbCitemId.setCellValueFactory(new PropertyValueFactory<>("itemId"));
+
+    }
+
 
     public void CustomerUpdateOnAction(ActionEvent event) throws IOException {
         String id = txtCustId.getText();
@@ -108,7 +141,8 @@ public class AddCustomerController implements Initializable {
 
             if (isUpdate){
                 new Alert(Alert.AlertType.CONFIRMATION,"Employee is updated").show();
-               // clearFileds();
+                loadAllCustomer();
+                clearField();
             }
         }catch (SQLException e){
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
@@ -157,21 +191,6 @@ public class AddCustomerController implements Initializable {
     }
 
 
-    public void initialize() {
-        setCellValueFactory();
-        loadAllCustomer();
-        clearField();
-    }
-
-    private void setCellValueFactory() {
-        tbCid.setCellValueFactory(new PropertyValueFactory<>("id"));
-        tbCname.setCellValueFactory(new PropertyValueFactory<>("name"));
-        tbCaddress.setCellValueFactory(new PropertyValueFactory<>("address"));
-        tbCmobile.setCellValueFactory(new PropertyValueFactory<>("tel"));
-        tbCpayment.setCellValueFactory(new PropertyValueFactory<>("payment"));
-        tbCitemId.setCellValueFactory(new PropertyValueFactory<>("itemId"));
-
-    }
 
     private void loadAllCustomer() {
         var model = new CustomerModel();
@@ -230,6 +249,7 @@ public class AddCustomerController implements Initializable {
         setCellValueFactory();
         clearField();
         itemSerachOnAction();
+        tableListener();
     }
 
 

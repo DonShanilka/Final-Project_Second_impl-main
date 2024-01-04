@@ -81,17 +81,25 @@ public class SalaryController implements Initializable {
     }
 
     private void tableListener() {
-        SalaryTm.getSelectionModel().selectedItemProperty().addListener((observable, oldValued, newValue) -> {
-            setData((SalaryTm) newValue);
+        salaryTm.getSelectionModel().selectedItemProperty().addListener((observable, oldValued, newValue) -> {
+            setData(newValue);
 
         });
     }
 
     private void setData(SalaryTm row) {
         comEmpId.setValue(row.getEmployeeId());
-        colName.setText(row.getEmployeeName());
+        lblName.setText(row.getEmployeeName());
         salary.setText(String.valueOf(row.getSalary()));
         date.setValue(LocalDate.parse(row.getDate()));
+        oTinH.setText(String.valueOf(row.getOtcount()));
+        pay1HourOt.setText(String.valueOf(row.getPay1h()));
+        txtBonase.setText(String.valueOf(row.getBonase()));
+        txtEpf.setText(String.valueOf(row.getEpf()));
+        txtEtf.setText(String.valueOf(row.getEtf()));
+        prsent.setText(String.valueOf(row.getPay1h()));
+        absent.setText(String.valueOf(row.getAbcount()));
+        lblTotalSalary.setText(String.valueOf(row.getTotalsalary()));
 
     }
 
@@ -118,30 +126,7 @@ public class SalaryController implements Initializable {
 
     }
 
-    public void AddSalaryOnAction(ActionEvent event) {
-        double amount = Double.parseDouble(salary.getText());
-        String id = comEmpId.getValue();
-        String Name = lblName.getText();
-        String date1 = String.valueOf(date.getValue());
 
-        var dto = new SalaryDTO(amount, id, Name, date1);
-
-        try {
-            boolean isaddite = SalaryModel.addSalary(dto);
-            if (isaddite) {
-                new Alert(Alert.AlertType.CONFIRMATION, "Add Successful").show();
-                clearField();
-                loadAllSalary();
-            }
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
-        }
-    }
-
-
-    public void BackOnAction(ActionEvent event) {
-
-    }
 
     private void loadEmployeeId() {
         ObservableList<String> obList = FXCollections.observableArrayList();
@@ -160,7 +145,7 @@ public class SalaryController implements Initializable {
     }
 
     public void comEmpIdOnAction(ActionEvent event) {
-        String id = (String) comEmpId.getValue();
+        String id = comEmpId.getValue();
         try {
             AddEmployeeDTO dto = AddEmployeeModel.searchEmployee(id);
             AtendanceDTO dto1 = SalaryModel.getABcount(id);
@@ -169,6 +154,8 @@ public class SalaryController implements Initializable {
             salary.setText(String.valueOf(dto.getBasicSalary()));
             absent.setText(dto1.getAbInt());
             prsent.setText(dto2.getAbInt());
+            txtTo.setText(dto.getEmail());
+
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
@@ -183,8 +170,6 @@ public class SalaryController implements Initializable {
             List<SalaryDTO> dtoList = model.getAllSalary();
 
             for (SalaryDTO dto : dtoList) {
-                Button btn = new Button("Remove");
-                //setRemoveBtnAction(btn, dto);
                 obList.add(
                         new SalaryTm(
                                 dto.getEmployeeId(),
@@ -302,13 +287,12 @@ public class SalaryController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //attendanseP_AB();
         date.setPromptText(String.valueOf(LocalDate.now()));
         loadEmployeeId();
         clearField();
-        tableListener();
         setCellValueFactory();
         loadAllSalary();
+        tableListener();
 
     }
 
