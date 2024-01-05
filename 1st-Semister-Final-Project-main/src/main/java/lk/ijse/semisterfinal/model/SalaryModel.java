@@ -34,27 +34,6 @@ public class SalaryModel {
         return isSaved;
     }
 
-    /*public static List<SalaryDTO> loadAllSalary() throws SQLException {
-        Connection connection = DbConnetion.getInstance().getConnection();
-
-        String sql = "SELECT * FROM salary";
-        PreparedStatement pstm = connection.prepareStatement(sql);
-
-        List<SalaryDTO> salaryList = new ArrayList<>();
-
-        ResultSet resultSet = pstm.executeQuery();
-        while (resultSet.next()) {
-            var dto =new SalaryDTO(
-                    resultSet.getDate(1),
-                    resultSet.getString(2),
-                    resultSet.getString(3),
-                    resultSet.getDouble(4)
-            );
-            salaryList.add(dto);
-        }
-
-        return salaryList;
-    }*/
 
     public static ArrayList<SalaryDTO> getAllSalary() throws SQLException {
         Connection connection = DbConnetion.getInstance().getConnection();
@@ -128,6 +107,17 @@ public class SalaryModel {
             dto = new AtendanceDTO(pr);
         }
         return dto;
+    }
+
+
+    public static boolean deleteSalary(String id) throws SQLException {
+        Connection connection = DbConnetion.getInstance().getConnection();
+
+        String sql = "DELETE FROM salary WHERE employee_id = ?";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+        pstm.setString(1,id);
+
+        return pstm.executeUpdate()>0;
     }
 
 }

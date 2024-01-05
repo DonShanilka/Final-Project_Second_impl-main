@@ -152,6 +152,6 @@ public class AttendanceController implements Initializable {
         setCellValueFactory();
         presentAbsent.getItems().addAll(pA);
         loadallAttendance();
-        tableListener();
+        //tableListener();
     }
 }

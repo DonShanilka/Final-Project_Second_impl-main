@@ -39,16 +39,5 @@ public class SalaryTm {
         this.totalsalary = totalsalary;
     }
 
-    public SalaryTm(double lblTotalSalary) {
-        this.lblTotalSalary = lblTotalSalary;
-    }
-
-
-    public static ChoiceDialog<Object> getSelectionModel() {
-        ChoiceDialog<Object> choiceDialog = new ChoiceDialog<>();
-        choiceDialog.setTitle("Delete");
-        choiceDialog.setHeaderText("Are you sure you want to delete this item?");
-        return choiceDialog;
-    }
 
 }

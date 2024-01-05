@@ -19,6 +19,7 @@ import lk.ijse.semisterfinal.dto.AddEmployeeDTO;
 import lk.ijse.semisterfinal.dto.AtendanceDTO;
 import lk.ijse.semisterfinal.dto.SalaryDTO;
 import lk.ijse.semisterfinal.model.AddEmployeeModel;
+import lk.ijse.semisterfinal.model.CustomerModel;
 import lk.ijse.semisterfinal.model.SalaryModel;
 
 import java.net.URL;
@@ -88,10 +89,10 @@ public class SalaryController implements Initializable {
     }
 
     private void setData(SalaryTm row) {
+        date.setValue(LocalDate.parse(row.getDate()));
         comEmpId.setValue(row.getEmployeeId());
         lblName.setText(row.getEmployeeName());
         salary.setText(String.valueOf(row.getSalary()));
-        date.setValue(LocalDate.parse(row.getDate()));
         oTinH.setText(String.valueOf(row.getOtcount()));
         pay1HourOt.setText(String.valueOf(row.getPay1h()));
         txtBonase.setText(String.valueOf(row.getBonase()));
@@ -160,6 +161,8 @@ public class SalaryController implements Initializable {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
+
+
 
     private void loadAllSalary() {
         var model = new SalaryModel();
@@ -302,6 +305,22 @@ public class SalaryController implements Initializable {
 
         //txtTotalSalary.setText("Rs : " + total);
         //(String.valueOf
+    }
+
+    public void salaryDeleteOnAction(ActionEvent actionEvent) {
+
+        String id = lblName.getText();
+
+        try{
+            boolean isDelete = SalaryModel.deleteSalary(id);
+            if (isDelete){
+                new Alert(Alert.AlertType.CONFIRMATION,"Customer deleted").show();
+                loadAllSalary();
+                clearField();
+            }
+        }catch (SQLException e){
+            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+        }
     }
 
     public class Mail implements Runnable {
