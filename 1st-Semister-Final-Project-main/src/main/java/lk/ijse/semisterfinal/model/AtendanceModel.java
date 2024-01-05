@@ -3,6 +3,8 @@ package lk.ijse.semisterfinal.model;
 import com.ctc.wstx.osgi.WstxBundleActivator;
 import lk.ijse.semisterfinal.DB.DbConnetion;
 import lk.ijse.semisterfinal.dto.AtendanceDTO;
+import lk.ijse.semisterfinal.dto.CusromerDTO;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -35,40 +37,19 @@ public class AtendanceModel {
 
         ArrayList<AtendanceDTO> dtoList = new ArrayList<>();
 
-        while (resultSet.next()){
+        while(resultSet.next()) {
             dtoList.add(
                     new AtendanceDTO(
                             resultSet.getString(1),
                             resultSet.getString(2),
                             resultSet.getString(3),
                             resultSet.getString(4)
+
                     )
             );
+
         }
         return dtoList;
-    }
-
-    public static List<AtendanceDTO> getPA() throws SQLException {
-        Connection connection = DbConnetion.getInstance().getConnection();
-
-        String sql = "SELECT COUNT(attendance) FROM presentAbsent  = 'Present' ";
-        PreparedStatement pstm = connection.prepareStatement(sql);
-        ResultSet resultSet = pstm.executeQuery();
-
-        ArrayList<AtendanceDTO> dtoList = new ArrayList<>();
-
-        while (resultSet.next()){
-            dtoList.add(
-                    new AtendanceDTO(
-                            resultSet.getString(1),
-                            resultSet.getString(2),
-                            resultSet.getString(3),
-                            resultSet.getString(4)
-                    )
-            );
-        }
-        return dtoList;
-
     }
 
 }

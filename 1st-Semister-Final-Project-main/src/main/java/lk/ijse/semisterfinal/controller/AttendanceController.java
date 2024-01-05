@@ -26,7 +26,6 @@ public class AttendanceController implements Initializable {
     public DatePicker date;
     public ComboBox comEmpId;
     public TextField lblName;
-    public TableView <AtendanceTm> atendanceTm;
     public TableColumn <?,?> colId;
     public TableColumn <?,?> colName;
     public TableColumn <?,?> colDate;
@@ -35,9 +34,10 @@ public class AttendanceController implements Initializable {
     public DatePicker AttDate;
     public ChoiceBox <String> presentAbsent;
     public TableColumn <?,?> colPa;
+    public TableView <AtendanceTm> atendanceTM;
     private AddEmployeeModel employeeModel = new AddEmployeeModel();
     private AtendanceModel attendanceModel = new AtendanceModel();
-    private ObservableList<AtendanceTm> obList = FXCollections.observableArrayList();
+    //private ObservableList<AtendanceTm> obList = FXCollections.observableArrayList();
 
     private String[] pA = {"Present" , "Absent"};
 
@@ -56,10 +56,25 @@ public class AttendanceController implements Initializable {
         colPa.setCellValueFactory(new PropertyValueFactory<>("Present"));
     }
 
+    private void tableListener() {
+        atendanceTM.getSelectionModel().selectedItemProperty().addListener((observable, oldValued, newValue) -> {
+            setData(newValue);
+
+        });
+    }
+
+    private void setData(AtendanceTm row) {
+        comEmpId.setValue(row.getEmployeeId());
+        lblName.setText(row.getEmployeeName());
+        date.setValue(LocalDate.parse(row.getDate()));
+        presentAbsent.setValue(row.getPresent());
+
+    }
+
     private void loadAllEmployee() {
         ObservableList<String> obList = FXCollections.observableArrayList();
         try {
-            List<AddEmployeeDTO> teacherDtos = employeeModel.getAllEmployee();
+            List<AddEmployeeDTO> teacherDtos = AddEmployeeModel.getAllEmployee();
 
             for (AddEmployeeDTO dto : teacherDtos) {
                 obList.add(dto.getEmployeeId());
@@ -104,12 +119,12 @@ public class AttendanceController implements Initializable {
 
 
     private void loadallAttendance(){
-        var model = new AtendanceModel();
+        //var model = new AtendanceModel();
 
         ObservableList<AtendanceTm>  oblist = FXCollections.observableArrayList();
 
         try{
-            List<AtendanceDTO> dtoList = model.getAllatendance();
+            List<AtendanceDTO> dtoList = AtendanceModel.getAllatendance();
 
             for (AtendanceDTO dto: dtoList) {
                 oblist.add(new AtendanceTm(
@@ -119,7 +134,7 @@ public class AttendanceController implements Initializable {
                         dto.getPOra()
                 ));
             }
-            atendanceTm.setItems(obList);
+            atendanceTM.setItems(oblist);
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -137,5 +152,6 @@ public class AttendanceController implements Initializable {
         setCellValueFactory();
         presentAbsent.getItems().addAll(pA);
         loadallAttendance();
+        tableListener();
     }
 }

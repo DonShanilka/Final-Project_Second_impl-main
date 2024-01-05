@@ -12,7 +12,7 @@
 
 <AnchorPane fx:id="root1" prefHeight="766.0" prefWidth="1134.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.semisterfinal.controller.MonthlyincomeController">
    <children>
-      <Pane id="box" layoutX="13.0" layoutY="16.0" prefHeight="714.0" prefWidth="1134.0" style="-fx-background-color: #e6e6ff;">
+      <Pane id="box" layoutY="-4.0" prefHeight="773.0" prefWidth="1147.0" style="-fx-background-color: #e6e6ff;">
          <children>
             <Label layoutX="14.0" layoutY="14.0" prefHeight="31.0" prefWidth="129.0" text="Dashboard">
                <font>

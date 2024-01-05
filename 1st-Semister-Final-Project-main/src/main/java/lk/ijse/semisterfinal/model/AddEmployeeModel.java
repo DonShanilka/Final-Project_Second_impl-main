@@ -115,9 +115,6 @@ public class AddEmployeeModel {
         return dto;
     }
 
-    public AddEmployeeDTO search(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 
     public static boolean deleteEmployee(String id) throws SQLException {
         Connection connection = DbConnetion.getInstance().getConnection();

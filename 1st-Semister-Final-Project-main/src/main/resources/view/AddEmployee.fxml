@@ -19,9 +19,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="root" prefHeight="755.0" prefWidth="1183.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.semisterfinal.controller.EmployeeController">
+<AnchorPane fx:id="root" prefHeight="755.0" prefWidth="1155.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.semisterfinal.controller.EmployeeController">
    <children>
-      <Pane accessibleRole="LIST_VIEW" layoutX="-1.0" layoutY="14.0" prefHeight="695.0" prefWidth="1183.0" style="-fx-background-color: #e6e6ff; -fx-background-radius: 20;">
+      <Pane accessibleRole="LIST_VIEW" layoutX="-1.0" layoutY="-4.0" prefHeight="755.0" prefWidth="1157.0" style="-fx-background-color: #e6e6ff;">
          <children>
             <Line endX="100.0" layoutX="130.0" layoutY="119.0" startX="-100.0" />
             <Line endX="100.0" layoutX="129.0" layoutY="177.0" startX="-100.0" />
@@ -36,22 +36,22 @@
             <TextField fx:id="txtAddress" layoutX="277.0" layoutY="150.0" prefHeight="25.0" prefWidth="201.0" promptText="Address" style="-fx-background-color: #e6e6ff;" />
             <TextField fx:id="txtPossition" layoutX="276.0" layoutY="259.0" prefHeight="25.0" prefWidth="201.0" promptText="Possition" style="-fx-background-color: #e6e6ff;" />
             <DatePicker fx:id="empDate" layoutX="276.0" layoutY="93.0" prefHeight="25.0" prefWidth="201.0" style="-fx-background-color: #00004DFF;" />
-            <JFXButton buttonType="RAISED" layoutX="862.0" layoutY="330.0" onAction="#EmployeeAddOnAction" prefHeight="32.0" prefWidth="92.0" style="-fx-background-color: #00b359; -fx-background-radius: 5;" text="+ Add">
+            <JFXButton buttonType="RAISED" layoutX="786.0" layoutY="330.0" onAction="#EmployeeAddOnAction" prefHeight="32.0" prefWidth="92.0" style="-fx-background-color: #00b359; -fx-background-radius: 5;" text="+ Add">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </JFXButton>
-            <JFXButton buttonType="RAISED" layoutX="967.0" layoutY="332.0" onAction="#EmployeeUpdateOnAction" prefHeight="32.0" prefWidth="92.0" style="-fx-background-color: yellow; -fx-background-radius: 5;" text="Update">
+            <JFXButton buttonType="RAISED" layoutX="913.0" layoutY="330.0" onAction="#EmployeeUpdateOnAction" prefHeight="32.0" prefWidth="92.0" style="-fx-background-color: yellow; -fx-background-radius: 5;" text="Update">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </JFXButton>
-            <JFXButton buttonType="RAISED" layoutX="1074.0" layoutY="332.0" onAction="#EmployeeDeleteOnAction" prefHeight="32.0" prefWidth="92.0" style="-fx-background-color: orange; -fx-background-radius: 5;" text="Delete">
+            <JFXButton buttonType="RAISED" layoutX="1044.0" layoutY="330.0" onAction="#EmployeeDeleteOnAction" prefHeight="32.0" prefWidth="92.0" style="-fx-background-color: orange; -fx-background-radius: 5;" text="Delete">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </JFXButton>
-            <TableView fx:id="EmployeeTm" layoutX="15.0" layoutY="391.0" prefHeight="266.0" prefWidth="1154.0" stylesheets="@style.css">
+            <TableView fx:id="EmployeeTm" layoutX="1.0" layoutY="391.0" prefHeight="266.0" prefWidth="1154.0" stylesheets="@style.css">
               <columns>
                 <TableColumn fx:id="tmid" prefWidth="68.0" text="id" />
                 <TableColumn fx:id="tmEmpName" prefWidth="129.0" text="Employee Name" />
@@ -95,7 +95,7 @@
                   <Image url="@../image/employee%20(1).png" />
                </image>
             </ImageView>
-            <JFXButton buttonType="RAISED" layoutX="716.0" layoutY="330.0" onAction="#EmployeeSalaryViewOnAction" prefHeight="32.0" prefWidth="126.0" style="-fx-background-color: #00ace6; -fx-background-radius: 5;" text="View Details">
+            <JFXButton buttonType="RAISED" layoutX="628.0" layoutY="330.0" onAction="#EmployeeSalaryViewOnAction" prefHeight="32.0" prefWidth="126.0" style="-fx-background-color: #00ace6; -fx-background-radius: 5;" text="Employee ID">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>

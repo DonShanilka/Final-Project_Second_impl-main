@@ -11,11 +11,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="pane" prefHeight="758.0" prefWidth="1184.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.semisterfinal.controller.CashierController">
+<AnchorPane fx:id="pane" prefHeight="758.0" prefWidth="1147.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.semisterfinal.controller.CashierController">
    <children>
-      <Pane layoutX="17.0" layoutY="16.0" prefHeight="727.0" prefWidth="1150.0" style="-fx-background-color: #e6e6ff; -fx-background-radius: 20;">
+      <Pane layoutY="-8.0" prefHeight="758.0" prefWidth="1147.0" style="-fx-background-color: #e6e6ff;">
          <children>
-            <Pane layoutX="5.0" layoutY="416.0" prefHeight="105.0" prefWidth="294.0" style="-fx-background-color: white; -fx-background-radius: 10;">
+            <Pane layoutX="20.0" layoutY="442.0" prefHeight="105.0" prefWidth="294.0" style="-fx-background-color: white; -fx-background-radius: 10;">
                <children>
                   <Label layoutX="12.0" layoutY="31.0" text="Customer Id:">
                      <font>
@@ -63,7 +63,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Pane layoutX="854.0" layoutY="72.0" prefHeight="663.0" prefWidth="294.0" style="-fx-background-color: white; -fx-background-radius: 2;">
+      <Pane layoutX="854.0" layoutY="72.0" prefHeight="663.0" prefWidth="278.0" style="-fx-background-color: white; -fx-background-radius: 2;">
          <children>
             <Label layoutX="14.0" layoutY="27.0" text="Order Id:">
                <font>
