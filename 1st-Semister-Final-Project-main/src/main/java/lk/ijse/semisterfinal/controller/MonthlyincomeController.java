@@ -104,27 +104,6 @@ public class MonthlyincomeController  implements Initializable {
         }
     }
 
-    /*public void incomeChart() throws SQLException {
-        incomeDataChart.getData().clear();
-
-        String sql = "SELECT date,SUM(unit_price) FROM order_detail GROUP BY date ORDER BY TIMESTAMP(date) ASC LIMIT 6";
-        Connection connection = DbConnetion.getInstance().getConnection();
-
-        try {
-            XYChart.Series chart = new XYChart.Series();
-
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            ResultSet resultSet = preparedStatement.executeQuery();
-
-            while (resultSet.next()) {
-                chart.getData().add(new XYChart.Data(resultSet.getString(1), resultSet.getString(2)));
-            }
-            incomeDataChart.getData().add(chart);
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }*/
 
     public void orderChart() throws SQLException {
         orderDataChart.getData().clear();

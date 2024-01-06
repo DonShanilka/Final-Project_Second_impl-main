@@ -25,6 +25,7 @@ import lk.ijse.semisterfinal.dto.SupplierDTO;
 import lk.ijse.semisterfinal.model.ItemModel;
 import lk.ijse.semisterfinal.model.SupplierModel;
 import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
@@ -38,9 +39,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 import java.util.regex.Pattern;
 
 import static java.awt.SystemColor.text;
@@ -331,14 +330,9 @@ public void loadAllSupplier() {
         InputStream inputStream = getClass().getResourceAsStream("../reports/Warranty.jrxml");
         JasperDesign jasperDesign = JRXmlLoader.load(inputStream);
         JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
-        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport,null,
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, null,
                 DbConnetion.getInstance().getConnection());
-        JasperViewer.viewReport(jasperPrint,false);
-
-            /*JasperDesign jasDesign = JRXmlLoader.load("src/main/resources/report/Warranty.jrxml");
-            JasperReport jasReport = JasperCompileManager.compileReport(jasDesign);
-            JasperPrint jasPrint = JasperFillManager.fillReport(jasReport, null,DbConnetion.getInstance().getConnection());
-            JasperViewer.viewReport(jasPrint,false);*/
+        JasperViewer.viewReport(jasperPrint, false);
 
     }
 
