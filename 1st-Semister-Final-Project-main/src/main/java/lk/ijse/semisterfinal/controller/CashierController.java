@@ -341,7 +341,7 @@ public class CashierController {
     }
 
     public void mouseClicakAction(MouseEvent mouseEvent) {
-}
+    }
 
 
     private boolean validateEmployee() {
@@ -370,6 +370,7 @@ public class CashierController {
                 .text(text)
                 .showError();
     }
+
 
 }
 
