@@ -107,10 +107,11 @@ public class AddEmployeeModel {
             String address = resultSet.getString(3);
             int mobile = Integer.parseInt(String.valueOf(resultSet.getInt(4)));
             String date = resultSet.getString(5);
-            String email = resultSet.getString(5);
+            String email = resultSet.getString(7);
             String position = resultSet.getString(6);
+            double bSalary = resultSet.getDouble(10);
 
-            dto = new AddEmployeeDTO(eid,name,address,mobile,date,email,position);
+            dto = new AddEmployeeDTO(eid,name,address,mobile,date,email,position,bSalary);
         }
         return dto;
     }

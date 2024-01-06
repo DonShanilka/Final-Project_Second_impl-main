@@ -30,6 +30,7 @@ public class AddEmployeeDTO {
         this.empDate = date;
         this.email = email;
         this.empPosition = position;
+
     }
 
 
@@ -46,5 +47,19 @@ public class AddEmployeeDTO {
         this.BasicSalary = basic;
         this.Expiriance = experiance;
         this.de = de;
+
+    }
+
+    public AddEmployeeDTO(String eid, String name, String address, int mobile, String date, String email, String position, double bSalary) {
+
+        this.employeeId = eid;
+        this.EmployeeName = name;
+        this.EmpAddress = address;
+        this.EmployeePhone = mobile;
+        this.empDate = date;
+        this.email = email;
+        this.empPosition = position;
+        this.BasicSalary = bSalary;
+
     }
 }

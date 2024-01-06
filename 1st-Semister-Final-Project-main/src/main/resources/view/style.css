@@ -43,7 +43,7 @@
 }
 
 .table-row-cell:selected{
-    -fx-background-color:linear-gradient(from 0% 0% to 100% 100%, white 0%, #118500 50%, white 100%);
+    -fx-background-color:linear-gradient(from 0% 0% to 100% 100%, #39ff00 0%, #1fff00 100%, #36ff00 0%);
 }
 
 .table-row-cell:selected .table-cell{

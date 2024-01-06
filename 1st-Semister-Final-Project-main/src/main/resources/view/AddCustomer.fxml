@@ -30,7 +30,7 @@
          <center>
             <AnchorPane prefHeight="337.0" prefWidth="1134.0" BorderPane.alignment="CENTER">
                <children>
-                  <TableView fx:id="CustomerAddTable" layoutX="24.0" layoutY="173.0" prefHeight="276.0" prefWidth="1090.0">
+                  <TableView fx:id="CustomerAddTable" layoutX="24.0" layoutY="173.0" prefHeight="276.0" prefWidth="1090.0" stylesheets="@style.css">
                     <columns>
                       <TableColumn fx:id="tbCid" prefWidth="106.0" text="Customer id" />
                       <TableColumn fx:id="tbCname" prefWidth="176.0" text="Customer Name" />

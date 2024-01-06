@@ -120,7 +120,7 @@
             </Label>
             <TextField fx:id="txtSupQty" layoutX="623.0" layoutY="327.0" prefHeight="25.0" prefWidth="68.0" style="-fx-background-color: #e6e6ff;" />
             <Line endX="-27.0" layoutX="726.0" layoutY="352.0" startX="-100.0" />
-            <TableView fx:id="supplierAddTable" layoutX="1.0" layoutY="434.0" prefHeight="224.0" prefWidth="1134.0">
+            <TableView fx:id="supplierAddTable" layoutX="1.0" layoutY="434.0" prefHeight="224.0" prefWidth="1134.0" stylesheets="@style.css">
               <columns>
                 <TableColumn fx:id="tmSupId" prefWidth="83.0" text="Supplier NIC" />
                 <TableColumn fx:id="tmSupName" prefWidth="104.0" text="Supplier Name" />
