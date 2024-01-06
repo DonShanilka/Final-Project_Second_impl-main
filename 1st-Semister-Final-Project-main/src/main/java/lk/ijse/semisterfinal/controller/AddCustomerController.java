@@ -27,6 +27,7 @@ import org.controlsfx.control.Notifications;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -49,21 +50,7 @@ public class AddCustomerController implements Initializable {
     public TableColumn <?, ?> tbCpayment;
     public TableColumn <?, ?> tbCitemId;
     public TextField serachItem;
-    @FXML
-    private BorderPane borderPane;
-
-    @FXML
-    private Label newCustomer;
-
-    @FXML
-    private Label newCustomerBack;
-
-    @FXML
-    private AnchorPane rootNode;
-
-    @FXML
-    private AnchorPane sliderAnchor;
-
+    public Label lblTotalCustomer;
     @FXML
     public TextField txtCustMobile;
     @FXML
@@ -249,14 +236,41 @@ public class AddCustomerController implements Initializable {
                 .showError();
     }
 
+    public void totalCustomer() throws SQLException {
+        Connection connection = DbConnetion.getInstance().getConnection();
+
+        String sql = "SELECT COUNT(customer_id) FROM customer";
+
+        String totalcust = null;
+
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while(resultSet.next()){
+                totalcust = resultSet.getString("COUNT(customer_id)");
+            }
+            lblTotalCustomer.setText(totalcust);
+
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        loadAllCustomer();
-        setCellValueFactory();
-        clearField();
-        itemSerachOnAction();
-        tableListener();
+        try {
+            loadAllCustomer();
+            setCellValueFactory();
+            clearField();
+            itemSerachOnAction();
+            tableListener();
+            totalCustomer();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 

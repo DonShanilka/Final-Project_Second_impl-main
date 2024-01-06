@@ -24,7 +24,7 @@
    <children>
       <Pane fx:id="root" layoutX="9.0" prefHeight="766.0" prefWidth="1141.0" style="-fx-background-color: white;">
          <children>
-            <Pane layoutX="-8.0" prefHeight="766.0" prefWidth="1147.0" style="-fx-background-color: #e6e6ff;">
+            <Pane layoutX="-6.0" prefHeight="766.0" prefWidth="1147.0" style="-fx-background-color: #e6e6ff;">
                <children>
       
                   <JFXButton buttonType="RAISED" layoutX="860.0" layoutY="266.0" onAction="#deleteOnAction" prefHeight="36.0" prefWidth="86.0" style="-fx-background-color: orange;" text="Delete" textAlignment="CENTER" textFill="WHITE">
@@ -69,7 +69,7 @@
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </JFXButton>
-                  <Rectangle arcHeight="30.0" arcWidth="30.0" height="82.0" layoutX="850.0" layoutY="61.0" stroke="#000590" strokeType="INSIDE" width="237.0">
+                  <Rectangle arcHeight="30.0" arcWidth="30.0" height="82.0" layoutX="872.0" layoutY="43.0" stroke="#000590" strokeType="INSIDE" width="237.0">
                      <fill>
                         <LinearGradient endX="1.0" endY="1.0" startX="0.3270142180094787" startY="0.895734597156398">
                            <stops>
@@ -87,12 +87,12 @@
                         </LinearGradient>
                      </fill>
                   </Rectangle>
-                  <Text fill="WHITE" layoutX="920.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Item">
+                  <Text fill="WHITE" layoutX="942.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Item">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Text>
-                  <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="872.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="894.0" layoutY="87.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../image/product%20(1).png" />
                      </image>
@@ -111,7 +111,7 @@
                      </font>
                   </JFXButton>
                </children></Pane>
-            <Label fx:id="lblTotalItem" layoutX="830.0" layoutY="57.0" textFill="WHITE">
+            <Label fx:id="lblTotalItem" layoutX="887.0" layoutY="56.0" textFill="WHITE">
                <font>
                   <Font name="System Bold Italic" size="20.0" />
                </font>

@@ -73,12 +73,12 @@
                         <Image url="@../image/value.png" />
                      </image>
                   </ImageView>
-                  <Text fill="WHITE" layoutX="883.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2" wrappingWidth="34.298828125">
-                     <font>
-                        <Font name="System Bold" size="20.0" />
-                     </font>
-                  </Text>
                   <TextField fx:id="serachItem" layoutX="24.0" layoutY="114.0" prefHeight="25.0" prefWidth="295.0" />
+                  <Label fx:id="lblTotalCustomer" layoutX="883.0" layoutY="49.0" textFill="#05ff00">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
          </center>

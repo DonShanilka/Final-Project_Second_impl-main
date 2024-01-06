@@ -99,6 +99,7 @@ public class AttendanceController implements Initializable {
             boolean isaddite = AtendanceModel.addAttendance(dto);
             if (isaddite) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Add Successful").show();
+                loadallAttendance();
                 loadAllEmployee();
             }
         } catch (SQLException e) {
