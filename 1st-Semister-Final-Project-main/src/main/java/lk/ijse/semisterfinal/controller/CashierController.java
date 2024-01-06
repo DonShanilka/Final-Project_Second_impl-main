@@ -95,7 +95,6 @@ public class CashierController {
         loadCustomerId();
         generateNextOrderId();
         setCellValueFactory();
-        validateEmployee();
 
     }
 
@@ -214,29 +213,34 @@ public class CashierController {
 
         System.out.println(obList.toString());
 
-        if (!obList.isEmpty()) {
-            System.out.println("in list");
-            for (int i = 0; i < tblOrderCart.getItems().size(); i++) {
-                if (colItemCode.getCellData(i).equals(code)) {
-                    int col_qty = (int) colQty.getCellData(i);
-                    System.out.println("Intiger");
-                    qty += col_qty;
-                    tot = unitPrice - discount * qty;
-                    System.out.println(tot);
-                    System.out.println("Shanilka");
-                    obList.get(i).setQty(String.valueOf(qty));
-                    obList.get(i).setTotal(tot);
+        try {
 
-                    calculateTotal();
-                    tblOrderCart.refresh();
-                    return;
+            if (!obList.isEmpty()) {
+                System.out.println("in list");
+                for (int i = 0; i < tblOrderCart.getItems().size(); i++) {
+                    if (colItemCode.getCellData(i).equals(code)) {
+                        int col_qty = (int) colQty.getCellData(i);
+                        System.out.println("Intiger");
+                        qty += col_qty;
+                        tot = unitPrice - discount * qty;
+                        System.out.println(tot);
+                        System.out.println("Shanilka");
+                        obList.get(i).setQty(String.valueOf(qty));
+                        obList.get(i).setTotal(tot);
+
+                        calculateTotal();
+                        tblOrderCart.refresh();
+                        return;
+                    }
                 }
             }
-        }
-        obList.add(new CartTm(code, description, unitPrice, qty, tot, discount, btn));
+            obList.add(new CartTm(code, description, unitPrice, qty, tot, discount, btn));
 
-        tblOrderCart.setItems(obList);
-        calculateTotal();
+            tblOrderCart.setItems(obList);
+            calculateTotal();
+        } catch (RuntimeException e){
+            new Alert(Alert.AlertType.ERROR, "Sothing is worng");
+        }
     }
 
     private void calculateBalance() {
@@ -299,10 +303,6 @@ public class CashierController {
 
         try {
 
-            if (!validateEmployee()){
-                return;
-            }
-
             boolean isSuccess = CashiyerModel.placeOrder(placeOrderDto);
 
             if (isSuccess) {
@@ -311,7 +311,7 @@ public class CashierController {
                 new Alert(Alert.AlertType.ERROR, "Something went wrong!").show();
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            new Alert(Alert.AlertType.ERROR, "Somthing Went Wrong").show();
         }
         calculateBalance();
 
@@ -341,34 +341,6 @@ public class CashierController {
     }
 
     public void mouseClicakAction(MouseEvent mouseEvent) {
-    }
-
-
-    private boolean validateEmployee() {
-        boolean isValidate = true;
-        boolean name = Pattern.matches("[A-Za-z]{2,}", lblCustomerName.getText());
-        if (!name){
-            showErrorNotification("Invalid Employee Name", "The Employee name you entered is invalid");
-            isValidate = false;
-        }
-        boolean NIC = Pattern.matches("^([0-9]{9}|[0-9]{12})$",cmbCustomerId.getValue());
-        if (!NIC){
-            showErrorNotification("Invalid NIC", "The NIC Number you entered is invalid");
-            isValidate = false;
-
-        }
-        boolean Job = Pattern.matches("[A-Za-z]{2,}",lblItemName.getText());
-        if (!Job){
-            showErrorNotification("Invalid job type", "The job type you entered is invalid");
-            isValidate = false;
-        }
-        return isValidate;
-    }
-    private void showErrorNotification(String title, String text) {
-        Notifications.create()
-                .title(title)
-                .text(text)
-                .showError();
     }
 
 
