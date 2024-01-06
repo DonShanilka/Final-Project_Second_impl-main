@@ -25,11 +25,4 @@ public class CusromerDTO {
         txtCustPayment = payment;
     }
 
-    public String getTxtCustName() {
-        return txtCustName;
-    }
-
-    public void setTxtCustName(String txtCustName) {
-        this.txtCustName = txtCustName;
-    }
 }

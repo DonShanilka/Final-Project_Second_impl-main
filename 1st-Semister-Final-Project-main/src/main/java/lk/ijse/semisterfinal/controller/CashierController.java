@@ -133,7 +133,7 @@ public class CashierController {
         try {
             List<CusromerDTO> idList = customerModel.getAllCustomer();
             for (CusromerDTO dto : idList) {
-                obList.add(dto.getTxtCustMobile());
+                obList.add(dto.getTxtCustId());
             }
             cmbCustomerId.setItems(obList);
         } catch (SQLException e) {
