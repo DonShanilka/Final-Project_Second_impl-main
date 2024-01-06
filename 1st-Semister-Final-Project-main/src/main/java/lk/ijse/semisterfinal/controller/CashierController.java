@@ -277,7 +277,7 @@ public class CashierController {
     }
 
 
-    public void btnPlaceOrderOnAction(ActionEvent actionEvent) {
+    public void btnPlaceOrderOnAction(ActionEvent actionEvent) throws JRException, SQLException {
         //validateCustomer();
 
         if (lblCustomerName == null){
@@ -314,6 +314,14 @@ public class CashierController {
             throw new RuntimeException(e);
         }
         calculateBalance();
+
+        InputStream inputStream = getClass().getResourceAsStream("../reports/megaMartCustomerBill.jrxml");
+        JasperDesign jasperDesign = JRXmlLoader.load(inputStream);
+        JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport,null,
+                DbConnetion.getInstance().getConnection());
+        JasperViewer.viewReport(jasperPrint,false);
+
     }
 
     public void txtDiscountOnAction(ActionEvent event) {
