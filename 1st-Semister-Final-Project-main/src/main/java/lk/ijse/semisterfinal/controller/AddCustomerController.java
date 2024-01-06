@@ -221,7 +221,7 @@ public class AddCustomerController implements Initializable {
 
     private boolean validateCustomer() {
         boolean isValidate = true;
-        boolean address = Pattern.matches("[A-Za-z]{0,}",txtCustAddress.getText());
+        boolean address = Pattern.matches("[A-Za-z]{3,}",txtCustAddress.getText());
         if (!address){
             showErrorNotification("Invalid Address", "The Address you entered is invalid");
             isValidate = false;
@@ -232,6 +232,13 @@ public class AddCustomerController implements Initializable {
             isValidate = false;
 
         }
+        boolean NIC = Pattern.matches("^([0-9]{9}|[0-9]{12})$",txtCustId.getText());
+        if (!NIC){
+            showErrorNotification("Invalid NIC", "The NIC Number you entered is invalid");
+            isValidate = false;
+
+        }
+
         return isValidate;
     }
 

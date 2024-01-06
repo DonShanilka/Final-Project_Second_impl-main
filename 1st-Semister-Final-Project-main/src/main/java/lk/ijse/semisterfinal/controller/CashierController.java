@@ -95,7 +95,7 @@ public class CashierController {
         loadCustomerId();
         generateNextOrderId();
         setCellValueFactory();
-        //validateCustomer();
+        validateEmployee();
 
     }
 
@@ -278,11 +278,6 @@ public class CashierController {
 
 
     public void btnPlaceOrderOnAction(ActionEvent actionEvent) throws JRException, SQLException {
-        //validateCustomer();
-
-        if (lblCustomerName == null){
-            new Alert(Alert.AlertType.ERROR, "Customer id Not Enter").show();
-        }
 
             String orderId = lblOrderId.getText();
             System.out.println("Order id: " + orderId);
@@ -303,6 +298,11 @@ public class CashierController {
             PlaceOrderDto placeOrderDto = new PlaceOrderDto(orderId, date, customerId, cartTmList);
 
         try {
+
+            if (!validateEmployee()){
+                return;
+            }
+
             boolean isSuccess = CashiyerModel.placeOrder(placeOrderDto);
 
             if (isSuccess) {
@@ -341,35 +341,35 @@ public class CashierController {
     }
 
     public void mouseClicakAction(MouseEvent mouseEvent) {
-        /*Integer index = customerModel.getSelectionModel().getSelectedIndex();
-        if (index <= -1) {
-            return;
-        }
-        tm.setDate(LocalDate.parse(parkingdate_txt.getCellData(index).toString()));
-        tm.setParkingFee(Double.parseDouble(parkingfee_txt.getCellData(index).toString()));
-        tm.setType(parkingtype_txt.getCellData(index).toString());
-        tm.setSpaceNum(parkingspace_txt.getCellData(index).toString());
-    }*/
-
 }
 
-    private void showErrorNotification(String title, String txtt) {
-        Notifications.create()
-                .title(title)
-                .text(String.valueOf(text))
-                .showError();
-    }
 
-    /*private boolean validateCustomer() {
+    private boolean validateEmployee() {
         boolean isValidate = true;
-        boolean id = Pattern.matches("[A-Za-]{0,}",cmbCustomerId.getText());
-        if (!id){
-            showErrorNotification("Invalid Name", "The Name you entered is invalid");
+        boolean name = Pattern.matches("[A-Za-z]{2,}", lblCustomerName.getText());
+        if (!name){
+            showErrorNotification("Invalid Employee Name", "The Employee name you entered is invalid");
             isValidate = false;
         }
+        boolean NIC = Pattern.matches("^([0-9]{9}|[0-9]{12})$",cmbCustomerId.getValue());
+        if (!NIC){
+            showErrorNotification("Invalid NIC", "The NIC Number you entered is invalid");
+            isValidate = false;
 
+        }
+        boolean Job = Pattern.matches("[A-Za-z]{2,}",lblItemName.getText());
+        if (!Job){
+            showErrorNotification("Invalid job type", "The job type you entered is invalid");
+            isValidate = false;
+        }
         return isValidate;
-    }*/
+    }
+    private void showErrorNotification(String title, String text) {
+        Notifications.create()
+                .title(title)
+                .text(text)
+                .showError();
+    }
 
 }
 

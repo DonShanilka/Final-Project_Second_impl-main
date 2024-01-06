@@ -17,6 +17,8 @@ import lk.ijse.semisterfinal.DB.DbConnetion;
 import lk.ijse.semisterfinal.Tm.EmployeeTm;
 import lk.ijse.semisterfinal.dto.AddEmployeeDTO;
 import lk.ijse.semisterfinal.model.AddEmployeeModel;
+import org.controlsfx.control.Notifications;
+
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -26,6 +28,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.regex.Pattern;
 
 public class EmployeeController implements Initializable {
 
@@ -124,30 +127,39 @@ public class EmployeeController implements Initializable {
     }
 
     public void EmployeeAddOnAction(ActionEvent event) {
-        String id = txtemployeeId.getText();
-        String name = txtEmployeeName.getText();
-        String address = txtAddress.getText();
-        int tele = Integer.parseInt(txtEmployeePhone.getText());
-        String date = String.valueOf(empDate.getValue());
-        String email = txtEmail.getText();
-        String position = txtPossition.getText();
-        String gende = gender.getValue();
-        String education = txtEducation.getValue();
-        double basic = Double.parseDouble(txtBasicSalary.getText());
-        String experiance = txtExpiriance.getText();
-        String de = department.getValue();
-
-        var dto = new AddEmployeeDTO(id,name,address,tele,date,email,position,gende,education,basic,experiance,de);
 
         try {
-            boolean addSup= AddEmployeeModel.addEmployee(dto);
-            if (addSup) {
-                new Alert(Alert.AlertType.CONFIRMATION, "Employee is Added").show();
-                loadAllEmployee();
-                clearField();
+            if (!(validateEmployee())) {
+                return;
             }
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+
+            String id = txtemployeeId.getText();
+            String name = txtEmployeeName.getText();
+            String address = txtAddress.getText();
+            int tele = Integer.parseInt(txtEmployeePhone.getText());
+            String date = String.valueOf(empDate.getValue());
+            String email = txtEmail.getText();
+            String position = txtPossition.getText();
+            String gende = gender.getValue();
+            String education = txtEducation.getValue();
+            double basic = Double.parseDouble(txtBasicSalary.getText());
+            String experiance = txtExpiriance.getText();
+            String de = department.getValue();
+
+            var dto = new AddEmployeeDTO(id, name, address, tele, date, email, position, gende, education, basic, experiance, de);
+
+            try {
+                boolean addSup = AddEmployeeModel.addEmployee(dto);
+                if (addSup) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "Employee is Added").show();
+                    loadAllEmployee();
+                    clearField();
+                }
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            }
+        } catch (NumberFormatException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -281,4 +293,38 @@ public class EmployeeController implements Initializable {
             throw new SQLException();
         }
     }
+
+
+    private boolean validateEmployee() {
+        boolean isValidate = true;
+        boolean name = Pattern.matches("[A-Za-z]{5,}", txtEmployeeName.getText());
+        if (!name){
+            showErrorNotification("Invalid Employee Name", "The Employee name you entered is invalid");
+            isValidate = false;
+        }
+        boolean con = Pattern.matches("[0-9]{10,}",txtEmployeePhone.getText());
+        if (!con){
+            showErrorNotification("Invalid Contact Number", "The contact number you entered is invalid");
+            isValidate = false;
+        }
+        boolean NIC = Pattern.matches("^([0-9]{9}|[0-9]{12})$",txtemployeeId.getText());
+        if (!NIC){
+            showErrorNotification("Invalid NIC", "The NIC Number you entered is invalid");
+            isValidate = false;
+
+        }
+        boolean Job = Pattern.matches("[A-Za-z]{5,}",txtPossition.getText());
+        if (!Job){
+            showErrorNotification("Invalid job type", "The job type you entered is invalid");
+            isValidate = false;
+        }
+        return isValidate;
+    }
+    private void showErrorNotification(String title, String text) {
+        Notifications.create()
+                .title(title)
+                .text(text)
+                .showError();
+    }
+
 }

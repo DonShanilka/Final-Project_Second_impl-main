@@ -107,7 +107,7 @@ public class AddItemController implements Initializable {
     }
 
     public void AddItemOnAction(ActionEvent event) {
-        validateCustomer();
+        validateEmployee();
 
         String ItemCode = txtItemCode.getText();
         String ItemName = txtitemDetails.getText();
@@ -181,9 +181,9 @@ public class AddItemController implements Initializable {
         String cat = itemCatagory.getValue();
 
         try{
-            /*if (!validateEmployee()){
+            if (!validateEmployee()){
                 return;
-            }*/
+            }
             var dto = new ItemDTO(id,name,price,supid,warranty,Qty,cat);
             boolean isUpdate = ItemModel.updateItem(dto);
 
@@ -299,9 +299,9 @@ public void loadAllSupplier() {
         }
     }
 
-    private boolean validateCustomer() {
+    private boolean validateEmployee() {
         boolean isValidate = true;
-        boolean id = Pattern.matches("[A-Za-z]{0,}",txtitemDetails.getText());
+        boolean id = Pattern.matches("[A-Za-z]{0,}",txtItemCode.getText());
         if (!id){
             showErrorNotification("Invalid id", "The id you entered is invalid");
             isValidate = false;

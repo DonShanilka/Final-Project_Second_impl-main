@@ -20,6 +20,7 @@ import lk.ijse.semisterfinal.dto.CusromerDTO;
 import lk.ijse.semisterfinal.dto.SupplierDTO;
 import lk.ijse.semisterfinal.model.CustomerModel;
 import lk.ijse.semisterfinal.model.SupplierModel;
+import org.controlsfx.control.Notifications;
 
 import java.io.IOException;
 import java.rmi.RemoteException;
@@ -31,6 +32,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class AddSupplierControlller  {
     public TextField txtSupName;
@@ -106,6 +108,11 @@ public class AddSupplierControlller  {
             var dto = new SupplierDTO(supId,supName,mobile,email,coName,coAddress,itemcode,itemName,qty,bNum,catagory);
 
             try {
+
+                if (!validateEmployee()){
+                    return;
+                }
+
                 boolean addSup = SupplierModel.addSuppliers(dto);
                 if (addSup) {
                     new Alert(Alert.AlertType.CONFIRMATION, "Supplier Added").show();
@@ -170,16 +177,6 @@ public class AddSupplierControlller  {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         }
 
-        /*Stage stage = new Stage();
-        stage.setScene(new Scene(FXMLLoader.load(this.getClass().getResource("/view/UpdateSupplier.fxml"))));
-        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-            @Override
-            public void handle(WindowEvent windowEvent) {
-                loadAllSupplier();
-            }
-        });
-        stage.centerOnScreen();
-        stage.show();*/
     }
 
     private void setCellValueFactory() {
@@ -248,6 +245,38 @@ public class AddSupplierControlller  {
         } catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    private boolean validateEmployee() {
+        boolean isValidate = true;
+        boolean name = Pattern.matches("[A-Za-z]{5,}", txtSupName.getText());
+        if (!name){
+            showErrorNotification("Invalid Employee Name", "The Employee name you entered is invalid");
+            isValidate = false;
+        }
+        boolean con = Pattern.matches("[0-9]{10}",txtSupMobile.getText());
+        if (!con){
+            showErrorNotification("Invalid Contact Number", "The contact number you entered is invalid");
+            isValidate = false;
+        }
+        boolean NIC = Pattern.matches("^([0-9]{9}|[0-9]{12})$",txtSupNic.getText());
+        if (!NIC){
+            showErrorNotification("Invalid NIC", "The NIC Number you entered is invalid");
+            isValidate = false;
+
+        }
+        boolean Job = Pattern.matches("[A-Za-z]{5,}",txtCompName.getText());
+        if (!Job){
+            showErrorNotification("Invalid job type", "The job type you entered is invalid");
+            isValidate = false;
+        }
+        return isValidate;
+    }
+    private void showErrorNotification(String title, String text) {
+        Notifications.create()
+                .title(title)
+                .text(text)
+                .showError();
     }
 
 }
