@@ -287,7 +287,7 @@ public class CashierController {
 
                 obList.remove(focusedIndex);
                 tblOrderCart.refresh();
-                calculateTotal();
+
 
             }
         });
