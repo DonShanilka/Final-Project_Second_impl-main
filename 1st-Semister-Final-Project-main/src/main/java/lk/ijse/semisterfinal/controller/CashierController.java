@@ -95,6 +95,7 @@ public class CashierController {
         loadCustomerId();
         generateNextOrderId();
         setCellValueFactory();
+        clearField();
 
     }
 
@@ -106,6 +107,17 @@ public class CashierController {
         colTotal.setCellValueFactory(new PropertyValueFactory<>("Total"));
         colDiscount.setCellValueFactory(new PropertyValueFactory<>("discount"));
         colAction.setCellValueFactory(new PropertyValueFactory<>("button"));
+
+    }
+
+
+    private void clearField() {
+        lblItemName.setText("");
+        lblQtyOnHand.setText("");
+        lblUnitPrice.setText("");
+        txtDiscount.setText("");
+        txtQty.setText("");
+        cmbCustomerId.setValue("");
 
     }
 
@@ -238,6 +250,7 @@ public class CashierController {
 
             tblOrderCart.setItems(obList);
             calculateTotal();
+            clearField();
         } catch (RuntimeException e){
             new Alert(Alert.AlertType.ERROR, "Sothing is worng");
         }
@@ -303,6 +316,10 @@ public class CashierController {
 
         try {
 
+            if (!validateCustomer()){
+                return;
+            }
+
             boolean isSuccess = CashiyerModel.placeOrder(placeOrderDto);
 
             if (isSuccess) {
@@ -314,6 +331,7 @@ public class CashierController {
             new Alert(Alert.AlertType.ERROR, "Somthing Went Wrong").show();
         }
         calculateBalance();
+        clearField();
 
         InputStream inputStream = getClass().getResourceAsStream("../reports/megaMartCustomerBill.jrxml");
         JasperDesign jasperDesign = JRXmlLoader.load(inputStream);
@@ -343,6 +361,30 @@ public class CashierController {
     public void mouseClicakAction(MouseEvent mouseEvent) {
     }
 
+    private boolean validateCustomer() {
+        boolean isValidate = true;
+        boolean address = Pattern.matches("[A-Za-z]{3,}",lblCustomerName.getText());
+        if (!address){
+            showErrorNotification("Invalid Name", "The Name you entered is invalid");
+            isValidate = false;
+        }
+
+        boolean NIC = Pattern.matches("^([0-9]{9}|[0-9]{12})$",cmbCustomerId.getValue());
+        if (!NIC){
+            showErrorNotification("Invalid NIC", "The NIC Number you entered is invalid");
+            isValidate = false;
+
+        }
+
+        return isValidate;
+    }
+
+    private void showErrorNotification(String title, String txtt) {
+        Notifications.create()
+                .title(title)
+                .text(String.valueOf(text))
+                .showError();
+    }
 
 }
 
