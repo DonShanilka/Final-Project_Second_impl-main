@@ -368,6 +368,11 @@ public class CashierController {
             showErrorNotification("Invalid Name", "The Name you entered is invalid");
             isValidate = false;
         }
+        boolean dis = Pattern.matches("^[0-9]{1,}",txtDiscount.getText());
+        if (!dis){
+            showErrorNotification("Invalid Discount", "The Discount you entered is invalid");
+            isValidate = false;
+        }
 
         boolean NIC = Pattern.matches("^([0-9]{9}|[0-9]{12})$",cmbCustomerId.getValue());
         if (!NIC){

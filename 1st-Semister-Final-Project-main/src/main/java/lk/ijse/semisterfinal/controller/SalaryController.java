@@ -21,6 +21,7 @@ import lk.ijse.semisterfinal.dto.SalaryDTO;
 import lk.ijse.semisterfinal.model.AddEmployeeModel;
 import lk.ijse.semisterfinal.model.CustomerModel;
 import lk.ijse.semisterfinal.model.SalaryModel;
+import org.controlsfx.control.Notifications;
 
 import java.net.URL;
 import java.sql.Connection;
@@ -32,6 +33,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 import java.util.ResourceBundle;
+import java.util.regex.Pattern;
+
+import static java.awt.SystemColor.text;
 
 
 public class SalaryController implements Initializable {
@@ -262,6 +266,11 @@ public class SalaryController implements Initializable {
         var dto = new SalaryDTO(amount,id,Name,date1,otHcount,pay1h,bonase,epf,etf,prCount,abcount,totalsalary);
 
         try {
+
+            if (!validateCustomer()){
+                return;
+            }
+
             boolean isaddite = SalaryModel.addSalary(dto);
             if (isaddite) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Add Successful").show();
@@ -306,6 +315,38 @@ public class SalaryController implements Initializable {
         //txtTotalSalary.setText("Rs : " + total);
         //(String.valueOf
     }
+
+
+    private boolean validateCustomer() {
+        boolean isValidate = true;
+        boolean address = Pattern.matches("[A-Za-z]{3,}", lblName.getText());
+        if (!address){
+            showErrorNotification("Invalid Name", "The Name you entered is invalid");
+            isValidate = false;
+        }
+        boolean dis = Pattern.matches("^[0-9]{1,}",salary.getText());
+        if (!dis){
+            showErrorNotification("Invalid Salary", "The Salary you entered is invalid");
+            isValidate = false;
+        }
+
+        boolean NIC = Pattern.matches("^([0-9]{9}|[0-9]{12})$", comEmpId.getValue());
+        if (!NIC){
+            showErrorNotification("Invalid NIC", "The NIC Number you entered is invalid");
+            isValidate = false;
+
+        }
+
+        return isValidate;
+    }
+
+    private void showErrorNotification(String title, String txtt) {
+        Notifications.create()
+                .title(title)
+                .text(String.valueOf(text))
+                .showError();
+    }
+
 
     public void salaryDeleteOnAction(ActionEvent actionEvent) {
 

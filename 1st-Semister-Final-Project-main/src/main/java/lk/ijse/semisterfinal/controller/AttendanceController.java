@@ -13,11 +13,15 @@ import lk.ijse.semisterfinal.dto.AddEmployeeDTO;
 import lk.ijse.semisterfinal.dto.AtendanceDTO;
 import lk.ijse.semisterfinal.model.AddEmployeeModel;
 import lk.ijse.semisterfinal.model.AtendanceModel;
+import org.controlsfx.control.Notifications;
 
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.*;
+import java.util.regex.Pattern;
+
+import static java.awt.SystemColor.text;
 
 public class AttendanceController implements Initializable {
 
@@ -96,6 +100,11 @@ public class AttendanceController implements Initializable {
         var dto = new AtendanceDTO(date,id,name,pOra);
 
         try {
+
+            if (!validateCustomer()){
+                return;
+            }
+
             boolean isaddite = AtendanceModel.addAttendance(dto);
             if (isaddite) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Add Successful").show();
@@ -144,6 +153,23 @@ public class AttendanceController implements Initializable {
 
     public void BackOnAction(ActionEvent event) {
 
+    }
+
+    private boolean validateCustomer() {
+        boolean isValidate = true;
+        boolean address = Pattern.matches("[A-Za-z]{3,}",lblName.getText());
+        if (!address){
+            showErrorNotification("Invalid Name", "The Name you entered is invalid");
+            isValidate = false;
+        }
+        return isValidate;
+    }
+
+    private void showErrorNotification(String title, String txtt) {
+        Notifications.create()
+                .title(title)
+                .text(String.valueOf(text))
+                .showError();
     }
 
     @Override
