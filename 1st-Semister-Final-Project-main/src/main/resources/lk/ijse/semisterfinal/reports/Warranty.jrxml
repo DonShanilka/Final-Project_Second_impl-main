@@ -40,7 +40,7 @@
 				<textElement textAlignment="Center">
 					<font size="26" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Warranty Card]]></text>
+				<text><![CDATA[Item]]></text>
 			</staticText>
 		</band>
 	</title>
