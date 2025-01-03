@@ -14,11 +14,4 @@ public class AtendanceTm {
     private String employeeName;
     private String Present;
 
-    /*public AtendanceTm(String employeeId, String employeeName, String date, String present) {
-        this.employeeId = employeeId;
-        this.employeeName = employeeName;
-        this.date = date;
-        this.Present = present;
-    }*/
-
 }

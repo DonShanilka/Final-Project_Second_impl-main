@@ -32,7 +32,7 @@ public class CustomerModel {
     public static boolean deleteCustomer(String id) throws SQLException {
         Connection connection = DbConnetion.getInstance().getConnection();
 
-        String sql = "DELETE FROM customer WHERE customer_id = ?";
+        String sql = "DELETE FROM customer WHERE custId = ?";
         PreparedStatement pstm = connection.prepareStatement(sql);
         pstm.setString(1,id);
 
@@ -42,7 +42,7 @@ public class CustomerModel {
     public static List<CusromerDTO> getAllCustomer() throws SQLException {
         Connection connection = DbConnetion.getInstance().getConnection();
 
-        String sql = "SELECT customer_id,customer_address,customer_name,customer_mobile,payment,item_id FROM customer";
+        String sql = "SELECT * FROM customer";
         PreparedStatement pstm = connection.prepareStatement(sql);
         ResultSet resultSet = pstm.executeQuery();
 

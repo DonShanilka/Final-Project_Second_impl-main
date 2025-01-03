@@ -15,7 +15,7 @@ public class ItemModel {
     public static boolean addItem(ItemDTO dto) throws SQLException {
         Connection connection = DbConnetion.getInstance().getConnection();
 
-        String sql = "INSERT INTO item VALUES(?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO items VALUES(?,?,?,?,?,?,?)";
 
         PreparedStatement ptm = connection.prepareStatement(sql);
         ptm.setString(1, dto.getItemCode());
@@ -34,7 +34,7 @@ public class ItemModel {
     public static boolean deleteItem(String id) throws SQLException {
         Connection connection = DbConnetion.getInstance().getConnection();
 
-        String sql = "DELETE FROM item WHERE item_code = ?";
+        String sql = "DELETE FROM items WHERE item_code = ?";
         PreparedStatement pstm = connection.prepareStatement(sql);
 
         pstm.setString(1, id);
@@ -45,7 +45,7 @@ public class ItemModel {
     public static List<ItemDTO> loadAllItems() throws SQLException {
         Connection connection = DbConnetion.getInstance().getConnection();
 
-        String sql = "SELECT * FROM item";
+        String sql = "SELECT * FROM items";
         PreparedStatement pstm = connection.prepareStatement(sql);
 
         List<ItemDTO> itemList = new ArrayList<>();
@@ -70,7 +70,7 @@ public class ItemModel {
     public static ArrayList<ItemDTO> getAllItem() throws SQLException {
         Connection connection = DbConnetion.getInstance().getConnection();
 
-        String sql = "SELECT * FROM Item";
+        String sql = "SELECT * FROM Items";
 
         PreparedStatement pstm = connection.prepareStatement(sql);
         ResultSet resultSet = pstm.executeQuery();
@@ -96,7 +96,7 @@ public class ItemModel {
     public static ItemDTO searchItemId(String id) throws SQLException {
         Connection connection = DbConnetion.getInstance().getConnection();
 
-        String sql = "SELECT * FROM item WHERE item_code = ? ";
+        String sql = "SELECT * FROM items WHERE item_code = ? ";
         PreparedStatement pstm = connection.prepareStatement(sql);
         pstm.setString(1, id);
 
@@ -131,7 +131,7 @@ public class ItemModel {
     public static boolean updateQty(String code, int qty) throws SQLException {
         Connection connection = DbConnetion.getInstance().getConnection();
 
-        String sql = "UPDATE item SET qty = qty - ? WHERE item_code = ?";
+        String sql = "UPDATE items SET qty = qty - ? WHERE item_code = ?";
         PreparedStatement pstm = connection.prepareStatement(sql);
 
         pstm.setInt(1, qty);
@@ -143,7 +143,7 @@ public class ItemModel {
     public static boolean updateItem(ItemDTO dto) throws SQLException {
         Connection connection = DbConnetion.getInstance().getConnection();
 
-        String sql = "UPDATE item SET item_name = ?, item_price = ?, supplier_id = ? , warranty =?, qty =?, catogary =?  WHERE item_code = ?";
+        String sql = "UPDATE items SET item_name = ?, item_price = ?, supplier_id = ? , warranty =?, qty =?, catogary =?  WHERE item_code = ?";
 
         PreparedStatement pstm = connection.prepareStatement(sql);
 
@@ -159,5 +159,4 @@ public class ItemModel {
         return pstm.executeUpdate() >0;
 
     }
-
 }
