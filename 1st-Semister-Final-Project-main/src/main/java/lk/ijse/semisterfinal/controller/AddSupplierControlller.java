@@ -109,7 +109,7 @@ public class AddSupplierControlller  {
 
             try {
 
-                if (!validateEmployee()){
+                if (!validateSupplier()){
                     return;
                 }
 
@@ -247,11 +247,11 @@ public class AddSupplierControlller  {
         }
     }
 
-    private boolean validateEmployee() {
+    private boolean validateSupplier() {
         boolean isValidate = true;
         boolean name = Pattern.matches("[A-Za-z]{5,}", txtSupName.getText());
         if (!name){
-            showErrorNotification("Invalid Employee Name", "The Employee name you entered is invalid");
+            showErrorNotification("Invalid Supplier Name", "The Employee name you entered is invalid");
             isValidate = false;
         }
         boolean con = Pattern.matches("[0-9]{10}",txtSupMobile.getText());
@@ -265,11 +265,11 @@ public class AddSupplierControlller  {
             isValidate = false;
 
         }
-        boolean Job = Pattern.matches("[A-Za-z]{5,}",txtCompName.getText());
-        if (!Job){
-            showErrorNotification("Invalid job type", "The job type you entered is invalid");
-            isValidate = false;
-        }
+//        boolean Job = Pattern.matches("[A-Za-z]{5,}",txtCompName.getText());
+//        if (!Job){
+//            showErrorNotification("Invalid job type", "The job type you entered is invalid");
+//            isValidate = false;
+//        }
         return isValidate;
     }
     private void showErrorNotification(String title, String text) {

@@ -85,7 +85,6 @@ public class CashierController {
     private CustomerModel customerModel = new CustomerModel();
     private CashiyerModel cashiyerModel = new CashiyerModel();
     private OrderModel orderModel = new OrderModel();
-    private BillModel billModel = new BillModel();
 
     private ObservableList<CartTm> obList = FXCollections.observableArrayList();
 

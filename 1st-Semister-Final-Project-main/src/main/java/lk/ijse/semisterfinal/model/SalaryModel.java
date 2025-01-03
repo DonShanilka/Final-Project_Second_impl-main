@@ -70,7 +70,7 @@ public class SalaryModel {
         Connection connection = DbConnetion.getInstance().getConnection();
 
         //String sqlPr = "SELECT COUNT(presentAbsent) FROM attendance WHERE employee_id  = 'Present'";
-        String sqlAb = "SELECT COUNT(*) FROM attendance WHERE employee_id = ? AND presentAbsent = 'Absent'";
+        String sqlAb = "SELECT COUNT(*) FROM attendance WHERE employeeId = ? AND presentAbsent = 'Absent'";
 
         PreparedStatement pstm = connection.prepareStatement(sqlAb);
         pstm.setString(1, String.valueOf(id));
@@ -92,7 +92,7 @@ public class SalaryModel {
         Connection connection = DbConnetion.getInstance().getConnection();
 
         //String sqlPr = "SELECT COUNT(presentAbsent) FROM attendance WHERE employee_id  = 'Present'";
-        String sqlAb = "SELECT COUNT(*) FROM attendance WHERE employee_id = ? AND presentAbsent = 'Present'";
+        String sqlAb = "SELECT COUNT(*) FROM attendance WHERE employeeId = ? AND presentAbsent = 'Present'";
 
         PreparedStatement pstm = connection.prepareStatement(sqlAb);
         pstm.setString(1, String.valueOf(id));
@@ -113,9 +113,9 @@ public class SalaryModel {
     public static boolean deleteSalary(String id) throws SQLException {
         Connection connection = DbConnetion.getInstance().getConnection();
 
-        String sql = "DELETE FROM salary WHERE employee_id = ?";
+        String sql = "DELETE FROM salary WHERE employeeId = ?";
         PreparedStatement pstm = connection.prepareStatement(sql);
-        pstm.setString(1,id);
+        pstm.setString(1, id);
 
         return pstm.executeUpdate()>0;
     }

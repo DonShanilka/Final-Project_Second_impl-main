@@ -24,7 +24,7 @@ public class ItemModel {
         ptm.setString(4, dto.getSupplierId());
         ptm.setString(5, dto.getWarrantyPeriod());
         ptm.setString(6, String.valueOf(dto.getItemQty()));
-        ptm.setString(5, dto.getCato());
+        ptm.setString(7, dto.getCato());
 
 
         boolean isSaved = ptm.executeUpdate()>0;
@@ -34,7 +34,7 @@ public class ItemModel {
     public static boolean deleteItem(String id) throws SQLException {
         Connection connection = DbConnetion.getInstance().getConnection();
 
-        String sql = "DELETE FROM items WHERE item_code = ?";
+        String sql = "DELETE FROM items WHERE itemCode = ?";
         PreparedStatement pstm = connection.prepareStatement(sql);
 
         pstm.setString(1, id);
@@ -96,7 +96,7 @@ public class ItemModel {
     public static ItemDTO searchItemId(String id) throws SQLException {
         Connection connection = DbConnetion.getInstance().getConnection();
 
-        String sql = "SELECT * FROM items WHERE item_code = ? ";
+        String sql = "SELECT * FROM items WHERE itemCode = ? ";
         PreparedStatement pstm = connection.prepareStatement(sql);
         pstm.setString(1, id);
 
@@ -131,7 +131,7 @@ public class ItemModel {
     public static boolean updateQty(String code, int qty) throws SQLException {
         Connection connection = DbConnetion.getInstance().getConnection();
 
-        String sql = "UPDATE items SET qty = qty - ? WHERE item_code = ?";
+        String sql = "UPDATE items SET itemQty = itemQty - ? WHERE itemCode = ?";
         PreparedStatement pstm = connection.prepareStatement(sql);
 
         pstm.setInt(1, qty);
@@ -143,7 +143,7 @@ public class ItemModel {
     public static boolean updateItem(ItemDTO dto) throws SQLException {
         Connection connection = DbConnetion.getInstance().getConnection();
 
-        String sql = "UPDATE items SET item_name = ?, item_price = ?, supplier_id = ? , warranty =?, qty =?, catogary =?  WHERE item_code = ?";
+        String sql = "UPDATE items SET itemDetails = ?, itemPrice = ?, supplierId = ? , warrantyPeriod =?, itemQty =?, category =?  WHERE itemCode = ?";
 
         PreparedStatement pstm = connection.prepareStatement(sql);
 
@@ -154,7 +154,6 @@ public class ItemModel {
         pstm.setInt(5, dto.getItemQty());
         pstm.setString(6, dto.getCato());
         pstm.setString(7, dto.getItemCode());
-
 
         return pstm.executeUpdate() >0;
 

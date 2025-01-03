@@ -20,7 +20,7 @@ public class OrderModel {
     public String getLastId() throws SQLException {
         Connection connection = DbConnetion.getInstance().getConnection();
 
-        String sql = "SELECT order_id FROM orders ORDER BY order_id DESC LIMIT 1";
+        String sql = "SELECT orderId FROM orders ORDER BY orderId DESC LIMIT 1";
         PreparedStatement pstm = connection.prepareStatement(sql);
 
         ResultSet resultSet = pstm.executeQuery();

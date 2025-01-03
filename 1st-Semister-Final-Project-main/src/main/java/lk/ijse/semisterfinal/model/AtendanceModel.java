@@ -1,9 +1,7 @@
 package lk.ijse.semisterfinal.model;
 
-import com.ctc.wstx.osgi.WstxBundleActivator;
 import lk.ijse.semisterfinal.DB.DbConnetion;
 import lk.ijse.semisterfinal.dto.AtendanceDTO;
-import lk.ijse.semisterfinal.dto.CusromerDTO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -44,12 +42,9 @@ public class AtendanceModel {
                             resultSet.getString(2),
                             resultSet.getString(3),
                             resultSet.getString(4)
-
                     )
             );
-
         }
         return dtoList;
     }
-
 }

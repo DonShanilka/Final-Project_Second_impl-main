@@ -68,7 +68,7 @@ public class CustomerModel {
     public static CusromerDTO searchCustomer(String id) throws SQLException {
         Connection connection = DbConnetion.getInstance().getConnection();
 
-        String sql = "SELECT * FROM customer WHERE customer_id = ? ";
+        String sql = "SELECT * FROM customer WHERE custId = ? ";
         PreparedStatement pstm = connection.prepareStatement(sql);
         pstm.setString(1, id);
 
@@ -91,7 +91,7 @@ public class CustomerModel {
     public static boolean updateCustomer(CusromerDTO dto) throws SQLException {
         Connection connection = DbConnetion.getInstance().getConnection();
 
-        String sql = "UPDATE customer SET customer_address = ?, customer_name = ?, customer_mobile = ?, item_id = ? , payment =?  WHERE customer_id = ?";
+        String sql = "UPDATE customer SET custAddress = ?, custName = ?, custMobile = ?, custItemId = ? , custPayment =?  WHERE customer_id = ?";
 
         PreparedStatement pstm = connection.prepareStatement(sql);
 
@@ -105,5 +105,4 @@ public class CustomerModel {
         return pstm.executeUpdate() >0;
 
     }
-
 }

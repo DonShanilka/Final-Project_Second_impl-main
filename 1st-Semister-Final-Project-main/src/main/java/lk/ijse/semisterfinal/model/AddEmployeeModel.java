@@ -69,7 +69,7 @@ public class AddEmployeeModel {
     public static boolean updateEmployee(AddEmployeeDTO dto) throws SQLException {
         Connection connection = DbConnetion.getInstance().getConnection();
 
-        String sql = "UPDATE employee SET employee_name = ?, employee_address = ?, employee_teliphone = ?, job_start_date = ? , position =?, email =?, gender =?, education =?, basicSalary =?, experiance =?, department =?  WHERE employee_id = ?";
+        String sql = "UPDATE employee SET employeeName = ?, employee_address = ?, employeePhone = ?, job_start_date = ? , position =?, email =?, gender =?, education =?, basicSalary =?, experiance =?, department =?  WHERE employeeId = ?";
 
         PreparedStatement pstm = connection.prepareStatement(sql);
 
@@ -120,7 +120,7 @@ public class AddEmployeeModel {
     public static boolean deleteEmployee(String id) throws SQLException {
         Connection connection = DbConnetion.getInstance().getConnection();
 
-        String sql = "DELETE FROM employee WHERE employee_id = ?";
+        String sql = "DELETE FROM employee WHERE employeeId = ?";
         PreparedStatement pstm = connection.prepareStatement(sql);
 
         pstm.setString(1, id);

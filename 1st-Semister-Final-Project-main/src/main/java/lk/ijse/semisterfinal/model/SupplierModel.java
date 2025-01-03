@@ -34,7 +34,7 @@ public class SupplierModel {
     public static boolean deleteSupplier(String id) throws SQLException {
         Connection connection = DbConnetion.getInstance().getConnection();
 
-        String sql = "DELETE FROM supplier WHERE supplier_id = ?";
+        String sql = "DELETE FROM supplier WHERE supNic = ?";
         PreparedStatement pstm = connection.prepareStatement(sql);
 
         pstm.setString(1, id);
@@ -46,7 +46,7 @@ public class SupplierModel {
     public static boolean updateSupplier(SupplierDTO dto) throws SQLException {
         Connection connection = DbConnetion.getInstance().getConnection();
 
-        String sql = "UPDATE supplier SET supplier_name = ?,mobile = ?, email = ?, company_name = ?, company_address = ?, item_code = ?, item_name = ?, qty = ?, bacth_num = ?, item_catagory = ? WHERE supplier_id = ?";
+        String sql = "UPDATE supplier SET supName = ?,mobile = ?, email = ?, companyName = ?, companyAddress = ?, itemCode = ?, itemName = ?, quantity = ?, businessNumber = ?, category = ? WHERE supNic = ?";
 
         PreparedStatement pstm = connection.prepareStatement(sql);
 
@@ -100,7 +100,7 @@ public class SupplierModel {
     public static SupplierDTO searchsupplier(String id) throws SQLException {
         Connection connection = DbConnetion.getInstance().getConnection();
 
-        String sql = "SELECT * FROM supplier WHERE supplier_id = ? ";
+        String sql = "SELECT * FROM supplier WHERE supNic = ? ";
         PreparedStatement pstm = connection.prepareStatement(sql);
         pstm.setString(1, id);
 
